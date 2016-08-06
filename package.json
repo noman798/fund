@@ -1,0 +1,10 @@
+{
+  "name": "my-project-name",
+  "version": "0.0.1",
+  "devDependencies": {},
+  "dependencies": {
+    "css-loader": "^0.23.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
+  }
+}
