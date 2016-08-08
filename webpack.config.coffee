@@ -1,4 +1,5 @@
 isProduction = (process.env.NODE_ENV == 'production')
+webpack = require('webpack')
 
 HtmlWebpackPlugin = require('html-webpack-plugin')
 
