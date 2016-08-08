@@ -23,12 +23,12 @@ exports = {
               loaders: ["style", "css#{sourceMap}", "sass#{sourceMap}"]
           }
           {
-              test: /\.slim$/
+              test: /\.html\.slim$/
               loader: "html!slm"
           }
           {
-                test: /\.vue$/,
-                loaders: ["vue", "slm"]
+                test: /\.vue\.slim$/,
+                loaders: ["vue", "html", "slm"]
           }
         ]
     
@@ -38,7 +38,7 @@ exports = {
             filename: 'js/commons.js',
         })
         new HtmlWebpackPlugin({
-            template: './src/slim/index.slim'
+            template: './src/slim/index.html.slim'
             inject: 'body'
         })
     ]
