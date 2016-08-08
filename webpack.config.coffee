@@ -35,7 +35,7 @@ exports = {
             filename: 'js/commons.js',
         })
         new HtmlWebpackPlugin({
-            template: 'index.html.slim'
+            template: './src/slim/index.slim'
             inject: 'body'
         })
     ]

@@ -16,6 +16,7 @@
     "sass-loader": "^4.0.0",
     "slm-loader": "^0.2.3",
     "style-loader": "^0.13.1",
+    "vue": "^1.0.26",
     "webpack": "^1.13.1"
   }
 }

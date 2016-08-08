@@ -1,2 +1,2 @@
-require('./style.scss')
+require './src/scss/comm.scss'
 
