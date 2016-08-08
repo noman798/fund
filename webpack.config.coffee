@@ -12,7 +12,7 @@ else
     sourceMap = ""
 
 exports = {
-    entry: './entry.coffee'
+    entry: './src/coffee/index.coffee'
     devServer:
         contentBase: "./dev"
     module:
