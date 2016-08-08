@@ -1,13 +1,3 @@
-coffee:
-    module.exports = {
-        el:"#app"
-        data: ->
-            {
-                name:"guowenfh",
-                age:"2q1"
-            }
-    }
-
 template
     div
     	h1 姓名：{{name}}
@@ -29,3 +19,14 @@ scss:
             background-color: #999;
         }
     }
+
+coffee:
+    module.exports = {
+        el:"#app"
+        data: ->
+            {
+                name:"guowenfh",
+                age:"2q1"
+            }
+    }
+
