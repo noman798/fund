@@ -13,7 +13,7 @@ template
     	h1 姓名：{{name}}
         h2 {{age}}
 
-sass:
+scss:
     $qwe:#098;
     body{
         background-color: $qwe;
