@@ -3,39 +3,22 @@ webpack = require('webpack')
 
 HtmlWebpackPlugin = require('html-webpack-plugin')
 
-plugins = [
-    new HtmlWebpackPlugin({
-        template: 'index.html.slim'
-    })
-]
-
 if isProduction
-    plugins.push (
-        new webpack.optimize.UglifyJsPlugin({
-            test: /\.js$/,
-            compress: {
-                warnings: false
-            }
-        })
-    )
+    sourceMap = "?sourceMap"
 
-
-module.exports =
+exports = {
     entry: './entry.coffee'
     output:
         path: __dirname
         filename: 'bundle.js'
-    devtool: "source-map"
     devServer:
         contentBase: "./dev"
-        #hot: true
-        #inline: true
     module:
         loaders: [
           {test: /\.css$/, loader: 'style!css'}
           {
               test: /\.scss$/,
-              loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+              loaders: ["style", "css#{sourceMap}", "sass#{sourceMap}"]
           }
           {
               test: /\.html\.slim$/
@@ -43,5 +26,25 @@ module.exports =
           }
 
         ]
-    plugins:plugins
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: 'index.html.slim'
+        })
+    ]
+}
+
+
+if isProduction
+    exports.plugins.push (
+        new webpack.optimize.UglifyJsPlugin({
+            test: /\.js$/,
+            compress: {
+                warnings: false
+            }
+        })
+    )
+else
+    exports.devtool = "source-map"
+
+module.exports = exports
 
