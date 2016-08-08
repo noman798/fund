@@ -8,8 +8,8 @@ module.exports =
     devtool: "source-map"
     devServer:
         contentBase: "./dev"
-        hot: true
-        inline: true
+        #hot: true
+        #inline: true
     module:
         loaders: [
           {test: /\.css$/, loader: 'style!css'}
@@ -19,7 +19,7 @@ module.exports =
           }
           {
               test: /\.html\.slim$/
-              loader: "slm"
+              loader: "html!slm"
           }
 
         ]
