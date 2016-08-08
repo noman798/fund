@@ -28,7 +28,12 @@ exports = {
           }
 
         ]
+    
     plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'commons',
+            filename: 'js/commons.js',
+        })
         new HtmlWebpackPlugin({
             template: 'index.html.slim'
             inject: 'body'
