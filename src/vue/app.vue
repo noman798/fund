@@ -1,12 +1,11 @@
-script
+coffee:
     module.exports = {
         el:"#app"
-        data:function(){
-            return {
+        data: ->
+            {
                 name:"guowenfh",
                 age:"2q1"
             }
-		}
     }
 
 template
@@ -14,7 +13,7 @@ template
     	h1 姓名：{{name}}
         h2 {{age}}
 
-style lang="sass"
+sass:
     $qwe:#098;
     body{
         background-color: $qwe;
