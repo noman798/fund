@@ -23,7 +23,7 @@ exports = {
               loaders: ["style", "css#{sourceMap}", "sass#{sourceMap}"]
           }
           {
-              test: /\.html\.slim$/
+              test: /\.slim$/
               loader: "html!slm"
           }
 

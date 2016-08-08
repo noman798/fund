@@ -2,9 +2,8 @@
   "name": "tzfund",
   "version": "0.0.1",
   "scripts": {
-    "build": "webpack --progress --colors --watch",
     "dev": "webpack-dev-server --progress --colors --port 8081 --host 0.0.0.0",
-    "dist": "NODE_ENV=production webpack --progress --colors"
+    "dist": "NODE_ENV=production webpack --progress --colors -p"
   },
   "devDependencies": {
     "html-loader": "^0.4.3",
