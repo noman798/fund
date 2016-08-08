@@ -1,4 +1,7 @@
 isProduction = (process.env.NODE_ENV == 'production')
+
+outputDir = "./dist"
+
 webpack = require('webpack')
 
 HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -8,9 +11,6 @@ if isProduction
 
 exports = {
     entry: './entry.coffee'
-    output:
-        path: __dirname
-        filename: 'bundle.js'
     devServer:
         contentBase: "./dev"
     module:
@@ -29,8 +29,14 @@ exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html.slim'
+            inject: 'body'
         })
     ]
+    output: {
+        path: outputDir
+        filename: 'js/[name].bundle.js',
+        # publicPath: isProduction()? 'http://******' : 'http://localhost:3000',
+    }
 }
 
 
