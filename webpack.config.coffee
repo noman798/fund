@@ -28,7 +28,7 @@ exports = {
           }
           {
                 test: /\.vue$/,
-                loader: 'vue!html!slm'
+                loaders: ["vue","html","slm"]
           }
         ]
     
