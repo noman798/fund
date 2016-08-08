@@ -23,10 +23,13 @@ exports = {
               loaders: ["style", "css#{sourceMap}", "sass#{sourceMap}"]
           }
           {
-              test: /\.(slim|vue)$/
+              test: /\.(slim)$/
               loader: "html!slm"
           }
-
+          {
+                test: /\.vue$/,
+                loader: 'vue!slm'
+          }
         ]
     
     plugins: [
