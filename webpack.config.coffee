@@ -19,7 +19,7 @@ exports = {
         loaders: [
           {test: /\.css$/, loader: 'style!css'}
           {
-              test: /\.scss$/,
+              test: /\.scss$/
               loaders: ["style", "css#{sourceMap}", "sass#{sourceMap}"]
           }
           {
