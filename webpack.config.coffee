@@ -8,6 +8,8 @@ HtmlWebpackPlugin = require('html-webpack-plugin')
 
 if isProduction
     sourceMap = "?sourceMap"
+else
+    sourceMap = ""
 
 exports = {
     entry: './entry.coffee'
