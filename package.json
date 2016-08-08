@@ -1,11 +1,15 @@
 {
   "name": "my-project-name",
   "version": "0.0.1",
-  "devDependencies": {},
+  "devDependencies": {
+    "html-loader": "^0.4.3",
+    "html-webpack-plugin": "^2.22.0"
+  },
   "dependencies": {
     "css-loader": "^0.23.1",
     "node-sass": "^3.8.0",
     "sass-loader": "^4.0.0",
+    "slm-loader": "^0.2.3",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1"
   }

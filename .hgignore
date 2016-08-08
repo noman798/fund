@@ -1,2 +1,4 @@
 syntax: glob
 node_modules
+bundle.js
+bundle.js.map
