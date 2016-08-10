@@ -6,4 +6,5 @@ html
         title 投资 
 
     body
-        #app 
+        div :controller="test"
+          p good 
