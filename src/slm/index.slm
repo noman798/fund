@@ -3,10 +3,10 @@ doctype html
 html
     head
         meta charset='utf-8'
-        title 投资 
+        title 云私募 
 
     body
         div :controller="INDEX"
-          template ms-widget="{is:'ms-view',$id:'view'}"
+          ms-view :widget="{$id:'view'}"
             div slot="content" 这是子视图的内容
 
