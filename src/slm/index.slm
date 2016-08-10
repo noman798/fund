@@ -6,9 +6,7 @@ html
         title 投资 
 
     body
-        div :controller="app"
-          p {{@name}}
-          input :duplex="@name"
+        div :controller="INDEX"
           template ms-widget="{is:'ms-view',$id:'view'}"
             div slot="content" 这是子视图的内容
 
