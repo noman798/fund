@@ -9,3 +9,6 @@ html
         div :controller="app"
           p {{@name}}
           input :duplex="@name"
+          template ms-widget="{is:'ms-view',$id:'view'}"
+            div slot="content" 这是子视图的内容
+

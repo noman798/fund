@@ -18,6 +18,7 @@ exports = {
     module:
         loaders: [
           { test: /\.coffee$/, loader: "coffee-loader" }
+          # { test: './src/coffee/index.coffee', loader: "exports?avalon!coffee-loader" }
 
           {test: /\.css$/, loader: 'style!css'}
           {
