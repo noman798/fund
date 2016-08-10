@@ -1,6 +1,6 @@
 
 avalon.component('ms-view',{
-    template:
+    template:require("./view.slm")
     defaults: {
         content: ""
     }
