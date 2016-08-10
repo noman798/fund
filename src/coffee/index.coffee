@@ -1,14 +1,8 @@
 require '../scss/comm.scss'
 
 require "avalon2"
+require "../component/view/view.coffee"
 
-
-avalon.component('ms-view',{
-    template:"""<div class="view"><slot name="content" /></div>"""
-    defaults: {
-        content: ""
-    }
-})
 
 
 window.vm = avalon.define(
