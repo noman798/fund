@@ -17,6 +17,8 @@ exports = {
         contentBase: "./dev"
     module:
         loaders: [
+          { test: /\.coffee$/, loader: "coffee-loader" }
+
           {test: /\.css$/, loader: 'style!css'}
           {
               test: /\.scss$/

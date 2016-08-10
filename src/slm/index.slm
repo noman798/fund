@@ -6,5 +6,6 @@ html
         title 投资 
 
     body
-        div :controller="test"
-          p good 
+        div :controller="app"
+          p {{@name}}
+          input :duplex="@name"
