@@ -7,6 +7,6 @@ html
 
     body
         div :controller="INDEX"
-          ms-view :widget="{$id:'view'}"
+          ms-view :widget="{$id:'vix'}"
             div slot="content" 这是子视图的内容
 
