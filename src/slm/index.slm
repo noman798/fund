@@ -5,8 +5,7 @@ html
         meta charset='utf-8'
         title 云私募 
 
-    body
-        div :controller="INDEX"
-          ms-view :widget="{$id:'vix'}"
-            div slot="content" 这是子视图的内容
+    body id="APP"
+        div :controller="APP"
+          ms-auth :widget="{$id:'auth'}"
 

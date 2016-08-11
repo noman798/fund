@@ -1,8 +1,7 @@
 
-avalon.component('ms-view',{
+avalon.component('ms-auth',{
     template:require("./view.slm")
     defaults: {
-        content: ""
         onDispose:->
             delete avalon.vmodels[@$id]
     }

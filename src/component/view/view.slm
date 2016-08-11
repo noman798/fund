@@ -1,2 +1,2 @@
 div class="view"
-  slot name="content"
+  p 您好
