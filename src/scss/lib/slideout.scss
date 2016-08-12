@@ -9,11 +9,17 @@ html,body {
 	height:100%;
 	width:100%;
 	overflow:hidden;
-	background:#eef;
+    box-shadow:0 0 3px #ccc;
+    background:#fff;
+}
+#menuBtn:before{
+    height:64px;
+    width:64px;
+    font-size:48px;
+    content: "\e601";
 }
 #menu{
-	background:#999;
-	border-right:1px solid #000;
+    background:#fafafa;
 }
 
 .slideout-menu {

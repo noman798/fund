@@ -11,6 +11,6 @@ html
             p hi
         
         #panel
-          #menuBtn
+          #menuBtn.I
           #APP :controller="APP"
             ms-auth :widget="{$id:'auth'}"
