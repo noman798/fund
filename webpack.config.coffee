@@ -14,22 +14,31 @@ else
 exports = {
     entry: './src/coffee/index.coffee'
     devServer:
-        contentBase: "./dev"
+        contentBase: "./dist"
     module:
         loaders: [
-          { test: /\.coffee$/, loader: "coffee-loader" }
-          # { test: './src/coffee/index.coffee', loader: "exports?avalon!coffee-loader" }
+            # { test: './src/coffee/index.coffee', loader: "exports?avalon!coffee-loader" }
+            { test: /\.coffee$/, loader: "coffee-loader" }
 
-          {test: /\.css$/, loader: 'style!css'}
-          {
-              test: /\.scss$/
-              loaders: ["style", "css#{sourceMap}", "sass#{sourceMap}"]
-          }
-          {
-              test: /\.slm$/
-              loader: "html!slm"
-          }
+            {test: /\.css$/, loader: 'style!css'}
+            {
+                test: /\.scss$/
+                loaders: ["style", "css#{sourceMap}", "sass#{sourceMap}"]
+            }
+            {
+                test: /\.slm$/
+                loader: "html!slm"
+            }
+            {
+                test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/
+                loader: 'file-loader?name=./font/[name].[ext]'
+            }
+            {
+                test: /\.(png|jpg|gif)$/
+                loader: 'url-loader?limit=8192&name=./img/[name].[ext]'
+            }
         ]
+
     
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
@@ -43,8 +52,9 @@ exports = {
     ]
     output: {
         path: outputDir
-        filename: 'js/[name].bundle.js',
-        # publicPath: isProduction()? 'http://******' : 'http://localhost:3000',
+        filename: 'js/[name].bundle.js'
+        # publicPath:outputDir
+        # publicPath: isProduction()? 'http://******' : 'http://localhost:3000'
     }
 }
 

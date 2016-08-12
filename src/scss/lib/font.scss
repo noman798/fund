@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'bg';
+  src: url('/font/bg.eot');
+  src:
+    url('/font/bg.eot?#font-spider') format('embedded-opentype'),
+    url('/font/bg.woff') format('woff'),
+    url('/font/bg.ttf') format('truetype'),
+    url('/font/bg.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

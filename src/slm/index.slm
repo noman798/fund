@@ -11,6 +11,8 @@ html
             p hi
         
         #panel
-          #menuBtn.I
+          #topbar
+            #menuBtn.I
+            h1 云私募
           #APP :controller="APP"
             ms-auth :widget="{$id:'auth'}"

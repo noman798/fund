@@ -6,6 +6,7 @@ require "avalon2"
 
 require "../component/view/view.coffee"
 require '../scss/lib/iconfont.scss'
+require '../scss/lib/font.scss'
 require '../scss/lib/slideout.scss'
 require '../scss/comm.scss'
 
