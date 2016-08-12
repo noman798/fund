@@ -1,13 +1,16 @@
 doctype html
 
 html
-    head
-		meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+  head
+    meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+    meta charset='utf-8'
+    title 云私募 
 
-        meta charset='utf-8'
-        title 云私募 
-
-    body id="APP"
-        div :controller="APP"
-          ms-auth :widget="{$id:'auth'}"
-
+    body
+        #menu
+            p hi
+        
+        #panel
+          #menuBtn
+          #APP :controller="APP"
+            ms-auth :widget="{$id:'auth'}"
