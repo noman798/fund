@@ -62,20 +62,6 @@ html.slideout-open .slideoutBtn:after {
     transform: rotate( -45deg );
 }
 
-.slideout{
-    background:#fafafa;
-}
-
-// .fixed {
-//   backface-visibility: hidden;
-//   position: fixed;
-//   z-index:2;
-//   transition: transform 300ms ease;
-// }
-
-// .fixed-open {
-//   transform: translate3d(256px, 0px, 0px);
-// }
 .slideout-menu {
 	position: fixed;
 	right: 0;
@@ -102,3 +88,14 @@ html.slideout-open .slideoutBtn:after {
 .slideout-open .slideout-menu {
 	display: block;
 }
+
+// .fixed {
+//   backface-visibility: hidden;
+//   position: fixed;
+//   z-index:2;
+//   transition: transform 300ms ease;
+// }
+
+// .fixed-open {
+//   transform: translate3d(256px, 0px, 0px);
+// }

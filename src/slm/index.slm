@@ -9,8 +9,9 @@ html
     body
         #sP
           #topbar
-            .slideoutBtn
-              span
+            .slideoutBtnW
+              #sB.slideoutBtn
+                span
             h1 云私募
           #APP :controller="APP"
             ms-auth :widget="{$id:'auth'}"

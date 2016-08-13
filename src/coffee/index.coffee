@@ -11,12 +11,14 @@ window.vm = avalon.define(
     $id: "APP",
 )
 
+$id = (id)->
+    document.getElementById(id)
+
 Slideout = require "slideout"
 
 slideout = new Slideout({
-    panel : document.getElementById('panel')
-    menu : document.getElementById('menu')
-    # padding : 256
+    panel : $id 'sP'
+    menu : $id 'sM'
     tolerance : 70
     side : 'right'
 })
@@ -27,11 +29,7 @@ slideout = new Slideout({
 #     document.querySelector('.fixed').classList.remove('fixed-open')
 # )
 
-$("#menuBtn").click ->
+$("#sB").click ->
     slideout.toggle()
 
-Slideout.prototype._setTransition = ->
-    @
-
-Slideout.prototype._translateXTo = (translateX) ->
-    @
+Slideout.prototype._setTransition = Slideout.prototype._translateXTo = -> @
