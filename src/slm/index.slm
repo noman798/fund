@@ -15,9 +15,15 @@ html
           .logo
           h1 云私募
         .main
-          a.authBtn href="#" 注册
-          .split
-          a.authBtn href="#" 登录
+          .VC2
+            .VC1
+              .authBk
+                .txt
+                  p 科技改变世界
+                  p 我们下注未来
+                a.authBtn href="#" 注册
+                .split
+                a.authBtn href="#" 登录
 
       #sM
           p hi

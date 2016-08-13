@@ -1,6 +1,6 @@
 PREFIX=$(cd "$(dirname "$0")"; pwd)
 cd $PREFIX
-cd ../font
-cp bg.bak bg.ttf
+cp $PREFIX/bg.bak ../../dist/font/bg.ttf
+cd ../../dist/font
 cd $PREFIX
 font-spider *.html
