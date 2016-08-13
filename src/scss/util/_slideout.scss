@@ -1,6 +1,3 @@
-#topbar h1{
-    font-family:'bg';
-}
 #sP{
 	height:100%;
 	overflow:hidden;
@@ -12,7 +9,7 @@
     transition: right 300ms ease;
 }
 .slideout-open #sP{
-    right:250px;
+    right:256px;
 }
 #sM{
     background:#fafafa;
