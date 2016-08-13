@@ -15,22 +15,93 @@ html,body {
     box-shadow:0 0 3px #ccc;
     background:#fff;
 }
-#menuBtn:before{
-    height:64px;
-    width:64px;
-    font-size:48px;
-    content: "\e601";
+
+#menuBtn {
+    box-sizing: border-box;
+    display: block;
+    width: 70px;
+    height: 45px;
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    z-index: 2;
+}
+
+html:not(.mm-opening):not(.mm-opened) #menuBtn {
+    transition: top 0.3s ease;
+}
+
+#menuBtn:before,
+#menuBtn:after,
+#menuBtn span {
+    background: #000;
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    position: absolute;
+    left: 20px;
+}
+
+#menuBtn:before {
+    top: 12px;
+}
+
+#menuBtn span {
+    top: 22px;
+}
+
+#menuBtn:after {
+    top: 32px;
+}
+
+/* Hamburger animation */
+#menuBtn:before,
+#menuBtn:after,
+#menuBtn span {
+    -webkit-transition: none 0.5s ease 0.5s;
+    transition: none 0.5s ease 0.5s;
+    -webkit-transition-property: transform, top, bottom, left, opacity;
+    transition-property: transform, top, bottom, left, opacity;
+}
+
+html.mm-opening #menuBtn:before,
+html.mm-opening #menuBtn:after {
+    top: 20px;
+}
+
+html.mm-opening #menuBtn span {
+    left: -50px;
+    opacity: 0;
+}
+
+html.mm-opening #menuBtn:before {
+    transform: rotate( 45deg );
+}
+
+html.mm-opening #menuBtn:after {
+    transform: rotate( -45deg );
 }
 #menu{
     background:#fafafa;
 }
 
+// .fixed {
+//   backface-visibility: hidden;
+//   position: fixed;
+//   z-index:2;
+//   transition: transform 300ms ease;
+// }
+
+// .fixed-open {
+//   transform: translate3d(256px, 0px, 0px);
+// }
 .slideout-menu {
 	position: fixed;
-	left: 0;
+    left: 0;
+	right: auto;
 	top: 0;
 	bottom: 0;
-	right: 0;
 	z-index: 0;
 	width: 256px;
 	overflow-y: auto;

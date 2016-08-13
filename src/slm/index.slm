@@ -7,12 +7,12 @@ html
     title 云私募 
 
     body
-        #menu
-            p hi
-        
         #panel
           #topbar
             #menuBtn.I
-            h1 云私募
+            h1 style="text-align:right" 云私募
           #APP :controller="APP"
             ms-auth :widget="{$id:'auth'}"
+        #menu
+            p hi
+        

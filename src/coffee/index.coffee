@@ -16,9 +16,16 @@ Slideout = require "slideout"
 slideout = new Slideout({
     panel : document.getElementById('panel')
     menu : document.getElementById('menu')
-    padding : 256
+    # padding : 256
     tolerance : 70
+    # side : 'right'
 })
+# slideout.on('beforeopen', ->
+#     document.querySelector('.fixed').classList.add('fixed-open')
+# )
+# slideout.on('beforeclose', ->
+#     document.querySelector('.fixed').classList.remove('fixed-open')
+# )
 
 $("#menuBtn").click ->
     slideout.toggle()
