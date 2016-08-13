@@ -10,20 +10,22 @@ html,body {
 }
 #panel{
 	height:100%;
-	width:100%;
 	overflow:hidden;
+    position:absolute;
+    right:0;
+    left:0;
     box-shadow:0 0 3px #ccc;
     background:#fff;
 }
 
 #menuBtn {
+    cursor:pointer;
     box-sizing: border-box;
     display: block;
     width: 70px;
     height: 45px;
     position: fixed;
     top: 20px;
-    left: 10px;
     z-index: 2;
     transition: top 0.3s ease;
 }
