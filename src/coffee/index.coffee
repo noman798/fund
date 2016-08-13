@@ -42,7 +42,6 @@ $("#sB").click ->
 #     _translateXTo.call @, n
 
 Slideout.prototype._setTransition = ->
-    $("#test").html("set")
     @
  
 Slideout.prototype._translateXTo = (n)->
