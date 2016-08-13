@@ -10,3 +10,25 @@
 /* 基本样式 */
 .R{ float: right; }
 .L{ float: left; }
+
+p{
+margin:0 0 6px 0;
+}
+p, textarea{
+    line-height:1.65;
+}
+textarea{
+    resize:none;
+    outline:0;
+}
+a{
+    text-decoration:none;
+    cursor:pointer;
+}
+a, a:visited{
+    color:#347BFF;
+}
+
+[ms-controller]{
+visibility: hidden;
+}
