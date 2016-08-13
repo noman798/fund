@@ -25,6 +25,8 @@ html,body {
     width: 70px;
     height: 45px;
     position: fixed;
+    margin-left:100%;
+    transform:translateX(-60px);
     top: 20px;
     z-index: 2;
     transition: top 0.3s ease;
@@ -96,8 +98,7 @@ html.slideout-open #menuBtn:after {
 // }
 .slideout-menu {
 	position: fixed;
-    left: 0;
-	right: auto;
+	right: 0;
 	top: 0;
 	bottom: 0;
 	z-index: 0;

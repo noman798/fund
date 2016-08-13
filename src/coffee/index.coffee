@@ -18,7 +18,7 @@ slideout = new Slideout({
     menu : document.getElementById('menu')
     # padding : 256
     tolerance : 70
-    # side : 'right'
+    side : 'right'
 })
 # slideout.on('beforeopen', ->
 #     document.querySelector('.fixed').classList.add('fixed-open')
