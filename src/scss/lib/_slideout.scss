@@ -1,3 +1,8 @@
+.slideoutBtnW{
+    right:128px;
+    top:0;
+    position:absolute;
+}
 .slideoutBtn {
     cursor:pointer;
     box-sizing: border-box;
@@ -5,8 +10,6 @@
     width: 70px;
     height: 45px;
     position: fixed;
-    margin-left:100%;
-    transform:translateX(-60px);
     top: 20px;
     z-index: 2;
     transition: top 0.3s ease;
