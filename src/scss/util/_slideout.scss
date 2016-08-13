@@ -6,11 +6,11 @@
     left:0;
     box-shadow:0 0 3px #ccc;
     background:#fff;
-    transition: right 300ms ease;
+    transition:all .3s;
+ }
+#sM{
+    background:#fafafa;
 }
 .slideout-open #sP{
     right:256px;
-}
-#sM{
-    background:#fafafa;
 }
