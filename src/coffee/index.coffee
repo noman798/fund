@@ -32,4 +32,25 @@ slideout = new Slideout({
 $("#sB").click ->
     slideout.toggle()
 
-Slideout.prototype._setTransition = Slideout.prototype._translateXTo = -> @
+# _setTransition = Slideout.prototype._setTransition
+# _translateXTo = Slideout.prototype._translateXTo
+
+# Slideout.prototype._setTransition = ->
+#     _setTransition.call @
+
+# Slideout.prototype._translateXTo = (n)->
+#     _translateXTo.call @, n
+
+Slideout.prototype._setTransition = ->
+    $("#test").html("set")
+    @
+ 
+Slideout.prototype._translateXTo = (n)->
+    $("#test").html("Xto #{n}")
+    panel = @panel
+    setTimeout(
+        ->
+            panel.style.transform = ''
+        300
+    )
+

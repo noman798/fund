@@ -1,3 +1,5 @@
+$width:256px;
+
 #sP{
 	height:100%;
 	overflow:hidden;
@@ -10,7 +12,16 @@
  }
 #sM{
     background:#fafafa;
+	width: $width;
 }
-.slideout-open #sP{
-    right:256px;
+
+@media (min-width: 800px){
+    .slideout-open #sP{
+        right:$width;
+    }
+}
+@media (max-width: 800px){
+    .slideout-open #sP{
+        transform: translate3d(-$width, 0, 0);
+    }
 }
