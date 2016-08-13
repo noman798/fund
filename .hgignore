@@ -2,4 +2,5 @@ syntax: glob
 node_modules
 dist
 bundle.js
+npm-debug.log
 bundle.js.map
