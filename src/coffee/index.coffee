@@ -46,11 +46,5 @@ Slideout.prototype._setTransition = ->
     @
  
 Slideout.prototype._translateXTo = (n)->
-    $("#test").html("Xto #{n}")
-    panel = @panel
-    setTimeout(
-        ->
-            panel.style.transform = ''
-        300
-    )
-
+    @panel.style.transform = ''
+    @
