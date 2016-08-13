@@ -25,9 +25,6 @@ html,body {
     top: 20px;
     left: 10px;
     z-index: 2;
-}
-
-html:not(.mm-opening):not(.mm-opened) #menuBtn {
     transition: top 0.3s ease;
 }
 
@@ -59,27 +56,25 @@ html:not(.mm-opening):not(.mm-opened) #menuBtn {
 #menuBtn:before,
 #menuBtn:after,
 #menuBtn span {
-    -webkit-transition: none 0.5s ease 0.5s;
-    transition: none 0.5s ease 0.5s;
-    -webkit-transition-property: transform, top, bottom, left, opacity;
+    transition: none 0.3s ease 0.3s;
     transition-property: transform, top, bottom, left, opacity;
 }
 
-html.mm-opening #menuBtn:before,
-html.mm-opening #menuBtn:after {
+html.slideout-open #menuBtn:before,
+html.slideout-open #menuBtn:after {
     top: 20px;
 }
 
-html.mm-opening #menuBtn span {
+html.slideout-open #menuBtn span {
     left: -50px;
     opacity: 0;
 }
 
-html.mm-opening #menuBtn:before {
+html.slideout-open #menuBtn:before {
     transform: rotate( 45deg );
 }
 
-html.mm-opening #menuBtn:after {
+html.slideout-open #menuBtn:after {
     transform: rotate( -45deg );
 }
 
