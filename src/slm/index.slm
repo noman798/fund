@@ -7,13 +7,13 @@ html
     title 云私募 
 
     body
-        #panel
+        #sP
           #topbar
-            #menuBtn
+            .slideoutBtn
               span
             h1 云私募
           #APP :controller="APP"
             ms-auth :widget="{$id:'auth'}"
-        #menu
+        #sM
             p hi
         

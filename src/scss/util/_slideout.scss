@@ -1,0 +1,15 @@
+#topbar h1{
+    font-family:'bg';
+}
+#sP{
+	height:100%;
+	overflow:hidden;
+    position:absolute;
+    right:0;
+    left:0;
+    box-shadow:0 0 3px #ccc;
+    background:#fff;
+}
+.slideout-open #sP{
+    right:250px;
+}

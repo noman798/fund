@@ -30,3 +30,8 @@ slideout = new Slideout({
 $("#menuBtn").click ->
     slideout.toggle()
 
+Slideout.prototype._setTransition = ->
+    @
+
+Slideout.prototype._translateXTo = (translateX) ->
+    @
