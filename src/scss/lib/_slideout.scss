@@ -1,11 +1,11 @@
 .slideoutBtn {
     cursor:pointer;
+    outline:0;
     box-sizing: border-box;
     display: block;
     width: 70px;
     height: 45px;
     position: fixed;
-    top: 20px;
     z-index: 2;
     transition: top 0.3s ease;
 }

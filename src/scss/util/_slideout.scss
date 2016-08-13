@@ -1,16 +1,17 @@
 $width:256px;
-
-#sP{
-	height:100%;
-	overflow:hidden;
+.sPw, #sP{
+    height:100%;
+    overflow:hidden;
     position:absolute;
     right:0;
     left:0;
-    box-shadow:0 0 3px #ccc;
+}
+#sP{
     background:#fff;
     transition:all .2s;
  }
 #sM{
+    box-shadow:0 0 3px #999 inset;
     background:#fafafa;
 	width: $width;
 }
@@ -20,8 +21,12 @@ $width:256px;
         right:$width;
     }
 }
-@media (max-width: 800px){
-    .slideout-open #sP{
-        transform: translate3d(-$width, 0, 0);
+@media (max-width: 799px){
+    .slideout-open{
+        #sP{
+            transform: translate3d(-$width, 0, 0);
+            opacity:0.9;
+        }
+        body{background:#000;}
     }
 }

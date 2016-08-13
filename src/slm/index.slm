@@ -7,16 +7,17 @@ html
     title 云私募 
 
     body
-        #sP
-          #topbar
-            .slideoutBtnW
-              #sB.slideoutBtn
-                span
-            h1 云私募
-            p#test style="text-align:right" 根据一家数据公司 NPD 的报告，微软的 Xbox One 成为今年七月份在美销量最好的游戏主机，这个消息对于微软来说非常振奋，它们即将会在本月发售新的游戏的主机 Xbox One S，而且在 2017 年会发布更加强大的代号为新主机「天蝎座」(Project Scorpio)。
+      #sP
+        #topbar.C
+          .slideoutBtnW
+            #sB.slideoutBtn
+              span
+          .logo
+          h1 云私募
+        p#test style="text-align:right" 根据一家数据公司 NPD 的报告，微软的 Xbox One 成为今年七月份在美销量最好的游戏主机，这个消息对于微软来说非常振奋，它们即将会在本月发售新的游戏的主机 Xbox One S，而且在 2017 年会发布更加强大的代号为新主机「天蝎座」(Project Scorpio)。
 
-          #APP :controller="APP"
-            ms-auth :widget="{$id:'auth'}"
-        #sM
-            p hi
-        
+        #APP :controller="APP"
+          ms-auth :widget="{$id:'auth'}"
+      #sM
+          p hi
+      

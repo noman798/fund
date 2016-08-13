@@ -1,0 +1,12 @@
+// 清除浮动
+.C{ *zoom: 1; }
+.C:before,
+.C:after { content: ""; display: table; }
+.C:after { clear: both; }
+
+// VC2 VC1 VC0
+.VC2{ height:100%; width:100%; display:table; .VC1{display:table-cell; vertical-align:middle; } } 
+.FC0{ float:left; position:relative; left:50%; .FC1{ position:relative; right:50%; float:left; } }
+/* 基本样式 */
+.R{ float: right; }
+.L{ float: left; }

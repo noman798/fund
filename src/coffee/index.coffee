@@ -22,9 +22,20 @@ slideout = new Slideout({
     tolerance : 70
     side : 'right'
 })
-# slideout.on('beforeopen', ->
-#     document.querySelector('.fixed').classList.add('fixed-open')
-# )
+
+
+slideout.on('open', ->
+    if $(window).width() < 800
+        $("#sP").one(
+            'click.slideout', ->
+                slideout.close()
+        )
+)
+slideout.on('close', ->
+    $("#sP").unbind(
+        'click.slideout'
+    )
+)
 # slideout.on('beforeclose', ->
 #     document.querySelector('.fixed').classList.remove('fixed-open')
 # )
