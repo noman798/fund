@@ -14,3 +14,8 @@ window.vm = avalon.define(
 window.$id = (id)->
     document.getElementById(id)
 
+if 1
+    require("./auth.coffee")
+else
+    require("./index.coffee")
+
