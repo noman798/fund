@@ -4,8 +4,9 @@
     .slideoutBtnW
       #sB.slideoutBtn
         span
-    .logo
-    h1 云私募
+      h1 
+        .logo
+        | 云私募
   .main
     .VC2
       .VC1
