@@ -2,11 +2,11 @@
 #sP
   #topbar.C
     .slideoutBtnW
-      #sB.slideoutBtn
-        span
-      h1 
-        .logo
-        | 云私募
+      /* #sB.slideoutBtn */
+      /*   span */
+    h1 
+      b.logo
+      | 云私募
   .main
     .VC2
       .VC1

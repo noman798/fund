@@ -1,21 +1,22 @@
 
 #topbar{
     border-bottom:1px solid #ddd;
-    padding-left:25px;
     h1{
         font-size:32px;
         font-family:'bg';
+		padding: 22px 25px;
+		display: inline-block;
+		margin: 0;
+        .logo{
+		    vertical-align: -3px;
+            width: 44px;
+            height: 32px;
+            background: url(/cloud.svg) 0 0/cover no-repeat;
+            display:inline-block;
+            margin-right: 18px;
+        }
     }
     height:79px;
-    .logo{
-		width: 44px;
-		height: 32px;
-		float: left;
-		background: url(/cloud.svg) 0 0/cover no-repeat;
-		margin-top: 21px;
-		margin-right: 18px;
-
-	}
 }
 #sP>.main{
     position:absolute;
