@@ -1,3 +1,5 @@
+require "../js/crossroads.js"
+
 crossroads.shouldTypecast = true
 
 _pre_url = 0
