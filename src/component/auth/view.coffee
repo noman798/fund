@@ -1,6 +1,6 @@
 
 avalon.component('ms-auth',{
-    template:require("../slm/auth.slm")
+    template:require("./view.slm")
     defaults: {
         onReady: ->
             $("#topbar").css("text-align","center")
