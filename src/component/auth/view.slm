@@ -1,22 +1,22 @@
+div
+  #sP
+    #topbar.C
+      .slideoutBtnW
+        /* #sB.slideoutBtn */
+        /*   span */
+      h1 
+        b.logo
+        | 云资本
+    .main
+      .VC2
+        .VC1
+          .authBk
+            .txt
+              p 科技改变世界
+              p 我们下注未来
+            a.authBtn href="/auth/new" 注册
+            .split
+            a.authBtn href="/auth/login" 登录
 
-#sP
-  #topbar.C
-    .slideoutBtnW
-      /* #sB.slideoutBtn */
-      /*   span */
-    h1 
-      b.logo
-      | 云资本
-  .main
-    .VC2
-      .VC1
-        .authBk
-          .txt
-            p 科技改变世界
-            p 我们下注未来
-          a.authBtn href="/auth/new" 注册
-          .split
-          a.authBtn href="/auth/login" 登录
-
-#sM
-    p hi
+  #sM
+      p hi

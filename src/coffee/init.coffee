@@ -5,17 +5,16 @@ window.$ = require "jquery"
 
 require "avalon2"
 
-require "../component/view/view.coffee"
 
-window.vm = avalon.define(
-    $id: "APP",
+window.V = avalon.vmodels
+
+avalon.define(
+    $id: "body"
+    html:""
 )
 
 window.$id = (id)->
     document.getElementById(id)
 
-if 1
-    require("./auth.coffee")
-else
-    require("./index.coffee")
+require("./index.coffee")
 

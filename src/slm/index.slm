@@ -6,5 +6,4 @@ html
     meta charset='utf-8'
     title 云资本 
 
-    body
-      
+    body :controller="body" :html="@html"
