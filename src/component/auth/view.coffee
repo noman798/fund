@@ -1,60 +1,60 @@
 
-Slideout = require "slideout"
-Slideout.prototype._setTransition = ->
-    @
- 
-Slideout.prototype._translateXTo = (n)->
-    @panel.style.transform = ''
-    @
-
-avalon.component('ms-auth',{
-    template:require("./view.slm")
-    defaults: {
-        onReady: ->
-            $("#topbar").css("text-align","center")
-
-
-            slideout = new Slideout({
-                panel : $id 'sP'
-                menu : $id 'sM'
-                tolerance : 70
-                side : 'right'
-            })
-
-
-            slideout.on('open', ->
-                if $(window).width() < 800
-                    $("#sP").one(
-                        'click.slideout', ->
-                            slideout.close()
-                    )
-            )
-            slideout.on('close', ->
-                $("#sP").unbind(
-                    'click.slideout'
-                )
-            )
+# _setTransition = Slideout.prototype._setTransition
+# _translateXTo = Slideout.prototype._translateXTo
 # slideout.on('beforeclose', ->
 #     document.querySelector('.fixed').classList.remove('fixed-open')
 # )
 
-            $("#sB").click ->
-                slideout.toggle()
-
-# _setTransition = Slideout.prototype._setTransition
-# _translateXTo = Slideout.prototype._translateXTo
 
 # Slideout.prototype._setTransition = ->
 #     _setTransition.call @
 
 # Slideout.prototype._translateXTo = (n)->
 #     _translateXTo.call @, n
+Slideout = require "slideout"
+Slideout.prototype._setTransition = ->
+    @
+Slideout.prototype._translateXTo = (n)->
+    @panel.style.transform = ''
+    @
+
+window.Page = (name, slm, defaults)->
+    avalon.component('ms-'+name,{
+        template: slm
+        defaults: defaults
+    })
+
+Page 'auth', require("./view.slm"), {
+    onReady: ->
+        $("#topbar").css("text-align","center")
+
+        slideout = new Slideout({
+            panel : $id 'sP'
+            menu : $id 'sM'
+            tolerance : 70
+            side : 'right'
+        })
 
 
-        onDispose:->
-            delete avalon.vmodels[@$id]
-    }
-})
+        slideout.on('open', ->
+            if $(window).width() < 800
+                $("#sP").one(
+                    'click.slideout', ->
+                        slideout.close()
+                )
+        )
+        slideout.on('close', ->
+            $("#sP").unbind(
+                'click.slideout'
+            )
+        )
+        $("#sB").click ->
+            slideout.toggle()
 
 
+
+    onDispose:->
+        delete avalon.vmodels[@$id]
+
+}
 

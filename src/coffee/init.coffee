@@ -3,6 +3,9 @@ require '../scss/init.scss'
 
 window.$ = require "jquery"
 
+$(document.body).on 'click', 'a', ->
+    false
+
 require "avalon2"
 
 
