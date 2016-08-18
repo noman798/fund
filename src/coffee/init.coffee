@@ -19,5 +19,5 @@ avalon.define(
 window.$id = (id)->
     document.getElementById(id)
 
+require("./lib/url.coffee")
 require("./index.coffee")
-

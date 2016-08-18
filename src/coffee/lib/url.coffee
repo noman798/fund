@@ -1,4 +1,4 @@
-require "../js/crossroads.js"
+require "../../js/crossroads.js"
 
 crossroads.shouldTypecast = true
 

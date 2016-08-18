@@ -1,4 +1,4 @@
-require "./signal.js"
+require("./signal.js")
 /** @license
  * crossroads <http://millermedeiros.github.com/crossroads.js/>
  * Author: Miller Medeiros | MIT License
