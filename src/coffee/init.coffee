@@ -1,4 +1,5 @@
 
+require './lib/baidu.coffee'
 require '../scss/init.scss'
 
 window.$ = require "jquery"

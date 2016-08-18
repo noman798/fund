@@ -42,6 +42,6 @@ function _Signal(){
   };
 };
 
-function Signal(){
+window.Signal = function (){
     return new _Signal()
 }

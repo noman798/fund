@@ -1,11 +1,10 @@
-require("./signal.js")
 /** @license
  * crossroads <http://millermedeiros.github.com/crossroads.js/>
  * Author: Miller Medeiros | MIT License
  * v0.12.2 (2015/07/31 18:37)
  */
 
-(function () {
+require("./signal.js")
 var factory = function (signals) {
 
     var crossroads,
@@ -717,5 +716,4 @@ var factory = function (signals) {
 
 window['crossroads'] = factory(window['signal']);
 
-}());
 
