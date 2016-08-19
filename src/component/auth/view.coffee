@@ -51,8 +51,6 @@ Page 'auth', require("./view.slm"), {
         $("#sB").click ->
             slideout.toggle()
 
-
-
     onDispose:->
         delete avalon.vmodels[@$id]
 
