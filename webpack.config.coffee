@@ -15,8 +15,8 @@ exports = {
     entry: './src/coffee/init.coffee'
     output: {
         path: outputDir
-        chunkFilename: '[name].[chunkhash].js'
-        filename: '[name].[chunkhash].js'
+        chunkFilename: 'js/[name].[chunkhash].js'
+        filename: 'js/[name].[chunkhash].js'
         # publicPath: outputDir
         # publicPath: isProduction()? 'http://******' : 'http://localhost:3000'
     }
@@ -46,7 +46,6 @@ exports = {
             }
         ]
 
-    
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'commons',
