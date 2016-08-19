@@ -22,7 +22,6 @@ Slideout.prototype._translateXTo = (n)->
 MS 'body', require("./view.slm"), {
     main:""
     onReady: ->
-        return
         topbar = $("#topbar")
         if $.user
             topbar.find(".slideoutBtnW").html """<div id=sB class=slideoutBtn><span/></div>"""
