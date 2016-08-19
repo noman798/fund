@@ -7,9 +7,6 @@ URL.map {
     "/auth/new": ->
 
     "/auth/login": ->
-        require.ensure(
-            ["../ms/auth/login.coffee"]
-            ->
-                V.BODY.HTML = """<ms-auth-login :widget="{$id:'authLogin',cached:'true'}"/>"""
-        )
+        require "../ms/auth/login.coffee"
+        V.BODY.HTML = """<ms-auth-login :widget="{$id:'authLogin',cached:'true'}"/>"""
 }
