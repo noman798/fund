@@ -1,4 +1,4 @@
-MS 'login', require("./login.slm"), {
+MS 'auth-login', require("./login.slm"), {
 }
 
 
