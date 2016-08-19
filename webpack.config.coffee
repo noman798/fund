@@ -13,6 +13,13 @@ else
 
 exports = {
     entry: './src/coffee/init.coffee'
+    output: {
+        path: outputDir
+        chunkFilename: '[name].[chunkhash].js'
+        filename: '[name].[chunkhash].js'
+        # publicPath: outputDir
+        # publicPath: isProduction()? 'http://******' : 'http://localhost:3000'
+    }
     devServer:
         contentBase: "./dist"
     module:
@@ -50,13 +57,6 @@ exports = {
             inject: 'body'
         })
     ]
-    output: {
-        path: outputDir
-        # publicPath: outputDir
-        chunkFilename: 'js/[name].[chunkhash].js'
-        filename: 'js/[name].[chunkhash].bundle.js'
-        # publicPath: isProduction()? 'http://******' : 'http://localhost:3000'
-    }
 }
 
 
