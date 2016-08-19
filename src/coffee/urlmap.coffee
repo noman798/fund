@@ -1,4 +1,5 @@
 
+require("../ms/body/view.coffee")
 
 URL.map {
     "": ->
