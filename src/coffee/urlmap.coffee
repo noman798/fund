@@ -1,7 +1,8 @@
 
 URL.map {
     "/auth/new": ->
-        V.BODY.HTML = """<ms-body :widget="{$id:'body',cached:'true'}"></ms-body>"""
+        V.BODY.HTML = """<ms-authLogin :widget="{$id:'authLogin',cached:'true'}"></ms-authLogin>"""
     "/auth/login": ->
+        require("../component/auth/login.coffee")
         V.BODY.HTML = """<ms-authLogin :widget="{$id:'authLogin',cached:'true'}"></ms-authLogin>"""
 }
