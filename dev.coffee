@@ -8,10 +8,13 @@ config = require("./webpack.config.coffee")
 compiler = webpack(config)
 
 server = new webpackDevServer(compiler, {
+    stats: { colors: true }
+    contentBase:"./dist"
     historyApiFallback: {
         rewrites: [{
-            from: /\/\d\..*\.js(\.map)?/
-            to: (context) -> context.match[0]
+            from: /\/(\d\..*\.js(\.map)?)/
+            to: (context) ->
+                "/js"+context.match[0]
         }]
     }
 })

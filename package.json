@@ -2,7 +2,6 @@
   "name": "tzfund",
   "version": "0.0.1",
   "scripts": {
-    "dev": "webpack-dev-server --progress --colors --port 8081 --host 0.0.0.0",
     "dist": "NODE_ENV=production webpack --progress --colors -p"
   },
   "devDependencies": {
