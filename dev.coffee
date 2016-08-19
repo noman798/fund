@@ -3,7 +3,7 @@ webpack = require("webpack")
 
 
 config = require("./webpack.config.coffee")
-config.entry.app.unshift("webpack-dev-server/client?http://0.0.0.0:8081")
+# config.entry.app.unshift("webpack-dev-server/client?http://0.0.0.0:8081")
 
 compiler = webpack(config)
 
