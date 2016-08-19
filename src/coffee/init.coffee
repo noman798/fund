@@ -10,7 +10,7 @@ $ ->
         URL(@href)
         false
 
-require "avalon2"
+require "../js/avalon.modern.js"
 
 
 window.V = avalon.vmodels
