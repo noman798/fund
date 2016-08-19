@@ -18,12 +18,6 @@ Slideout.prototype._translateXTo = (n)->
     @panel.style.transform = ''
     @
 
-window.Page = (name, slm, defaults)->
-    defaults.main = ""
-    avalon.component('ms-'+name,{
-        template: slm
-        defaults: defaults
-    })
 
 Page 'body', require("./view.slm"), {
     onReady: ->
