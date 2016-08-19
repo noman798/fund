@@ -16,7 +16,7 @@ window.V = avalon.vmodels
 
 avalon.define(
     $id: "BODY"
-    html:""
+    HTML:""
 )
 
 window.$id = (id)->
