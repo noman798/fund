@@ -5,9 +5,10 @@ require '../scss/init.scss'
 
 window.$ = require "jquery"
 
-$(document.body).on 'click', 'a', ->
-    URL(@href)
-    false
+$ ->
+    $(document.body).on 'click', 'a', ->
+        URL(@href)
+        false
 
 require "avalon2"
 
