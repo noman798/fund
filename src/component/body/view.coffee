@@ -28,13 +28,13 @@ window.Page = (name, slm, defaults)->
 Page 'body', require("./view.slm"), {
     onReady: ->
         topbar = $("#topbar")
-        if 1
+        if $.user
             topbar.find(".slideoutBtnW").html """<div id=sB class=slideoutBtn><span/></div>"""
             $("#sB").click ->
                 slideout.toggle()
         else
-            V.auth.main = require("./auth.slm")
-            $("#topbar").css("text-align","center")
+            topbar.css("text-align","center")
+            V.body.main = require("../auth/auth.slm")
 
         slideout = new Slideout({
             panel : $id 'sP'
