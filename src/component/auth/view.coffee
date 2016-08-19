@@ -19,6 +19,7 @@ Slideout.prototype._translateXTo = (n)->
     @
 
 window.Page = (name, slm, defaults)->
+    defaults.main = ""
     avalon.component('ms-'+name,{
         template: slm
         defaults: defaults
@@ -26,6 +27,7 @@ window.Page = (name, slm, defaults)->
 
 Page 'auth', require("./view.slm"), {
     onReady: ->
+        V.auth.main = require("./auth.slm")
         $("#topbar").css("text-align","center")
 
         slideout = new Slideout({
