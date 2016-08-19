@@ -1,10 +1,11 @@
-
 require("../ms/body/view.coffee")
 
 URL.map {
     "": ->
         V.BODY.HTML = """<ms-body :widget="{$id:'body',cached:'true'}"/>"""
+
     "/auth/new": ->
+
     "/auth/login": ->
         require.ensure(
             ["../ms/auth/login.coffee"]

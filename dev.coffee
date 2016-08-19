@@ -8,7 +8,7 @@ config = require("./webpack.config.coffee")
 compiler = webpack(config)
 
 server = new webpackDevServer(compiler, {
-    stats: { colors: true }
+    stats: { colors: true , process:true}
     contentBase:"./dist"
     historyApiFallback: {
         rewrites: [{
