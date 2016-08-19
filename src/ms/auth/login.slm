@@ -1,5 +1,12 @@
 #authLogin
-  .close 关闭
+  #topbar.C
+    a.slideoutBtnW.slideout-open href="/"
+        #sB.slideoutBtn
+          span
+    h1 
+      b.logo
+      | 云资本
+
   .VC2
     .VC1
       .authBk

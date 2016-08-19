@@ -42,21 +42,21 @@
     transition-property: transform, top, bottom, left, opacity;
 }
 
-html.slideout-open .slideoutBtn:before,
-html.slideout-open .slideoutBtn:after {
+.slideout-open .slideoutBtn:before,
+.slideout-open .slideoutBtn:after {
     top: 20px;
 }
 
-html.slideout-open .slideoutBtn span {
+.slideout-open .slideoutBtn span {
     left: -50px;
     opacity: 0;
 }
 
-html.slideout-open .slideoutBtn:before {
+.slideout-open .slideoutBtn:before {
     transform: rotate( 45deg );
 }
 
-html.slideout-open .slideoutBtn:after {
+.slideout-open .slideoutBtn:after {
     transform: rotate( -45deg );
 }
 

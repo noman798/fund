@@ -11,11 +11,19 @@ server = new webpackDevServer(compiler, {
     stats: { colors: true , process:true}
     contentBase:"./dist"
     historyApiFallback: {
-        rewrites: [{
-            from: /\/(\d\..*\.js(\.map)?)/
-            to: (context) ->
-                "/js"+context.match[0]
-        }]
+        rewrites: [
+            {
+                from: /\/(\d\..*\.js(\.map)?)/
+                to: (context) ->
+                    "/js"+context.match[0]
+            }
+            {
+                from: /\/auth\/.*/
+                to: (context) ->
+                    "/"
+            }
+        
+        ]
     }
 })
 server.listen(8081)
