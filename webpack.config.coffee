@@ -52,7 +52,7 @@ exports = {
     ]
     output: {
         path: outputDir
-        filename: 'js/[name].bundle.js'
+        # filename: 'js/[name].bundle.js'
         # publicPath:outputDir
         # publicPath: isProduction()? 'http://******' : 'http://localhost:3000'
     }
