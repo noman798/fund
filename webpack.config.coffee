@@ -52,9 +52,9 @@ exports = {
     ]
     output: {
         path: outputDir
-        chunkFilename: '[name].[chunkhash].chunk.js',
-        publicPath: outputDir
-        filename: 'js/[name].bundle.js'
+        chunkFilename: 'js/[name].[chunkhash].js',
+        # publicPath: outputDir
+        filename: 'js/[name].[chunkhash].bundle.js'
         # publicPath:outputDir
         # publicPath: isProduction()? 'http://******' : 'http://localhost:3000'
     }
