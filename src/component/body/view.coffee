@@ -25,7 +25,7 @@ window.Page = (name, slm, defaults)->
         defaults: defaults
     })
 
-Page 'auth', require("./view.slm"), {
+Page 'body', require("./view.slm"), {
     onReady: ->
         topbar = $("#topbar")
         if 1

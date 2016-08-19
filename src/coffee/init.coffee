@@ -14,7 +14,7 @@ require "avalon2"
 window.V = avalon.vmodels
 
 avalon.define(
-    $id: "body"
+    $id: "BODY"
     html:""
 )
 
