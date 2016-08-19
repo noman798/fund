@@ -1,3 +1,3 @@
-require "../component/auth/view.coffee"
+require "../component/body/view.coffee"
 
-V.body.html = """<ms-auth :widget="{$id:'auth',cached:'true'}"></ms-auth>"""
+V.BODY.html = """<ms-body :widget="{$id:'auth',cached:'true'}"></ms-body>"""
