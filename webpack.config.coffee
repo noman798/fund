@@ -5,7 +5,7 @@ webpack = require('webpack')
 outputDir = path.join(__dirname,"dist")
 
 HtmlWebpackPlugin = require('html-webpack-plugin')
-COFNIG = require('config')
+COFNIG = require('./config')
 
 output = {
     path: outputDir
