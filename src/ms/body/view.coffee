@@ -22,7 +22,6 @@ Slideout.prototype._translateXTo = (n)->
 MS 'body', require("./view.slm"), {
     main:""
     onReady: ->
-        console.log "!!!1"
         topbar = $("#topbar")
         if $.user
             topbar.find(".slideoutBtnW").html """<div id=sB class=slideoutBtn><span/></div>"""
@@ -52,7 +51,6 @@ MS 'body', require("./view.slm"), {
                 'click.slideout'
             )
         )
-        console.log "!!!2"
 
     onDispose:->
         delete avalon.vmodels[@$id]
