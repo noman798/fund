@@ -3,4 +3,5 @@ node_modules
 dist
 bundle.js
 npm-debug.log
+config.coffee
 bundle.js.map

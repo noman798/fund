@@ -5,20 +5,26 @@ webpack = require('webpack')
 outputDir = path.join(__dirname,"dist")
 
 HtmlWebpackPlugin = require('html-webpack-plugin')
+COFNIG = require('config')
+
+output = {
+    path: outputDir
+}
 
 if isProduction
     sourceMap = "?sourceMap"
+    output.chunkFilename = 'js/[name].[chunkhash].js'
+    output.filename = 'js/[name].[chunkhash].js'
+    output.publicPath = COFNIG.CDN
 else
     sourceMap = ""
+    output.chunkFilename = 'js/[name].js'
+    output.filename = 'js/[name].js'
 
 exports = {
     entry: './src/coffee/init.coffee'
     output: {
-        path: outputDir
-        chunkFilename: 'js/[name].[chunkhash].js'
-        filename: 'js/[name].[chunkhash].js'
         # publicPath: outputDir
-        # publicPath: isProduction()? 'http://******' : 'http://localhost:3000'
     }
     devServer:
         contentBase: "./dist"
