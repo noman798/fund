@@ -5,7 +5,7 @@ webpack = require('webpack')
 outputDir = path.join(__dirname,"dist")
 
 HtmlWebpackPlugin = require('html-webpack-plugin')
-COFNIG = require('./config')
+COFNIG = require('./config.coffee')
 
 output = {
     path: outputDir
@@ -23,9 +23,7 @@ else
 
 exports = {
     entry: './src/coffee/init.coffee'
-    output: {
-        # publicPath: outputDir
-    }
+    output: output
     devServer:
         contentBase: "./dist"
     module:
