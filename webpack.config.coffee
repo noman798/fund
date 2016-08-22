@@ -49,7 +49,7 @@ exports = {
                     'style-loader'
                     ["css-loader?root=/#{sourceMap}","sass#{sourceMap}"]
                     {
-                        publicPath: if isProduction then COFNIG.CDN else "/"
+                        publicPath: if isProduction then COFNIG.CDN+"/" else "/"
                     }
                 )
                 # loaders:['style-loader',"css-loader?root=/","sass#{sourceMap}"]
