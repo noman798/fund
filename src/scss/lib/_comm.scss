@@ -28,7 +28,12 @@ a{
 a, a:visited{
     color:#347BFF;
 }
+input:active{
+    outline:1px solid #000;
+}
+
 
 [ms-controller]{
 visibility: hidden;
 }
+

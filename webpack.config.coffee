@@ -25,6 +25,7 @@ else
     sourceMap = "?sourceMap"
     output.chunkFilename = '[name].js'
     output.filename = '[name].js'
+    output.publicPath = "/"
 
 exports = {
     entry: './src/coffee/init.coffee'
@@ -39,7 +40,7 @@ exports = {
                 loader: extractScss.extract(
                     ["css#{sourceMap}","sass#{sourceMap}"]
                     {
-                        publicPath: if isProduction then COFNIG.CDN else "/"
+                        publicPath: if isProduction then COFNIG.CDN else "//"
                     }
                 )
                 test: /\.(s?css)$/
