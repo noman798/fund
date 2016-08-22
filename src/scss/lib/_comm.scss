@@ -33,9 +33,14 @@ a, a:visited{
 input,textarea{
     border:1px solid #ccc;
 }
+input:hover, textarea:hover{
+    border: 1px solid #666;
+    background: #f6fff6;
+}
 input:focus,textarea:focus, button:focus{
     outline:1px solid #000;
     border:1px solid #000;
+    background:#ffe;
 }
 input{
     padding:24px 18px;
