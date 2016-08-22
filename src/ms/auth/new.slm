@@ -1,14 +1,42 @@
-#authLogin
-  #topbar.C
-    a.slideoutBtnW.slideout-open href="/"
-        #sB.slideoutBtn
-          span
-    h1 
-      b.logo
-      | 云资本
+scss:
+  .MAIN{
+    h2{font-weight:normal;font-size:28px;margin:48px 0;}
+    .line,button{margin-bottom:32px;}
+    .authBk{
+        min-width:300px;  
+    }
+    button{width:100%;box-sizing:border-box;line-height:20px;display:block}
+    label{position:absolute;line-height:70px;margin-left:18px;}
+    label,button{font-family:bg;font-size:28px;}
+    .txt input{
+        padding-left:86px
+    }
+  }
 
+#topbar.C
+  a.slideoutBtnW.slideout-open href="/"
+      #sB.slideoutBtn
+        span
+  h1 
+    b.logo
+    | 云资本
+
+.MAIN
   .VC2
     .VC1
       .authBk
-        .txt
-          p 科技改变世界
+        form.txt
+          h2 注册
+          .line
+            label for="authAccount" 邮箱 
+            input id="authAccount" name="account" autocomplete="off" spellcheck="false"
+          .line
+            label for="authPassword" 密码
+            input id="authPassword" name="password" type="password"
+          p
+            button type="submit" 创建帐号 
+          p
+            a href="/auth/new" 直接登录
+
+
+
