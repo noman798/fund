@@ -1,4 +1,6 @@
 PREFIX=`realpath $(cd "$(dirname "$0")"; pwd)/..`
+hg ci -m "publish"
+hg fe
 
 cd $PREFIX/dist
 rm *.js
@@ -7,3 +9,4 @@ rm *.css
 cd $PREFIX/cli
 ./dist
 ./copy
+hg push
