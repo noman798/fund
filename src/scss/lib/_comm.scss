@@ -28,10 +28,20 @@ a{
 a, a:visited{
     color:#347BFF;
 }
-input:active{
-    outline:1px solid #000;
+input,textarea{
+    border:1px solid #ccc;
 }
+input:focus,textarea:focus{
+    outline:1px solid #000;
+    border:1px solid #000;
+}
+input{
+    padding:24px 18px;
+    font-size:18px;
+    width:302px;
+    box-sizing:border-box;
 
+}
 
 [ms-controller]{
 visibility: hidden;

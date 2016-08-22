@@ -1,19 +1,19 @@
-#authLogin
-  #topbar.C
-    a.slideoutBtnW.slideout-open href="/"
-        #sB.slideoutBtn
-          span
-    h1 
-      b.logo
-      | 云资本
+#topbar.C
+  a.slideoutBtnW.slideout-open href="/"
+      #sB.slideoutBtn
+        span
+  h1 
+    b.logo
+    | 云资本
 
+.MAIN
   .VC2
     .VC1
       .authBk
         form.txt
           p 登录
           p
-            input name="mail"
+            input name="mail" autocomplete="off" spellcheck="false"
           p
             input name="password" type="password"
           p

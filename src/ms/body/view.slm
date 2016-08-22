@@ -4,7 +4,7 @@
     h1 
       b.logo
       | 云资本
-  .main :html="@main"
+  .MAIN :html="@main"
 
 #sM
     p hi
