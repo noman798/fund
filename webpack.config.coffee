@@ -30,7 +30,6 @@ exports = {
         loaders: [
             # { test: './src/coffee/index.coffee', loader: "exports?avalon!coffee-loader" }
             { test: /\.coffee$/, loader: "coffee-loader" }
-
             {test: /\.css$/, }
             {
                 test: /\.(s?css)$/
