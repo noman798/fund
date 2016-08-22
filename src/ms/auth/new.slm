@@ -15,7 +15,7 @@ scss:
   
   .MAIN button{background:#d20;color:#fff;border-color:#d20;}
   .MAIN button:hover{background:#e20;border-color:#000}
-  .MAIN button:focus{outline:none;border-color:#f40;background:#f40;}
+  .MAIN button:focus,.MAIN button:active{outline:none;border-color:#f40;background:#f40;}
 
 #topbar.C
   a.slideoutBtnW.slideout-open href="/"
