@@ -13,8 +13,8 @@ output = {
 
 if isProduction
     sourceMap = "?sourceMap"
-    output.chunkFilename = '[chunkhash]'
-    output.filename = '[chunkhash]'
+    output.chunkFilename = '[chunkhash].js'
+    output.filename = '[chunkhash].js'
     output.publicPath = COFNIG.CDN
 else
     sourceMap = ""
