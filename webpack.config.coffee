@@ -73,6 +73,7 @@ if isProduction
             test: /\.js$/,
             compress: {
                 warnings: false
+                comments: false
             }
         })
     )
