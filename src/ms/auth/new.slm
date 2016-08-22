@@ -12,6 +12,10 @@ scss:
         padding-left:86px
     }
   }
+  
+  .MAIN button{background:#d40;color:#fff;border-color:#d40;}
+  .MAIN button:hover{background:#f40;border-color:#000}
+  .MAIN button:foucs{outline:none;border-color:#f40;background:#f40;}
 
 #topbar.C
   a.slideoutBtnW.slideout-open href="/"
