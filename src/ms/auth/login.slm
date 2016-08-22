@@ -10,5 +10,13 @@
   .VC2
     .VC1
       .authBk
-        .txt
-          p 科技改变世界
+        form.txt
+          p 登录
+          p
+            input name="mail"
+          p
+            input name="password" type="password"
+          p
+            button type="submit" 这就是我 
+          p
+            a href="/auth/new" 新建帐号 
