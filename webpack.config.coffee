@@ -58,6 +58,10 @@ exports = {
         new HtmlWebpackPlugin({
             template: './src/slm/index.slm'
             inject: 'body'
+            minify:{
+                removeScriptTypeAttributes:true
+                removeAttributeQuotes:true
+            }
         })
     ]
 }
