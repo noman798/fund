@@ -1,4 +1,4 @@
-MS 'auth-login', require("./login.slm"), {
+MS 'auth-new', require("./new.slm"), {
     onReady:->
         $(@$element).find('.close').click ->
             URL ""
