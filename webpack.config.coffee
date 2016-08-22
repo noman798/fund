@@ -13,8 +13,8 @@ output = {
 
 if isProduction
     sourceMap = "?sourceMap"
-    output.chunkFilename = '[chunkhash].js'
-    output.filename = '[chunkhash].js'
+    output.chunkFilename = '[chunkhash]'
+    output.filename = '[chunkhash]'
     output.publicPath = COFNIG.CDN
 else
     sourceMap = ""
@@ -53,7 +53,7 @@ exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'commons',
-            filename: '[chunkhash].js',
+            filename: '[chunkhash]',
         })
         new HtmlWebpackPlugin({
             template: './src/slm/index.slm'
