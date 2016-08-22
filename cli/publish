@@ -1,0 +1,6 @@
+PREFIX=`realpath $(cd "$(dirname "$0")"; pwd)`
+
+cd $PREFIX
+
+./dist
+./copy
