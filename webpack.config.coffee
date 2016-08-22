@@ -35,15 +35,14 @@ exports = {
         loaders: [
             # { test: './src/coffee/index.coffee', loader: "exports?avalon!coffee-loader" }
             { test: /\.coffee$/, loader: "coffee-loader" }
-            {test: /\.css$/, loader: 'style!css'}
             {
-                test: /\.scss$/
                 loader: extractScss.extract(
                     ["css#{sourceMap}","sass#{sourceMap}"]
                     {
                         publicPath: if isProduction then COFNIG.CDN else "/"
                     }
                 )
+                test: /\.(s?css)$/
             }
             {
                 test: /\.slm$/
