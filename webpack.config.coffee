@@ -30,6 +30,14 @@ else
 exports = {
     entry: './src/coffee/init.coffee'
     output: output
+    resolve: {
+        root: __dirname
+        alias: {
+            # AppStore : 'js/stores/AppStores.js',//后续直接 require('AppStore') 即可
+        }
+        # extensions: ['', '.js', '.json', '.scss'],
+    }
+
     devServer:
         contentBase: "./dist"
     module:
