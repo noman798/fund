@@ -9,7 +9,6 @@ MAP = {
 _render = (name) ->
     hname = avalon.hyphen(name)
     MAP["/"+hname.replace(/-/g,'/')] = ->
-        console.log hname
         V.BODY.HTML = """<ms-#{hname} :widget="{$id:'#{name}',cached:'true'}"/>"""
 
 
