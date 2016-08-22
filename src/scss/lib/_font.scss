@@ -3,7 +3,7 @@
   src: url('/font/bg.eot');
   src:
     url('/font/bg.eot?#font-spider') format('embedded-opentype'),
-    url('/font/bg.woff') format('woff'),
+    url(require('/font/bg.woff')) format('woff'),
     url('/font/bg.ttf') format('truetype'),
     url('/font/bg.svg') format('svg');
   font-weight: normal;

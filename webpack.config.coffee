@@ -51,7 +51,7 @@ exports = {
             }
             {
                 test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/
-                loader: 'file-loader?name=./font/[name].[ext]'
+                loader: 'file-loader?hash=sha512&name=./font/[name].[ext]'
             }
             {
                 test: /\.(png|jpg|gif)$/
