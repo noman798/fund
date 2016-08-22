@@ -1,0 +1,7 @@
+PREFIX=`realpath $(cd "$(dirname "$0")"; pwd)/../..`
+
+cd $PREFIX
+
+cd $PREFIX/cli/font-spider
+cp bg.bak ./font/bg.ttf
+font-spider *.html
