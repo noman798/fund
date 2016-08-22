@@ -1,11 +1,13 @@
 isProduction = (process.env.NODE_ENV == 'production')
-ExtractTextPlugin = require('extract-text-webpack-plugin')
 path = require("path")
 webpack = require('webpack')
-outputDir = path.join(__dirname,"dist")
+outputDir = path.resolve(__dirname, 'dist')
+COFNIG = require('./config.coffee')
 
 HtmlWebpackPlugin = require('html-webpack-plugin')
-COFNIG = require('./config.coffee')
+ExtractTextPlugin = require("extract-text-webpack-plugin")
+
+extractScss = new ExtractTextPlugin("[hash].css")
 
 output = {
     path: outputDir
@@ -13,14 +15,11 @@ output = {
 
 if isProduction
     sourceMap = ""
+    # sourceMap = "?prefix=/xxxximg"
     output.chunkFilename = '[chunkhash].js'
     output.filename = '[chunkhash].js'
     output.publicPath = COFNIG.CDN
-    output_cdn = {
-        publicPath:COFNIG.CDN
-    }
 else
-    output_cdn = {}
     sourceMap = "?sourceMap"
     output.chunkFilename = 'js/[name].js'
     output.filename = 'js/[name].js'
@@ -34,15 +33,14 @@ exports = {
         loaders: [
             # { test: './src/coffee/index.coffee', loader: "exports?avalon!coffee-loader" }
             { test: /\.coffee$/, loader: "coffee-loader" }
-
             {test: /\.css$/, loader: 'style!css'}
             {
                 test: /\.scss$/
-                loader: ExtractTextPlugin(
-                    "style"
-                    "css#{sourceMap}"
-                    "sass#{sourceMap}"
-                    output_cdn
+                loader: extractScss.extract(
+                    ["css#{sourceMap}","sass#{sourceMap}"]
+                    {
+                        publicPath: if isProduction then COFNIG.CDN else "/"
+                    }
                 )
             }
             {
@@ -72,6 +70,7 @@ exports = {
                 removeAttributeQuotes:true
             }
         })
+        extractScss
     ]
 }
 
