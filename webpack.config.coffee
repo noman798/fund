@@ -45,14 +45,14 @@ exports = {
             # { test: './src/coffee/index.coffee', loader: "exports?avalon!coffee-loader" }
             { test: /\.coffee$/, loader: "coffee-loader" }
             {
-                # loader: extractScss.extract(
-                #     'style-loader'
-                #     ["css-loader#{sourceMap}","sass#{sourceMap}"]
-                #     {
-                #         publicPath: if isProduction then COFNIG.CDN else "//"
-                #     }
-                # )
-                loaders:['style-loader',"css-loader?root=/","sass#{sourceMap}"]
+                loader: extractScss.extract(
+                    'style-loader'
+                    ["css-loader?root=/#{sourceMap}","sass#{sourceMap}"]
+                    {
+                        publicPath: if isProduction then COFNIG.CDN else "//"
+                    }
+                )
+                # loaders:['style-loader',"css-loader?root=/","sass#{sourceMap}"]
                 test: /\.(s?css)$/
             }
             {
@@ -61,11 +61,12 @@ exports = {
             }
             {
                 test: /\.(woff|woff2|ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/
-                loader: 'file-loader?name=[hash].[ext]'
+                loader: 'url-loader?limit=1&name=[hash:base64:7].[ext]'
             }
             {
                 test: /\.(png|jpg|gif|svg)$/
-                loader: 'url-loader?limit=8192&name=[hash].[ext]'
+                # loader: 'url-loader?limit=8192&name=[hash].[ext]'
+                loader: 'url-loader?limit=1&name=[hash:base64:7].[ext]'
             }
         ]
 
@@ -82,7 +83,7 @@ exports = {
                 removeAttributeQuotes:true
             }
         })
-        # extractScss
+        extractScss
         new webpack.DefinePlugin({
             __DEBUG__ : not isProduction
         })
