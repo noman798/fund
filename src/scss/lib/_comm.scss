@@ -1,3 +1,5 @@
+[ms-controller]{visibility:hidden;}
+
 // 清除浮动
 .C{ *zoom: 1; }
 .C:before,
@@ -31,19 +33,20 @@ a, a:visited{
 input,textarea{
     border:1px solid #ccc;
 }
-input:focus,textarea:focus{
+input:focus,textarea:focus, button:focus{
     outline:1px solid #000;
     border:1px solid #000;
 }
 input{
     padding:24px 18px;
     font-size:18px;
-    width:302px;
+    width:100%;
     box-sizing:border-box;
-
 }
 
-[ms-controller]{
-visibility: hidden;
+button{
+    background:#fff;
+    padding:24px 18px;
+    border:1px solid #ccc;
+    cursor:pointer;
 }
-

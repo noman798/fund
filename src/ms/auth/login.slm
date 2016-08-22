@@ -1,6 +1,8 @@
 scss:
-    .MAIN{
-    }
+  .MAIN{
+    h2{font-weight:normal;font-size:28px;}
+    label,button{font-family:bg;font-size:28px;}
+  }
 
 #topbar.C
   a.slideoutBtnW.slideout-open href="/"
@@ -15,11 +17,13 @@ scss:
     .VC1
       .authBk
         form.txt
-          p 登录
-          p
-            input name="mail" autocomplete="off" spellcheck="false"
-          p
-            input name="password" type="password"
+          h2 登录
+          .line
+            label for="authAccount" 邮箱 
+            input id="authAccount" name="account" autocomplete="off" spellcheck="false"
+          .line
+            label for="authPassword" 密码
+            input id="authPassword" name="password" type="password"
           p
             button type="submit" 这就是我 
           p
