@@ -2,8 +2,10 @@ isProduction = (process.env.NODE_ENV == 'production')
 path = require("path")
 webpack = require('webpack')
 outputDir = path.resolve(__dirname, 'dist')
+
 COFNIG = require('./config.coffee')
 
+OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 HtmlWebpackPlugin = require('html-webpack-plugin')
 ExtractTextPlugin = require("extract-text-webpack-plugin")
 
@@ -87,6 +89,11 @@ if isProduction
             }
         })
     )
+    exports.plugins.push   new OptimizeCssAssetsPlugin({
+        assetNameRegExp: /\.css$/,
+        cssProcessorOptions: { discardComments: { removeAll: true } }
+    })
+
 else
     exports.devtool = "source-map"
 
