@@ -53,7 +53,7 @@ exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'commons',
-            filename: '[chunkhash]',
+            filename: '[chunkhash].js',
         })
         new HtmlWebpackPlugin({
             template: './src/slm/index.slm'
