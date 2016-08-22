@@ -27,17 +27,17 @@ else
     output.filename = '[name].js'
     output.publicPath = "/"
 
+
 exports = {
     entry: './src/coffee/init.coffee'
     output: output
     resolve: {
         root: __dirname
         alias: {
-            # AppStore : 'js/stores/AppStores.js',//后续直接 require('AppStore') 即可
+            # "url-loader": require("url-loader")
         }
         # extensions: ['', '.js', '.json', '.scss'],
     }
-
     devServer:
         contentBase: "./dist"
     module:
@@ -45,12 +45,14 @@ exports = {
             # { test: './src/coffee/index.coffee', loader: "exports?avalon!coffee-loader" }
             { test: /\.coffee$/, loader: "coffee-loader" }
             {
-                loader: extractScss.extract(
-                    ["css#{sourceMap}","sass#{sourceMap}"]
-                    {
-                        publicPath: if isProduction then COFNIG.CDN else "//"
-                    }
-                )
+                # loader: extractScss.extract(
+                #     'style-loader'
+                #     ["css-loader#{sourceMap}","sass#{sourceMap}"]
+                #     {
+                #         publicPath: if isProduction then COFNIG.CDN else "//"
+                #     }
+                # )
+                loaders:['style-loader',"css-loader?root=/","sass#{sourceMap}"]
                 test: /\.(s?css)$/
             }
             {
@@ -58,12 +60,12 @@ exports = {
                 loader: "raw!html-minify!slm"
             }
             {
-                test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/
-                loader: 'file-loader?hash=sha512&name=./font/[name].[ext]'
+                test: /\.(woff|woff2|ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/
+                loader: 'file-loader?name=[hash].[ext]'
             }
             {
-                test: /\.(png|jpg|gif)$/
-                loader: 'url-loader?limit=8192&name=./img/[name].[ext]'
+                test: /\.(png|jpg|gif|svg)$/
+                loader: 'url-loader?limit=8192&name=[hash].[ext]'
             }
         ]
 
@@ -80,7 +82,7 @@ exports = {
                 removeAttributeQuotes:true
             }
         })
-        extractScss
+        # extractScss
         new webpack.DefinePlugin({
             __DEBUG__ : not isProduction
         })
