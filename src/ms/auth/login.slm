@@ -1,3 +1,6 @@
+-scss
+    .MAIN{background:#00f}
+
 #topbar.C
   a.slideoutBtnW.slideout-open href="/"
       #sB.slideoutBtn
