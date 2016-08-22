@@ -1,5 +1,6 @@
--scss
-    .MAIN{background:#00f}
+scss:
+    .MAIN{
+    }
 
 #topbar.C
   a.slideoutBtnW.slideout-open href="/"
@@ -23,3 +24,6 @@
             button type="submit" 这就是我 
           p
             a href="/auth/new" 新建帐号 
+
+
+
