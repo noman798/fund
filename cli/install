@@ -1,7 +1,7 @@
 PREFIX=`realpath $(cd "$(dirname "$0")"; pwd)/..`
 
 
-sudo npm install webpack-dev-server webpack -g
+sudo npm install webpack-dev-server webpack font-spider -g
 
 cd $PREFIX
 npm install
