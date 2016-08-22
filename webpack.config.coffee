@@ -31,9 +31,9 @@ exports = {
             # { test: './src/coffee/index.coffee', loader: "exports?avalon!coffee-loader" }
             { test: /\.coffee$/, loader: "coffee-loader" }
 
-            {test: /\.css$/, loader: 'style!css'}
+            {test: /\.css$/, }
             {
-                test: /\.scss$/
+                test: /\.(s?css)$/
                 loaders: ["style", "css#{sourceMap}", "sass#{sourceMap}"]
             }
             {
