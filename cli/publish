@@ -9,4 +9,4 @@ rm *.css
 cd $PREFIX/cli
 ./dist
 ./copy
-hg push
+hg push; hg push git&
