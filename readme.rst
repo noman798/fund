@@ -1,5 +1,6 @@
-依赖库
----------------------------
+云资本
+====================================
 
-* 侧拉菜单 http://materializecss.com/mobile.html
+* 演示网址 [u88.vc](http://u88.vc)
+* [代码文档](http://www.kancloud.cn/u88vc/u88vc/196295) 
 
