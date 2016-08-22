@@ -1,10 +1,14 @@
+#authLogin
+  #topbar.C
+    a.slideoutBtnW.slideout-open href="/"
+        #sB.slideoutBtn
+          span
+    h1 
+      b.logo
+      | 云资本
 
-.VC2
-  .VC1
-    .authBk
-      .txt
-        p 科技改变世界
-        p 我们下注未来
-      a.authBtn href="/auth/new" 注册
-      .split
-      a.authBtn href="/auth/login" 登录
+  .VC2
+    .VC1
+      .authBk
+        .txt
+          p 科技改变世界
