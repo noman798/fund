@@ -36,7 +36,7 @@ scss:
           p
             button type="submit" 创建帐号 
           p
-            a href="/auth/new" 直接登录
+            a href="/auth/login" 直接登录
 
 
 
