@@ -11,6 +11,7 @@ $ ->
         false
 
 require "../js/avalon.modern.js"
+avalon.config({debug: __DEBUG__})
 
 
 window.V = avalon.vmodels
@@ -25,3 +26,4 @@ window.$id = (id)->
 
 require("./lib/url.coffee")
 require("./index.coffee")
+

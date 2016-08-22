@@ -9,7 +9,7 @@ OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 HtmlWebpackPlugin = require('html-webpack-plugin')
 ExtractTextPlugin = require("extract-text-webpack-plugin")
 
-extractScss = new ExtractTextPlugin("[hash].css")
+extractScss = new ExtractTextPlugin("[chunkhash].css")
 
 output = {
     path: outputDir
@@ -23,8 +23,8 @@ if isProduction
     output.publicPath = COFNIG.CDN
 else
     sourceMap = "?sourceMap"
-    output.chunkFilename = 'js/[name].js'
-    output.filename = 'js/[name].js'
+    output.chunkFilename = '[name].js'
+    output.filename = '[name].js'
 
 exports = {
     entry: './src/coffee/init.coffee'
@@ -73,6 +73,9 @@ exports = {
             }
         })
         extractScss
+        new webpack.DefinePlugin({
+            __DEBUG__ : not isProduction
+        })
     ]
 }
 
