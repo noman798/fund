@@ -1,6 +1,9 @@
-PREFIX=`realpath $(cd "$(dirname "$0")"; pwd)`
+PREFIX=`realpath $(cd "$(dirname "$0")"; pwd)/..`
 
-cd $PREFIX
+cd $PREFIX/dist
+rm *.js
+rm *.css
 
+cd $PREFIX/cli
 ./dist
 ./copy
