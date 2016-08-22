@@ -1,7 +1,5 @@
 PREFIX=`realpath $(cd "$(dirname "$0")"; pwd)/../..`
 
-cd $PREFIX
-webpack --progress --colors
 
 cd $PREFIX/cli/font-spider
 cp bg.ttf ./font/bg.ttf
