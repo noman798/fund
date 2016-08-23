@@ -8,6 +8,11 @@ MS 'auth-new', html.html(), {
             URL ""
     account:"xx"
     password:""
+    submit: ->
+        console.log @account
+        console.log @password
+        false
+
 }
 
 
