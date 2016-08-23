@@ -1,6 +1,7 @@
 html = $ """<div>#{require("./_base.slm")}</div>"""
 html.find('.txt').html require("./new.slm")
 
+console.log html.html()
 
 MS 'auth-new', html.html(), {
     onReady:->

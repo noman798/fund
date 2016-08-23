@@ -1,14 +1,11 @@
 h2 登录
 .line
   label for="authAccount" 邮箱 
-  input id="authAccount" name="account" autocomplete="off" spellcheck="false"
+  input#authAccount name="account" autocomplete="off" spellcheck="false"
 .line
   label for="authPassword" 密码
-  input id="authPassword" name="password" type="password"
+  input#authPassword name="password" type="password"
 p
   button type="submit" 这就是我 
 p
-  a href="/auth/new" 创建帐号 
-
-
-
+  a href="/auth/new" 创建帐号

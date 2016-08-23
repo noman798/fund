@@ -27,8 +27,8 @@ scss:
     b.logo
     | 云资本
 
-.MAIN :submit="@submit"
+.MAIN
   .VC2
     .VC1
       .authBk
-        form.txt
+        form.txt :submit="@submit"
