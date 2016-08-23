@@ -1,7 +1,7 @@
 
-https://cdn.wilddog.com/js/client/v2/wilddog-web-auth.js
+script src="//cdn.wilddog.com/js/client/v2/wilddog-web-auth.js"
 
-https://cdn.wilddog.com/js/client/v2/wilddog-web-database.js
+script src="//cdn.wilddog.com/js/client/v2/wilddog-web-database.js"
 
 
 scss:

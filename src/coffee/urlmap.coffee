@@ -12,7 +12,6 @@ _render = (name) ->
         V.BODY.HTML = """<ms-#{hname} :widget="{$id:'#{name}',cached:'true'}"/>"""
 
 
-console.log MAP
 require "../ms/auth/login.coffee"
 _render 'authLogin'
 
