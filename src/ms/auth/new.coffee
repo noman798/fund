@@ -1,3 +1,6 @@
+_bind = avalon.bind
+
+
 html = $ """<div>#{require("./_base.slm")}</div>"""
 html.find('.txt').html require("./new.slm")
 
@@ -9,11 +12,9 @@ MS 'auth-new', html.html(), {
             URL ""
     account:"xx"
     password:""
-    submit: ->
+    submit: (e)->
         console.log @account
         console.log @password
-        false
+        e.preventDefault()
 
 }
-
-
