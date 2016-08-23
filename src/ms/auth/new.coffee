@@ -8,7 +8,7 @@ MS 'auth-new', html.html(), {
             "//cdn.wilddog.com/js/client/v2/wilddog-web-all.js"
             ->
                 config = {
-                    authDomain: "u88.wilddogapp.com",
+                    authDomain: "u88.wilddog.com",
                     databaseURL: "//u88.wilddogio.com"
                 }
                 defApp = wilddog.initializeApp(config)
@@ -19,7 +19,8 @@ MS 'auth-new', html.html(), {
                     console.info("login success->", a, b)
                     console.info("currentUser->",wilddog.auth().currentUser)
                 ).catch (a, b) ->
-                    console.info('login failed ->', a, b)
+                    console.log(a)
+                    console.info('login failed ->',  b, "!!")
         )
 
     account:"xx"
