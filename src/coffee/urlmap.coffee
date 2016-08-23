@@ -8,14 +8,13 @@ MAP = {
 
 _render = (name) ->
     hname = avalon.hyphen(name)
-    MAP["/"+hname.replace(/-/g,'/')] = ->
-        V.BODY.HTML = """<ms-#{hname} :widget="{$id:'#{name}',cached:'true'}"/>"""
+    file = "/"+hname.replace(/-/g,'/')
+    require.ensure ["../ms#{file}.coffee"], ->
+        MAP[file] = ->
+            V.BODY.HTML = """<ms-#{hname} :widget="{$id:'#{name}',cached:'true'}"/>"""
 
 
-require "../ms/auth/login.coffee"
 _render 'authLogin'
-
-require "../ms/auth/new.coffee"
 _render 'authNew'
 
 
