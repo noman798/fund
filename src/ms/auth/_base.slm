@@ -1,0 +1,34 @@
+
+https://cdn.wilddog.com/js/client/v2/wilddog-web-auth.js
+
+https://cdn.wilddog.com/js/client/v2/wilddog-web-database.js
+
+
+scss:
+  .MAIN{
+    h2{font-weight:normal;font-size:28px;margin:48px 0;}
+    .line,button{margin-bottom:32px;}
+    .authBk{
+        min-width:300px;  
+    }
+    button{width:100%;box-sizing:border-box;line-height:20px;display:block}
+    label{position:absolute;line-height:70px;margin-left:18px;}
+    label,button{font-family:bg;font-size:28px;}
+    .txt input{
+        padding-left:86px
+    }
+  }
+
+#topbar.C
+  a.slideoutBtnW.slideout-open href="/"
+      #sB.slideoutBtn
+        span
+  h1 
+    b.logo
+    | 云资本
+
+.MAIN
+  .VC2
+    .VC1
+      .authBk
+        form.txt
