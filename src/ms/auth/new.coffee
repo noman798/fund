@@ -19,7 +19,8 @@ MS 'auth-new', html.html(), {
                     console.info("login success->", a, b)
                     console.info("currentUser->",wilddog.auth().currentUser)
                 ).catch (a, b) ->
-                    console.log(a)
+                    console.log(a.code)
+                    console.log(a, typeof(a))
                     console.info('login failed ->',  b, "!!")
         )
 
