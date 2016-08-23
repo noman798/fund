@@ -6,6 +6,8 @@ MS 'auth-new', html.html(), {
     onReady:->
         $(@$element).find('.close').click ->
             URL ""
+    account:"xx"
+    password:""
 }
 
 
