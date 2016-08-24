@@ -20,6 +20,10 @@ MS 'auth-new', html.html(), {
             }[err.code] or err.message
             elem = $(@$element)
             elem.find('input').removeClass('err')
-            elem.find("#auth#{if tip.indexOf("邮箱") >= 0 then "Account" else "Password"}").addClass('err').focus()
+            elem.find("#auth#{if tip.indexOf("邮箱") >= 0 then "Account" else "Password"}").addClass('err').focus().one(
+                'change'
+                ->
+                    $(@).removeClass('err')
+            )
 
 }
