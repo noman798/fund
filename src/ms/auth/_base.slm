@@ -9,8 +9,10 @@ scss:
     label{position:absolute;line-height:70px;margin-left:18px;}
     label,button{font-family:bg;font-size:28px;}
     .txt input{
-        padding-left:86px
+      padding-left:86px;
     }
+    .err{text-align:left;}
+    .err .tip{color:#f40;float:right;font-size:18px;line-height:37px;font-family:"Lato","PingFang SC","Hiragino Sans GB","Noto Sans CJK SC", "Source Han Sans CN","Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;}
   }
 
 #topbar.C
@@ -25,5 +27,7 @@ scss:
   .VC2
     .VC1
       .authBk
-        h2 {{@title}} {{@err}}
+        h2 :class="{err:@err}"
+          .tip {{@err}}
+          | {{@title}}
         form.txt :submit="@submit"
