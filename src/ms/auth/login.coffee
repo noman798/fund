@@ -3,6 +3,8 @@ html.find('.txt').html require("./login.slm")
 
 MS 'auth-login', html.html() , {
     onReady:->
+    title:"登录"
+
 }
 
 

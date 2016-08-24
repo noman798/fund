@@ -25,4 +25,5 @@ scss:
   .VC2
     .VC1
       .authBk
+        h2 {{@title}} {{@err}}
         form.txt :submit="@submit"

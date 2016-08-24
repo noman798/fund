@@ -1,4 +1,3 @@
-h2 登录
 .line
   label for="authAccount" 邮箱 
   input#authAccount name="account" autocomplete="off" spellcheck="false"
