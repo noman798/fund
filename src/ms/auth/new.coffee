@@ -6,16 +6,20 @@ MS 'auth-new', html.html(), {
     account:""
     password:""
     submit: (e)->
-        email = "x@xx.com"
-        pwd = "xxx22"
-        wilddog.auth().signInWithEmailAndPassword(email,pwd).then((a, b) ->
-            console.info("login success->", a, b)
-            console.info("currentUser->",wilddog.auth().currentUser)
-        ).catch (a, b) ->
-            console.log(a.code)
-            console.log(a, typeof(a))
-            console.info('login failed ->',  b, "!!")
+        wilddog.auth().createUserWithEmailAndPassword(@account, @password).then((user)->
+            console.info("user created.", user)
+        ).catch((err, more) ->
+            console.info("create user failed.", err.code, more)
+        )
+
         e.preventDefault()
+        # wilddog.auth().signInWithEmailAndPassword(email,pwd).then((a, b) ->
+        #     console.info("login success->", a, b)
+        #     console.info("currentUser->",wilddog.auth().currentUser)
+        # ).catch (a, b) ->
+        #     console.log(a.code)
+        #     console.log(a, typeof(a))
+        #     console.info('login failed ->',  b, "!!")
     # onReady:->
 
 }
