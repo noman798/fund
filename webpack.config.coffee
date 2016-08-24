@@ -20,7 +20,7 @@ if isProduction
     # sourceMap = "?prefix=/xxxximg"
     output.chunkFilename = '[chunkhash].js'
     output.filename = '[chunkhash].js'
-    output.publicPath = COFNIG.CDN
+    output.publicPath = COFNIG.CDN+"/"
 else
     sourceMap = "?sourceMap"
     output.chunkFilename = '[name].js'
