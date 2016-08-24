@@ -11,8 +11,16 @@ scss:
     .txt input{
       padding-left:86px;
     }
-    .err{text-align:left;}
-    .err .tip{color:#f40;float:right;font-size:18px;line-height:37px;font-family:"Lato","PingFang SC","Hiragino Sans GB","Noto Sans CJK SC", "Source Han Sans CN","Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;}
+    h2.err{
+        text-align:left;
+        .tip{
+          color:#f40;float:right;font-size:18px;line-height:37px;font-family:"Lato","PingFang SC","Hiragino Sans GB","Noto Sans CJK SC", "Source Han Sans CN","Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+        }
+    }
+    input.err{
+      border-color:#f40;
+      outline-color:#f40;
+    }
   }
 
 #topbar.C
