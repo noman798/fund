@@ -18,10 +18,6 @@ MS 'auth-new', html.html(), {
                 email_already_in_use:"邮箱已注册"
                 invalid_email:"邮箱无效"
             }[err.code] or err.message
+            console.log $(@element).find("input")
 
 }
-# wilddog.auth().signInWithEmailAndPassword(email,pwd).then((a, b) ->
-#     console.info("login success->", a, b)
-#     console.info("currentUser->",wilddog.auth().currentUser)
-# ).catch (err) =>
-#
