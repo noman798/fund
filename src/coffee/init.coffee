@@ -27,3 +27,10 @@ window.$id = (id)->
 require("./lib/url.coffee")
 require("./index.coffee")
 
+
+wName = "u88"
+wApp = wilddog.initializeApp(
+    authDomain: "#{wName}.wilddog.com",
+    databaseURL: "//#{wName}.wilddogio.com"
+)
+wDB = wilddog.database().ref()
