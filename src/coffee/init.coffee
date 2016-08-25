@@ -30,7 +30,9 @@ wApp = wilddog.initializeApp(
     databaseURL: "//#{wName}.wilddogio.com"
 )
 wDB = wilddog.database().ref()
-window.$user = 0 and wilddog.auth().currentUser
+window.$user = wilddog.auth().currentUser
+#window.$user = 0 and wilddog.auth().currentUser
+console.log window.$user
 
 $ ->
     $(document.body).on 'click', 'a', ->

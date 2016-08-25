@@ -22,13 +22,10 @@ Slideout.prototype._translateXTo = (n)->
     @
 
 
-MS 'body', require("slm/_main"), {
-    main:""
+MS 'body', require("slm/_main")+"<div id=sM/>", {
     onReady: ->
         topbar = $("#topbar")
         topbar.find(".slideoutBtnW").html """<div id=sB class=slideoutBtn><span/></div>"""
-        $("#sB").click ->
-            slideout.toggle()
 
         slideout = new Slideout({
             panel : $id 'sP'
@@ -36,6 +33,8 @@ MS 'body', require("slm/_main"), {
             tolerance : 70
             side : 'right'
         })
+        ("#sB").click ->
+            slideout.toggle()
 
 
         slideout.on('open', ->
