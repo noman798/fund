@@ -31,7 +31,7 @@ wApp = wilddog.initializeApp(
     databaseURL: "//#{wName}.wilddogio.com"
 )
 wDB = wilddog.database().ref()
-window.$user = wilddog.auth().currentUser
+window.$user = 0 and wilddog.auth().currentUser
 
 
 require("./lib/url.coffee")

@@ -15,7 +15,7 @@ MAP = {
             page = "auth"
 
         require("bundle!../ms/#{page}/init.coffee") ->
-            _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"></ms-body>"""
+            _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"/>"""
 }
 
 _render = (name, cache=1) ->
