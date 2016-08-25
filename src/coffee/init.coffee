@@ -1,16 +1,15 @@
 
 require './lib/baidu.coffee'
-require './lib/ms.coffee'
 require '../scss/init.scss'
+
+require "../js/avalon.modern.js"
+require './lib/ms.coffee'
+
+require("./lib/url.coffee")
+require "./urlmap.coffee"
 
 window.$ = require "jquery"
 
-$ ->
-    $(document.body).on 'click', 'a', ->
-        URL(@href)
-        false
-
-require "../js/avalon.modern.js"
 avalon.config({debug: __DEBUG__})
 
 
@@ -33,9 +32,10 @@ wApp = wilddog.initializeApp(
 wDB = wilddog.database().ref()
 window.$user = 0 and wilddog.auth().currentUser
 
-
-require("./lib/url.coffee")
-require "./urlmap.coffee"
+$ ->
+    $(document.body).on 'click', 'a', ->
+        URL(@href)
+        false
 
 $ ->
     URL.init()
