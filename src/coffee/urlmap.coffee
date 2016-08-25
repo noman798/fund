@@ -1,7 +1,7 @@
 require("../ms/body/view.coffee")
 
 body = $ 'body'
-
+window.$user = wilddog.auth().currentUser
 
 _CACHE = 0
 
@@ -12,7 +12,11 @@ _body = (html)->
 
 MAP = {
     "": ->
-        _body """<ms-body :widget="{$id:'body',cached:'true'}"></ms-body>"""
+        if $user
+            page = "body"
+        else
+            page = "auth"
+        _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"></ms-body>"""
 }
 
 _render = (name, cache=1) ->
