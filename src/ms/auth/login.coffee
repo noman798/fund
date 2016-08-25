@@ -5,12 +5,25 @@ html.find('.txt').html require("./_input.slm")+require("./login.slm")
 
 MS 'auth-login', html.html() , {
     title:"登录"
-    account:store.get('account','')
+    account:''
     password:""
     err:""
+    onReady:->
+        @account = store.get('account','')
     submit: (e)->
         e.preventDefault()
         elem = $(@$element)
+        @err = ""
+        account = @account
+
+        wilddog.auth().signInWithEmailAndPassword(
+            @account
+            @password
+        ).then(->
+            URL ''
+        ).catch (err) ->
+            console.log err.code
+
 }
 
 
