@@ -1,16 +1,3 @@
-# _setTransition = Slideout.prototype._setTransition
-# _translateXTo = Slideout.prototype._translateXTo
-# slideout.on('beforeclose', ->
-#     document.querySelector('.fixed').classList.remove('fixed-open')
-# )
-
-
-# Slideout.prototype._setTransition = ->
-#     _setTransition.call @
-
-# Slideout.prototype._translateXTo = (n)->
-#     _translateXTo.call @, n
-
 require 'scss/lib/_slideout'
 require 'scss/util/_slideout'
 
@@ -33,7 +20,7 @@ MS 'body', require("slm/_main")+"<div id=sM/>", {
             tolerance : 70
             side : 'right'
         })
-        ("#sB").click ->
+        $("#sB").click ->
             slideout.toggle()
 
 
@@ -51,3 +38,15 @@ MS 'body', require("slm/_main")+"<div id=sM/>", {
         )
 }
 
+# _setTransition = Slideout.prototype._setTransition
+# _translateXTo = Slideout.prototype._translateXTo
+# slideout.on('beforeclose', ->
+#     document.querySelector('.fixed').classList.remove('fixed-open')
+# )
+
+
+# Slideout.prototype._setTransition = ->
+#     _setTransition.call @
+
+# Slideout.prototype._translateXTo = (n)->
+#     _translateXTo.call @, n
