@@ -51,7 +51,5 @@ MS 'body', require("./view.slm"), {
                 'click.slideout'
             )
         )
-
-
 }
 

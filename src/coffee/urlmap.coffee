@@ -1,8 +1,10 @@
 require("../ms/body/view.coffee")
 
+body = $ 'body'
 
 MAP = {
     "": ->
+        body.html ''
         V.BODY.HTML = """<ms-body :widget="{$id:'body',cached:'true'}"></ms-body>"""
 }
 
@@ -15,6 +17,7 @@ _render = (name, cache=1) ->
         cache = ''
     MAP[file] = ->
         require("bundle!../ms#{file}.coffee") ->
+            body.html ''
             V.BODY.HTML = """<ms-#{hname} :widget="{$id:'#{name}'#{cache}}"/>"""
 
 _render 'authLogin'
