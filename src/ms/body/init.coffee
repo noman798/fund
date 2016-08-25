@@ -9,7 +9,7 @@ Slideout.prototype._translateXTo = (n)->
     @
 
 
-MS 'body', require("slm/_main")+"<div id=sM/>", {
+MS 'body', require("slm/_main")+require('./sidebar.slm'), {
     onReady: ->
         topbar = $("#topbar")
         topbar.find(".slideoutBtnW").html """<div id=sB class=slideoutBtn><span/></div>"""
