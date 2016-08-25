@@ -7,4 +7,3 @@
   .MAIN :html="@main"
 
 #sM
-    p hi

@@ -1,4 +1,3 @@
-
 # _setTransition = Slideout.prototype._setTransition
 # _translateXTo = Slideout.prototype._translateXTo
 # slideout.on('beforeclose', ->
@@ -23,13 +22,9 @@ MS 'body', require("./init.slm"), {
     main:""
     onReady: ->
         topbar = $("#topbar")
-        if $.user
-            topbar.find(".slideoutBtnW").html """<div id=sB class=slideoutBtn><span/></div>"""
-            $("#sB").click ->
-                slideout.toggle()
-        else
-            topbar.css("text-align","center")
-            V.body.main = require("../auth/auth.slm")
+        topbar.find(".slideoutBtnW").html """<div id=sB class=slideoutBtn><span/></div>"""
+        $("#sB").click ->
+            slideout.toggle()
 
         slideout = new Slideout({
             panel : $id 'sP'

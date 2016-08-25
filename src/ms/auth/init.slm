@@ -6,5 +6,3 @@
       | 云资本
   .MAIN :html="@main"
 
-#sM
-    p hi
