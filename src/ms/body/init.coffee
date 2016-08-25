@@ -18,7 +18,7 @@ Slideout.prototype._translateXTo = (n)->
     @
 
 
-MS 'body', require("./init.slm"), {
+MS 'body', require("slm/_main"), {
     main:""
     onReady: ->
         topbar = $("#topbar")

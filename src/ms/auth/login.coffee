@@ -23,6 +23,7 @@ MS 'auth-login', html.html() , {
             window.$user = wilddog.auth().currentUser
             URL ''
         ).catch (err) ->
+            #TODO 
             console.log err.code
 
 }
