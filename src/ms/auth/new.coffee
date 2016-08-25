@@ -10,8 +10,9 @@ MS 'auth-new', html.html(), {
     password:""
     err:""
     submit: (e)->
-        elem = $(@$element)
         e.preventDefault()
+        elem = $(@$element)
+
         wilddog.auth().createUserWithEmailAndPassword(@account, @password).then((user)->
             store.set('account', @account)
             elem.find('.authBk').html require("./new_done.slm")

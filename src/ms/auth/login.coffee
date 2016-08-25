@@ -8,6 +8,10 @@ MS 'auth-login', html.html() , {
     account:""
     password:""
     err:""
+    submit: (e)->
+        e.preventDefault()
+        elem = $(@$element)
+        console.log store.get('account'),"!!"
 }
 
 
