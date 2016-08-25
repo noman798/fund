@@ -14,7 +14,7 @@ MAP = {
         else
             page = "auth"
 
-        require("bundle!../ms/#{page}/init.coffee") ->
+        require("async-module!../ms/#{page}/init.coffee") ->
             _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"/>"""
 }
 
@@ -26,7 +26,7 @@ _render = (name, cache=1) ->
     else
         cache = ''
     MAP[file] = ->
-        require("bundle!../ms#{file}.coffee") ->
+        require("async-module!../ms#{file}.coffee") ->
             _body """<ms-#{hname} :widget="{$id:'#{name}'#{cache}}"/>"""
             _CACHE = cache
 

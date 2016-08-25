@@ -8,6 +8,7 @@ COFNIG = require('./config.coffee')
 OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 HtmlWebpackPlugin = require('html-webpack-plugin')
 ExtractTextPlugin = require("extract-text-webpack-plugin")
+AsyncModulePlugin = require('async-module-loader/plugin')
 
 extractScss = new ExtractTextPlugin("[chunkhash].css")
 
@@ -90,6 +91,7 @@ exports = {
         new webpack.DefinePlugin({
             __DEBUG__ : not isProduction
         })
+        new AsyncModulePlugin()
     ]
 }
 
