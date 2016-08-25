@@ -8,9 +8,10 @@ MS 'auth-new', html.html(), {
     password:""
     err:""
     submit: (e)->
+        elem = $(@$element)
         e.preventDefault()
         wilddog.auth().createUserWithEmailAndPassword(@account, @password).then((user)->
-            console.info("user created.", user)
+            elem.html require("./new_done.slm")
         ).catch (err) =>
             @err = tip = {
                 invalid_arguments:"请输入密码"
@@ -18,7 +19,6 @@ MS 'auth-new', html.html(), {
                 email_already_in_use:"邮箱已注册"
                 invalid_email:"邮箱无效"
             }[err.code] or err.message
-            elem = $(@$element)
             elem.find('input').removeClass('err')
             elem.find("#auth#{if tip.indexOf("邮箱") >= 0 then "Account" else "Password"}").addClass('err').focus().one(
                 'change'

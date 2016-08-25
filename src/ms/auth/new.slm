@@ -4,6 +4,8 @@ scss:
   .MAIN button:hover{background:#e20;border-color:#000}
   .MAIN button:focus,.MAIN button:active{outline:none;border-color:#f40;background:#f40;}
 
+include:
+    test.slm
 .line
   label for="authAccount" 邮箱 
   input :duplex="@account" id="authAccount" name="account" autocomplete="off" spellcheck="false"
