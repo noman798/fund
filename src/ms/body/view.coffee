@@ -52,8 +52,6 @@ MS 'body', require("./view.slm"), {
             )
         )
 
-    onDispose:->
-        delete avalon.vmodels[@$id]
 
 }
 

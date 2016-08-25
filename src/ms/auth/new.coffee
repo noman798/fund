@@ -11,7 +11,7 @@ MS 'auth-new', html.html(), {
         elem = $(@$element)
         e.preventDefault()
         wilddog.auth().createUserWithEmailAndPassword(@account, @password).then((user)->
-            elem.html require("./new_done.slm")
+            elem.find('form').html require("./new_done.slm")
         ).catch (err) =>
             @err = tip = {
                 invalid_arguments:"请输入密码"
