@@ -1,6 +1,4 @@
-
 body = $ 'body'
-window.$user = wilddog.auth().currentUser
 
 _CACHE = 0
 

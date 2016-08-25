@@ -24,9 +24,6 @@ avalon.define(
 window.$id = (id)->
     document.getElementById(id)
 
-require("./lib/url.coffee")
-require("./index.coffee")
-
 
 wName = "u88"
 wApp = wilddog.initializeApp(
@@ -34,3 +31,9 @@ wApp = wilddog.initializeApp(
     databaseURL: "//#{wName}.wilddogio.com"
 )
 wDB = wilddog.database().ref()
+window.$user = wilddog.auth().currentUser
+
+
+require("./lib/url.coffee")
+require("./index.coffee")
+
