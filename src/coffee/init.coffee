@@ -35,5 +35,7 @@ window.$user = wilddog.auth().currentUser
 
 
 require("./lib/url.coffee")
-require("./index.coffee")
+require "./urlmap.coffee"
 
+$ ->
+    URL.init()
