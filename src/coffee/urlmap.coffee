@@ -1,4 +1,3 @@
-require("../ms/body/view.coffee")
 
 body = $ 'body'
 window.$user = wilddog.auth().currentUser
@@ -16,7 +15,9 @@ MAP = {
             page = "body"
         else
             page = "auth"
-        _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"></ms-body>"""
+
+        require("bundle!../ms/#{page}/init.coffee") ->
+            _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"></ms-body>"""
 }
 
 _render = (name, cache=1) ->
