@@ -1,10 +1,6 @@
-.line
-  label for="authAccount" 邮箱 
-  input#authAccount name="account" autocomplete="off" spellcheck="false"
-.line
-  label for="authPassword" 密码
-  input#authPassword name="password" type="password"
 p
   button type="submit" 这就是我 
 p
   a href="/auth/new" 创建帐号
+
+

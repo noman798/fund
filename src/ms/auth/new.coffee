@@ -1,6 +1,8 @@
 
+store = require 'store'
+
 html = $ """<div>#{require("./_base.slm")}</div>"""
-html.find('.txt').html require("./new.slm")
+html.find('.txt').html require("./_input.slm")+require("./new.slm")
 
 MS 'auth-new', html.html(), {
     title:"注册"
@@ -11,6 +13,7 @@ MS 'auth-new', html.html(), {
         elem = $(@$element)
         e.preventDefault()
         wilddog.auth().createUserWithEmailAndPassword(@account, @password).then((user)->
+            store.set('account', @account)
             elem.find('.authBk').html require("./new_done.slm")
         ).catch (err) =>
             @err = tip = {

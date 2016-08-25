@@ -1,0 +1,7 @@
+.line
+  label for="authAccount" 邮箱 
+  input :duplex="@account" id="authAccount" name="account" autocomplete="off" spellcheck="false"
+
+.line
+  label for="authPassword" 密码
+  input :duplex="@password" id="authPassword" name="password" type="password"
