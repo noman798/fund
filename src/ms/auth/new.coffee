@@ -14,9 +14,12 @@ MS 'auth-new', html.html(), {
         self = @
         @err = ""
 
-        account = @account
+        account = $.trim @account
+        password = $.trim @password
+        if not (account and password)
+            return
         wilddog.auth().createUserWithEmailAndPassword(
-            account, @password
+            account, password
         ).then((user)->
             store.set('account', account)
             elem.find('.authBk').html require("./new_done.slm")
