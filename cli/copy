@@ -1,5 +1,4 @@
 PREFIX=`realpath $(cd "$(dirname "$0")"; pwd)/..`
-
 cd $PREFIX
 
 tar -c dist|lz4 -B4|ssh -c arcfour128  -o"MACs umac-64@openssh.com" dev@robomaker.org "lz4 -d |tar -xC $PREFIX"
