@@ -11,8 +11,8 @@
 # Slideout.prototype._translateXTo = (n)->
 #     _translateXTo.call @, n
 
-require 'scss/lib/slideout'
-require 'scss/util/slideout'
+require 'scss/lib/_slideout'
+require 'scss/util/_slideout'
 
 Slideout = require "slideout"
 Slideout.prototype._setTransition = ->
