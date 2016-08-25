@@ -1,4 +1,5 @@
 
+window.$ = require "jquery"
 require './lib/baidu.coffee'
 require '../scss/init.scss'
 
@@ -8,7 +9,6 @@ require './lib/ms.coffee'
 require("./lib/url.coffee")
 require "./urlmap.coffee"
 
-window.$ = require "jquery"
 
 avalon.config({debug: __DEBUG__})
 
@@ -31,8 +31,7 @@ wApp = wilddog.initializeApp(
 )
 wDB = wilddog.database().ref()
 window.$user = wilddog.auth().currentUser
-#window.$user = 0 and wilddog.auth().currentUser
-console.log window.$user
+#window.$user = 0
 
 $ ->
     $(document.body).on 'click', 'a', ->
