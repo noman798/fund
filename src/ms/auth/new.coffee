@@ -1,4 +1,3 @@
-
 store = require 'store'
 
 html = $ """<div>#{require("./_base.slm")}</div>"""
@@ -12,9 +11,11 @@ MS 'auth-new', html.html(), {
     submit: (e)->
         e.preventDefault()
         elem = $(@$element)
-
-        wilddog.auth().createUserWithEmailAndPassword(@account, @password).then((user)->
-            store.set('account', @account)
+        account = @account
+        wilddog.auth().createUserWithEmailAndPassword(
+            account, @password
+        ).then((user)->
+            store.set('account', account)
             elem.find('.authBk').html require("./new_done.slm")
         ).catch (err) =>
             @err = tip = {

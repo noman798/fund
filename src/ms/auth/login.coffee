@@ -5,13 +5,12 @@ html.find('.txt').html require("./_input.slm")+require("./login.slm")
 
 MS 'auth-login', html.html() , {
     title:"登录"
-    account:""
+    account:store.get('account','')
     password:""
     err:""
     submit: (e)->
         e.preventDefault()
         elem = $(@$element)
-        console.log store.get('account'),"!!"
 }
 
 
