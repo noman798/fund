@@ -33,10 +33,13 @@ exports = {
     output: output
     resolve: {
         root: __dirname
+        extensions: ['', '.coffee', '.slm', '.scss']
         alias: {
-            # "url-loader": require("url-loader")
+            slm:path.join(__dirname, "./src/slm")
+            coffee:path.join(__dirname, "./src/coffee")
+            scss:path.join(__dirname, "./src/scss")
+            ms:path.join(__dirname, "./src/ms")
         }
-        # extensions: ['', '.js', '.json', '.scss'],
     }
     devServer:
         contentBase: "./dist"

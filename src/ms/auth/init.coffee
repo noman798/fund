@@ -1,4 +1,4 @@
-MS 'auth', require("./init.slm"), {
+MS 'auth', require("slm/_main.slm"), {
     onReady: ->
         $(@$element).find('.MAIN').html require("../auth/auth.slm")
         topbar = $("#topbar")
