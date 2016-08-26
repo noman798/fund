@@ -1,5 +1,5 @@
 /*!
- * built in 2016-8-25:19 version 2.113 by 司徒正美
+ * built in 2016-8-26:14 version 2.113 by 司徒正美
  * 2.1.5 and npm 2.1.15
  *     修正 ms-controller, ms-important的移除类名的实现
  *     实现后端渲染,
@@ -87,9 +87,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var browser = {
 	    window: window,
 	    document: {//方便在nodejs环境不会报错
+	        /* istanbul ignore next*/ 
 	        createElement: function () {
 	            return {}
 	        },
+	        /* istanbul ignore next*/ 
 	        createElementNS: function () {
 	            return {}
 	        },
@@ -99,22 +101,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	        outerHTML: 'x'
 	    },
 	    msie: NaN,
+	    browser: false,
 	    modern: true,
 	    avalonDiv: {},
 	    avalonFragment: null
 	}
 	window.avalon = avalon
-
+	/* istanbul ignore if  */
 	if (window.location && window.navigator && window.window) {
 	    var doc = window.document
 	    browser.browser = true
 	    browser.document = doc
-	    browser.modern = window.dispatchEvent
 	    browser.root = doc.documentElement
 	    browser.avalonDiv = doc.createElement('div')
 	    browser.avalonFragment = doc.createDocumentFragment()
 	    if (window.VBArray) {
 	        browser.msie = doc.documentMode || (window.XMLHttpRequest ? 7 : 6)
+	        browser.modern = browser.msie > 8
+	    } else {
+	        browser.modern = true
 	    }
 	}
 
@@ -164,7 +169,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    warn: function () {
 	        if (hasConsole && avalon.config.debug) {
-	            var method = console.warn || console.log
+	            var method = console.warn ||/* istanbul ignore next*/ console.log
 	            // http://qiang106.iteye.com/blog/1721425
 	            Function.apply.call(method, console, arguments)
 	        }
@@ -175,7 +180,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    //将一个以空格或逗号隔开的字符串或数组,转换成一个键值都为1的对象
 	    oneObject: function (array, val) {
 	        if (typeof array === 'string') {
-	            array = array.match(rword) || []
+	            array = array.match(rword) || /* istanbul ignore next*/[]
 	        }
 	        var result = {},
 	                value = val !== void 0 ? val : 1
@@ -218,7 +223,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    cssHooks: cssHooks,
 	    parsers: {
 	        number: function (a) {
-	            return a === '' ? '' : /\d\.$/.test(a) ? a : parseFloat(a) || 0
+	            return a === '' ? '' : parseFloat(a) || 0
 	        },
 	        string: function (a) {
 	            return a === null || a === void 0 ? '' : a + ''
@@ -242,7 +247,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return
 	        }
 	        var prop = avalon.camelize(name)
-	        name = avalon.cssName(prop) || prop
+	        name = avalon.cssName(prop) ||  /* istanbul ignore next*/ prop
 	        if (value === void 0 || typeof value === 'boolean') { //获取样式
 	            fn = cssHooks[prop + ':get'] || cssHooks['@:get']
 	            if (name === 'background') {
@@ -264,7 +269,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    },
 	    directive: function (name, definition) {
-	        definition.parse = definition.parse || defaultParse
+	        definition.parse = definition.parse ||/* istanbul ignore next*/ defaultParse
 	        return this.directives[name] = definition
 	    },
 	    isObject: function (a) {//1.6新增
@@ -311,6 +316,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    //生成UUID http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
 	    makeHashCode: function (prefix) {
+	       /* istanbul ignore next*/
 	        prefix = prefix || 'avalon'
 	        return String(Math.random() + Math.random()).replace(rhashcode, prefix)
 	    },
@@ -346,7 +352,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	if(typeof performance !== 'undefined' && performance.now){
 	    avalon.makeHashCode = function (prefix) {
-	        prefix = prefix || 'avalon'
+	        prefix = prefix ||  /* istanbul ignore next*/ 'avalon'
 	        return (prefix + performance.now()).replace('.', '')
 	    }
 	}
@@ -356,10 +362,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    //生成事件回调的UUID(用户通过ms-on指令)
 	    avalon: avalon,
 	    getLongID: function (fn) {
+	        /* istanbul ignore next */
 	        return fn.uuid || (fn.uuid = avalon.makeHashCode('e'))
 	    },
 	    //生成事件回调的UUID(用户通过avalon.bind)
 	    getShortID: function (fn) {
+	        /* istanbul ignore next */
 	        return fn.uuid || (fn.uuid = '_' + (++UUID))
 	    }
 	}
@@ -372,6 +380,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var avalon = __webpack_require__(4)
 	function kernel(settings) {
 	    for (var p in settings) {
+	         /* istanbul ignore if */
 	        if (!avalon.ohasOwn.call(settings, p))
 	            continue
 	        var val = settings[p]
@@ -393,12 +402,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var openTag = array[0]
 	        var closeTag = array[1]
 	        /*eslint-disable */
+	         /* istanbul ignore if */
 	        if (openTag === closeTag) {
 	            throw new SyntaxError('openTag!==closeTag')
 	        }
 	        var test = openTag + 'test' + closeTag
 	        var div = avalon.avalonDiv
 	        div.innerHTML = test
+	         /* istanbul ignore if */
 	        if (div.innerHTML !== test && div.innerHTML.indexOf('&lt;') > -1) {
 	            throw new SyntaxError('此定界符不合法')
 	        }
@@ -440,7 +451,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	avalon.__format__ = function (name) {
 	    var fn = filters[name]
 	    if (fn) {
-	        return fn.get ? fn.get : fn
+	        return fn
 	    }
 	    return K
 	}
@@ -453,13 +464,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    lowercase: function (str) {
 	        return String(str).toLowerCase()
 	    },
-	    truncate: function (str, length, truncation) {
+	    truncate: function (str, length, end) {
 	        //length，新字符串长度，truncation，新字符串的结尾的字段,返回新字符串
-	        length = length || 30
-	        truncation = typeof truncation === "string" ? truncation : "..."
+	        if (!str) {
+	            return ''
+	        }
+	        str = String(str)
+	        if (isNaN(length)) {
+	            length = 30
+	        }
+	        end = typeof end === "string" ? end : "..."
 	        return str.length > length ?
-	                str.slice(0, length - truncation.length) + truncation :
-	                String(str)
+	                str.slice(0, length - end.length) + end :
+	                str
 	    },
 	    camelize: avalon.camelize,
 	    date: date,
@@ -861,7 +878,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    array = convertArray(array).filter(function (el, i) {
 	        return !!criteria.apply(el, [el.value, i].concat(args))
 	    })
-	    
+
 	    var isArray = type === 'array'
 	    var target = isArray ? [] : {}
 	    return recovery(target, array, function (el) {
@@ -884,7 +901,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	}
 
-	Number.isNaN = Number.isNaN || function (a) {
+	Number.isNaN = Number.isNaN || /* istanbul ignore next*/ function (a) {
 	    return a !== a
 	}
 
@@ -905,18 +922,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        input = convertArray(input)
 	    }
 	    var n = input.length
-	    limit = Math.min(n, limit)
+	    limit = Math.floor(Math.min(n, limit))
 	    begin = typeof begin === 'number' ? begin : 0
 	    if (begin < 0) {
 	        begin = Math.max(0, n + begin)
 	    }
-
 	    var data = []
 	    for (var i = begin; i < n; i++) {
-	        data.push(input[i])
 	        if (data.length === limit) {
 	            break
 	        }
+	        data.push(input[i])
 	    }
 	    var isArray = type === 'array'
 	    if (isArray) {
@@ -998,26 +1014,29 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 14 */
 /***/ function(module, exports) {
 
-	var rsurrogate = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g
-	var rnoalphanumeric = /([^\#-~| |!])/g
-
+	
+	//https://github.com/teppeis/htmlspecialchars
 	function escape(str) {
-	    //将字符串经过 str 转义得到适合在页面中显示的内容, 例如替换 < 为 &lt 
+	    if (str == null)
+	        return ''
+
 	    return String(str).
 	            replace(/&/g, '&amp;').
-	            replace(rsurrogate, function (value) {
-	                var hi = value.charCodeAt(0)
-	                var low = value.charCodeAt(1)
-	                return '&#' + (((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000) + ';'
-	            }).
-	            replace(rnoalphanumeric, function (value) {
-	                return '&#' + value.charCodeAt(0) + ';'
-	            }).
 	            replace(/</g, '&lt;').
-	            replace(/>/g, '&gt;')
+	            replace(/>/g, '&gt;').
+	            replace(/"/g, '&quot;').
+	            replace(/'/g, '&#039;')
 	}
 
 	module.exports = escape
+
+
+
+	      
+
+
+
+
 
 /***/ },
 /* 15 */,
@@ -1127,7 +1146,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 22 */,
 /* 23 */,
 /* 24 */,
-/* 25 */
+/* 25 */,
+/* 26 */
 /***/ function(module, exports) {
 
 	var propMap = {//不规则的属性名映射
@@ -1171,16 +1191,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 26 */,
 /* 27 */,
 /* 28 */,
-/* 29 */
+/* 29 */,
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Cache = __webpack_require__(30)
+	var Cache = __webpack_require__(31)
 	var avalon = __webpack_require__(4)
 
-	var fixCloneNode = __webpack_require__(31)
 
 	var rhtml = /<|&#?\w+;/
 	var htmlCache = new Cache(128)
@@ -1200,14 +1219,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    html = html.replace(rxhtml, '<$1></$2>').trim()
 	    var hasCache = htmlCache.get(html)
 	    if (hasCache) {
-	        return fixCloneNode(hasCache)
+	        return avalon.cloneNode(hasCache)
 	    }
 	    var vnodes = avalon.lexer(html)
 	    for (var i = 0, el; el = vnodes[i++]; ) {
 	        fragment.appendChild(avalon.vdomAdaptor(el, 'toDOM'))
 	    }
 	    if (html.length < 1024) {
-	        htmlCache.put(html, fixCloneNode(fragment))
+	        htmlCache.put(html, fragment)
 	    }
 	    return fragment
 	}
@@ -1246,7 +1265,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 	
@@ -1359,59 +1378,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = LRU
 
-
-/***/ },
-/* 31 */
-/***/ function(module, exports) {
-
-	var rcheckedType = /radio|checkbox/
-
-	function fix(dest, src) {
-	    if (dest.nodeType !== 1) {
-	        return
-	    }
-	    var nodeName = dest.nodeName.toLowerCase()
-	    if (nodeName === 'object') {
-	        if (dest.parentNode) {
-	            dest.outerHTML = src.outerHTML
-	        }
-
-	    } else if (nodeName === 'input' && rcheckedType.test(src.nodeName)) {
-
-	        dest.defaultChecked = dest.checked = src.checked
-
-	        if (dest.value !== src.value) {
-	            dest.value = src.value
-	        }
-
-	    } else if (nodeName === 'option') {
-	        dest.defaultSelected = dest.selected = src.defaultSelected
-	    } else if (nodeName === 'input' || nodeName === 'textarea') {
-	        dest.defaultValue = src.defaultValue
-	    }
-	}
-
-
-	function getAll(context) {
-	    return typeof context.getElementsByTagName !== 'undefined' ?
-	            context.getElementsByTagName('*') :
-	            typeof context.querySelectorAll !== 'undefined' ?
-	            context.querySelectorAll('*') : []
-	}
-
-	function fixCloneNode(src) {
-	    var target = src.cloneNode(true)
-	    if (avalon.modern)
-	        return target
-	    var t = getAll(target)
-	    var s = getAll(src)
-	    avalon.each(s, function (i) {
-	        fix(t[i], s[i])
-	    })
-	    return target
-	}
-
-	module.exports = fixCloneNode
 
 /***/ },
 /* 32 */,
@@ -2221,7 +2187,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	var Cache = __webpack_require__(30)
+	var Cache = __webpack_require__(31)
 	//缓存求值函数，以便多次利用
 	module.exports = new Cache(888)
 
@@ -2856,7 +2822,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Cache = __webpack_require__(30)
+	var Cache = __webpack_require__(31)
 	var eventCache = new Cache(128)
 	var update = __webpack_require__(45)
 	var markID = __webpack_require__(6).getLongID
@@ -4366,7 +4332,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var support = __webpack_require__(71)
-	var Cache = __webpack_require__(30)
+	var Cache = __webpack_require__(31)
 	var update = __webpack_require__(45)
 
 	avalon.directive('effect', {
@@ -5388,7 +5354,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 78 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	
 	/**
@@ -5397,7 +5363,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	var reconcile = __webpack_require__(53)
+	//var reconcile = require('./reconcile')
 
 	//如果正在更新一个子树,那么将它放到
 	var needRenderIds = []
@@ -6232,7 +6198,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	__webpack_require__(94)
 	__webpack_require__(95)
 	__webpack_require__(96)
-	__webpack_require__(29)
+	__webpack_require__(30)
 	__webpack_require__(97)
 	__webpack_require__(98)
 
@@ -6252,7 +6218,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    }
 	}
-
+	avalon.cloneNode = function(a){
+	    return a.cloneNode(true)
+	}
 	avalon.contains = function (root, el) {
 	    try {
 	        while ((el = el.parentNode))
@@ -6308,7 +6276,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var avalon = __webpack_require__(4)
-	var propMap = __webpack_require__(25)
+	var propMap = __webpack_require__(26)
 	var rsvg = /^\[object SVG\w*Element\]$/
 
 	function attrUpdate(node, vnode) {
