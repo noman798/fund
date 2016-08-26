@@ -16,7 +16,8 @@ MAP = {
 
         require("async-module!../ms/#{page}/init.coffee") ->
             _CACHE = 0
-            _body """<ms-#{page} :widget="{$id:'#{page}'}"/>"""
+            # _body """<ms-#{page} :widget="{$id:'#{page}'}"/>"""
+            _body """<ms-#{page}/>"""
             # _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"/>"""
 
     "/auth/logout":->

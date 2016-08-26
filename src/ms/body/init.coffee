@@ -1,6 +1,5 @@
 require 'scss/util/_slideout'
 
-
 MS 'body', require("slm/_main")+require('./sidebar.slm'), {
     onReady: ->
         topbar = $("#topbar")
