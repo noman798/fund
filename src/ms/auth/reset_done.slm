@@ -1,0 +1,9 @@
+.line
+  label for="authAccount" 邮箱 
+  input#authAccount :duplex="@account" name="account" autocomplete="off" spellcheck="false"
+
+p
+  button type="submit" 发送邮件
+
+p
+  a href="/auth/login" 直接登录
