@@ -1,0 +1,2 @@
+wilddog.auth().sendPasswordResetEmail(email)
+
