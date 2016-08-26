@@ -42,5 +42,4 @@ _render 'authLogin'
 _render 'authNew', 0
 _render 'authReset', 0
 
-
 URL.map MAP
