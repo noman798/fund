@@ -22,6 +22,7 @@ MS 'auth-login', html.html() , {
             account
             password
         ).then(->
+            store.set 'account', account
             window.$user = wilddog.auth().currentUser
             URL '/'
         ).catch (err) =>
