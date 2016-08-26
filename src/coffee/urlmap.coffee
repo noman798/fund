@@ -18,7 +18,8 @@ MAP = {
             _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"/>"""
     "/auth/logout":->
         wilddog.auth().signOut()
-        URL ""
+        window.$user = 0
+        URL "/"
 }
 
 _render = (name, cache=1) ->
