@@ -1,5 +1,5 @@
 .line
-  label for="authAccount" 邮箱 
+  label for="authAccount" 邮箱
   input#authAccount :duplex="@account" name="account" autocomplete="off" spellcheck="false"
 
 p
