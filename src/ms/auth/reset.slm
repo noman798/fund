@@ -1,6 +1,6 @@
 .line
   label for="authAccount" 邮箱 
-  input :duplex="@account" id="authAccount" name="account" autocomplete="off" spellcheck="false"
+  input#authAccount :duplex="@account" name="account" autocomplete="off" spellcheck="false"
 
 p
   button type="submit" 重置密码
