@@ -15,9 +15,8 @@ MAP = {
             page = "auth"
 
         require("async-module!../ms/#{page}/init.coffee") ->
-            # _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"/>"""
-            _CACHE = 0
-            _body """<ms-#{page} :widget="{$id:'#{page}'}"/>"""
+            _CACHE = 1
+            _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"/>"""
 
     "/auth/logout":->
         $("#sB").click()
