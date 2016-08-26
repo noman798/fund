@@ -15,7 +15,8 @@ MAP = {
             page = "auth"
 
         require("async-module!../ms/#{page}/init.coffee") ->
-            _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"/>"""
+            # _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"/>"""
+            _body """<ms-#{page} :widget="{$id:'#{page}'}"/>"""
     "/auth/logout":->
         wilddog.auth().signOut()
         $('html').removeClass('slideout-open')

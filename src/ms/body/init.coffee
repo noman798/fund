@@ -11,10 +11,8 @@ MS 'body', require("slm/_main")+require('./sidebar.slm'), {
             tolerance : 70
             side : 'right'
         })
-        # slideout.toggle()
         $("#sB").click(
             ->
-                # alert 3
                 slideout.toggle()
         )
 
