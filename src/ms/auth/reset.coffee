@@ -14,16 +14,14 @@ MS 'auth-reset', html.html() , {
         elem = $(@$element)
         @err = ""
         account = $.trim @account
-        if not (account and password)
+        if not account
             return
-        wilddog.auth().signInWithEmailAndPassword(
+        wilddog.auth().sendPasswordResetEmail(
             account
-            password
         ).then(->
-            window.$user = wilddog.auth().currentUser
-            URL '/'
+            #TODO
         ).catch (err) =>
-            @err = "帐号或密码错误"
+            @err = "帐号不存在"
 
 }
 

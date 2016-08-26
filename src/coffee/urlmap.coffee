@@ -37,6 +37,7 @@ _render = (name, cache=1) ->
 
 _render 'authLogin'
 _render 'authNew', 0
+_render 'authReset', 0
 
 
 URL.map MAP
