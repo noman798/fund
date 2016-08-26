@@ -1,5 +1,6 @@
 store = require 'store'
 
+
 html = $ """<div>#{require("./_base.slm")}</div>"""
 html.find('.txt').html require("./_input.slm")+require("./new.slm")
 

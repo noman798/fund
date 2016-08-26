@@ -1,28 +1,22 @@
 require 'scss/util/_slideout'
 
-Slideout = require "slideout"
-Slideout.prototype._setTransition = ->
-    @
-Slideout.prototype._translateXTo = (n)->
-    @panel.style.transform = ''
-    @
-
 
 MS 'body', require("slm/_main")+require('./sidebar.slm'), {
     onReady: ->
         topbar = $("#topbar")
         topbar.find(".slideoutBtnW").html """<div id=sB class=slideoutBtn><span/></div>"""
-
         slideout = new Slideout({
             panel : $id 'sP'
             menu : $id 'sM'
             tolerance : 70
             side : 'right'
         })
-
-        topbar.find("#sB").click ->
-            slideout.toggle()
-
+        # slideout.toggle()
+        $("#sB").click(
+            ->
+                # alert 3
+                slideout.toggle()
+        )
 
         slideout.on('open', ->
             if $(window).width() < 800
