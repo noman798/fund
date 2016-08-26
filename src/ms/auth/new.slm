@@ -8,6 +8,3 @@ p
   button type="submit" 创建帐号 
 p
   a href="/auth/login" 直接登录
-
-
-
