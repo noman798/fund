@@ -1,6 +1,6 @@
 p
   button type="submit" 这就是我 
 p
-  a href="/auth/reset_password" 重置密码 
+  a href="/auth/reset" 重置密码 
 
 
