@@ -38,5 +38,4 @@ $ ->
         URL(@href)
         false
 
-$ ->
     URL.init()

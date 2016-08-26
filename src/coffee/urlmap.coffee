@@ -16,6 +16,9 @@ MAP = {
 
         require("async-module!../ms/#{page}/init.coffee") ->
             _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"/>"""
+    "/auth/logout":->
+        wilddog.auth().signOut()
+        URL ""
 }
 
 _render = (name, cache=1) ->
