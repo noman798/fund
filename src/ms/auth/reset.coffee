@@ -19,7 +19,7 @@ MS 'auth-reset', html.html() , {
         wilddog.auth().sendPasswordResetEmail(
             account
         ).then(->
-            #TODO
+            elem.find('.authBk').html require("./reset_done.slm")
         ).catch (err) =>
             @err = "帐号不存在"
 
