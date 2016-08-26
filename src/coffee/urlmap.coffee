@@ -18,8 +18,8 @@ MAP = {
             # _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"/>"""
             _body """<ms-#{page} :widget="{$id:'#{page}'}"/>"""
     "/auth/logout":->
+        $("#sB").click()
         wilddog.auth().signOut()
-        $('html').removeClass('slideout-open')
         window.$user = 0
         URL "/"
 }
