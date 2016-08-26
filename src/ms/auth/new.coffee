@@ -33,7 +33,9 @@ MS 'auth-new', html.html(), {
                     invalid_email:"邮箱无效"
                 }[code] or err.message
                 elem.find('input').removeClass('err')
-                elem.find("#auth#{if tip.indexOf("邮箱") >= 0 then "Account" else "Password"}").addClass('err').focus().one(
+                elem.find(
+                    "#auth#{if tip.indexOf("邮箱") >= 0 then "Account" else "Password"}"
+                ).addClass('err').focus().one(
                     'change'
                     ->
                         $(@).removeClass('err')
