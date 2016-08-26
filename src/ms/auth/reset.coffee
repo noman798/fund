@@ -21,7 +21,6 @@ MS 'auth-reset', html.html() , {
         ).then(->
             #TODO
         ).catch (err) =>
-            console.log err.code
             @err = "帐号不存在"
 
 }
