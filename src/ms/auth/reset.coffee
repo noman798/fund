@@ -1,7 +1,7 @@
 store = require 'store'
 
 html = $ """<div>#{require("./_base.slm")}</div>"""
-html.find('.txt').html require("./_input.slm")+require("./login.slm")
+html.find('.txt').html require("./reset.slm")
 
 MS 'auth-reset', html.html() , {
     title:"重置密码"
