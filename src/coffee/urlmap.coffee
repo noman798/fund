@@ -16,7 +16,9 @@ MAP = {
 
         require("async-module!../ms/#{page}/init.coffee") ->
             # _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"/>"""
+            _CACHE = 0
             _body """<ms-#{page} :widget="{$id:'#{page}'}"/>"""
+
     "/auth/logout":->
         $("#sB").click()
         wilddog.auth().signOut()
