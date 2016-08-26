@@ -1,4 +1,3 @@
-require 'scss/lib/_slideout'
 require 'scss/util/_slideout'
 
 Slideout = require "slideout"

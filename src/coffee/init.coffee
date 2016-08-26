@@ -31,7 +31,7 @@ wApp = wilddog.initializeApp(
 )
 wDB = wilddog.database().ref()
 window.$user = wilddog.auth().currentUser
-#window.$user = 0
+window.$user = 0
 
 $ ->
     $(document.body).on 'click', 'a', ->
