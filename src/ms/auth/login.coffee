@@ -21,7 +21,7 @@ MS 'auth-login', html.html() , {
             @password
         ).then(->
             window.$user = wilddog.auth().currentUser
-            URL ''
+            URL '/'
         ).catch (err) ->
             #TODO 
             console.log err.code
