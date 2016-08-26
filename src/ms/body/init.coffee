@@ -3,7 +3,6 @@ require 'scss/util/_slideout'
 
 MS 'body', require("slm/_main")+require('./sidebar.slm'), {
     onReady: ->
-        alert 1
         topbar = $("#topbar")
         topbar.find(".slideoutBtnW").html """<div id=sB class=slideoutBtn><span/></div>"""
         slideout = new Slideout({
