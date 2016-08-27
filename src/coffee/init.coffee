@@ -4,13 +4,6 @@ window.Slideout = require 'coffee/lib/slideout'
 require './lib/baidu.coffee'
 require '../scss/init'
 
-require './lib/ms.coffee'
-
-require "./lib/url.coffee"
-require "./urlmap.coffee"
-require "./lib/util.coffee"
-
-
 require "../js/avalon.modern.js"
 
 avalon.config({debug: __DEBUG__})
@@ -21,6 +14,10 @@ avalon.define(
     HTML:""
 )
 
+require './lib/ms.coffee'
+require "./lib/url.coffee"
+require "./urlmap.coffee"
+require "./lib/util.coffee"
 
 wName = "u88"
 wApp = wilddog.initializeApp(
