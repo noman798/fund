@@ -38,6 +38,7 @@ exports = {
         alias: {
             slm:path.join(__dirname, "./src/slm")
             coffee:path.join(__dirname, "./src/coffee")
+            file:path.join(__dirname, "./file")
             scss:path.join(__dirname, "./src/scss")
             ms:path.join(__dirname, "./src/ms")
         }
