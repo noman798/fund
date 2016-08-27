@@ -9,4 +9,5 @@ rm *.css
 cd $PREFIX/cli
 ./dist
 ./copy
+hg bookmark -f master
 hg push; hg push git&
