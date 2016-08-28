@@ -27,9 +27,3 @@ wApp = wilddog.initializeApp(
 )
 wDB = wilddog.database().ref()
 window.$user = wilddog.auth().currentUser
-
-$ ->
-    $(document.body).on 'click', 'a', ->
-        false
-
-    URL.init()

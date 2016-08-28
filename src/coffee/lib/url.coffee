@@ -1,5 +1,11 @@
 require "../../js/crossroads.js"
 
+$ ->
+    $(document.body).on 'click', 'a', ->
+        false
+
+    URL.init()
+
 crossroads.bypassed.bind (url)->
     try
         require("async-module!url/#{url}.coffee")(
