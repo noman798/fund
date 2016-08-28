@@ -19,9 +19,10 @@ _render = (name, cache=1) ->
             _body """<ms-#{hname} :widget="{$id:'#{name}'#{cache}}"/>"""
             _CACHE = cache
 
-crossroads.bypassed = (url)->
-    require("async-module!.#{url}.coffee")(
+crossroads.bypassed.bind (url)->
+    require("async-module!../url/#{url}.coffee")(
         (func)->
+            console.log func
             func()
         ->
             URL "/"
