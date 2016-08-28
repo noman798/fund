@@ -1,6 +1,5 @@
 
 window.MS = (name, slm, defaults)->
-    console.log slm
     onDispose = defaults.onDispose
     defaults.onDispose = ->
         onDispose?.call @
