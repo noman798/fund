@@ -19,15 +19,6 @@ _render = (name, cache=1) ->
             _body """<ms-#{hname} :widget="{$id:'#{name}'#{cache}}"/>"""
             _CACHE = cache
 
-crossroads.bypassed.bind (url)->
-    require("async-module!../url/#{url}.coffee")(
-        (func)->
-            console.log func
-            func()
-        ->
-            URL "/"
-    )
-
 MAP = {
     "": ->
         if $user
@@ -48,3 +39,15 @@ _render 'authNew', 0
 _render 'authReset', 0
 
 URL.map MAP
+
+crossroads.bypassed.bind (url)->
+    console.log url
+    return
+    require("async-module!../url/#{url}.coffee")(
+        (func)->
+            console.log func
+            func()
+        ->
+            URL "/"
+    )
+
