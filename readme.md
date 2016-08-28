@@ -7,5 +7,5 @@
 * GIT 代码库：[https://github.com/noman798/fund](https://github.com/noman798/fund)
 * HG 代码库： [https://bitbucket.org/tzworld/fund](https://bitbucket.org/tzworld/fund)
   
-  我使用HG作为版本控制工具。
+  默认使用HG作为版本控制工具。
   GIT版本的代码库是镜像库，以方便习惯使用GIT的同学。
