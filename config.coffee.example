@@ -1,4 +1,4 @@
 module.exports = {
-    WILDDOG : 'u88',
     CDN : '//ocafm1ums.qnssl.com'
+    WILDDOG : 'u88'
 }
