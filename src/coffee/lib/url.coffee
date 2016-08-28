@@ -1,12 +1,13 @@
 require "../../js/crossroads.js"
 
 crossroads.bypassed.bind (url)->
-    require("async-module!url/#{url}.coffee")(
-        (func) ->
-            func()
-        ->
-            URL "/"
-    )
+    try
+        require("async-module!url/#{url}.coffee")(
+            (f) -> f()
+        )
+    catch
+        URL '/'
+        return
 
 
 crossroads.shouldTypecast = true
