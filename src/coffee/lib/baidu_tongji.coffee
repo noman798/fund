@@ -1,6 +1,7 @@
+CONFIG = require 'config.coffee'
 window._hmt = window._hmt || []
 hm = document.createElement("script")
-hm.src = "//hm.baidu.com/hm.js?cad47bbd37ec9bef705c95fa1aff4edf"
+hm.src = "//hm.baidu.com/hm.js?#{CONFIG.BAIDU_TONGJI}"
 s = document.getElementsByTagName("script")[0]
 s.parentNode.insertBefore(hm, s)
 
