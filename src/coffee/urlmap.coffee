@@ -19,6 +19,14 @@ _render = (name, cache=1) ->
             _body """<ms-#{hname} :widget="{$id:'#{name}'#{cache}}"/>"""
             _CACHE = cache
 
+crossroads.bypassed = (url)->
+    require("async-module!.#{url}.coffee")(
+        (func)->
+            func()
+        ->
+            URL "/"
+    )
+
 MAP = {
     "": ->
         if $user
@@ -32,11 +40,6 @@ MAP = {
             # _body """<ms-#{page}/>"""
             # _body """<ms-#{page} :widget="{$id:'#{page}',cached:'true'}"/>"""
 
-    "/auth/logout":->
-        $("#sB").click()
-        wilddog.auth().signOut()
-        window.$user = 0
-        URL "/"
 }
 
 _render 'authLogin'
