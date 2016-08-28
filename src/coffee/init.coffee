@@ -19,10 +19,11 @@ require "./lib/url.coffee"
 require "./urlmap.coffee"
 require "./lib/util.coffee"
 
-wName = "u88"
+COFNIG = require "../../config.coffee"
+
 wApp = wilddog.initializeApp(
-    authDomain: "#{wName}.wilddog.com",
-    databaseURL: "//#{wName}.wilddogio.com"
+    authDomain: "#{COFNIG.WILDDOG}.wilddog.com",
+    databaseURL: "//#{COFNIG.WILDDOG}.wilddogio.com"
 )
 wDB = wilddog.database().ref()
 window.$user = wilddog.auth().currentUser
