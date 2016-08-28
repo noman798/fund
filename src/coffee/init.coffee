@@ -1,7 +1,7 @@
 window.$ = require "jquery"
 window.Slideout = require 'coffee/lib/slideout'
 
-require 'coffee/lib/baidu'
+require 'coffee/lib/baidu_tongji'
 require 'scss/init'
 
 require "js/avalon"
