@@ -15,7 +15,6 @@ crossroads.bypassed.bind (url)->
         URL '/'
         return
 
-
 crossroads.shouldTypecast = true
 
 _pre_url = 0
@@ -88,7 +87,7 @@ URL.replace = (url , title)->
     history.replaceState(null, title or document.title, "/"+url)
     win.on 'popstate',fire
 
-URL.init =->
+URL.init = ->
     fire()
     win.on "popstate", fire
 
