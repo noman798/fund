@@ -34,7 +34,7 @@ exports = {
     output: output
     resolve: {
         root: __dirname
-        extensions: ['', '.coffee', '.slm', '.scss']
+        extensions: ['', '.coffee', '.slm', '.scss', '.js']
         alias: {
             slm:path.join(__dirname, "./src/slm")
             coffee:path.join(__dirname, "./src/coffee")
