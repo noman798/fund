@@ -30,7 +30,6 @@ window.$user = wilddog.auth().currentUser
 
 $ ->
     $(document.body).on 'click', 'a', ->
-        URL(@href)
         false
 
     URL.init()
