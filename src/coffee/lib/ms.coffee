@@ -1,4 +1,3 @@
-
 window.MS = (name, slm, defaults)->
     onDispose = defaults.onDispose
     defaults.onDispose = ->

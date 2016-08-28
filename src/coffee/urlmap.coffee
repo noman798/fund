@@ -7,6 +7,18 @@ _body = (html)->
         body.html ''
     V.BODY.HTML = html
 
+_render = (name, cache=1) ->
+    hname = avalon.hyphen(name)
+    file = "/"+hname.replace(/-/g,'/')
+    if cache
+        cache =",cached:'true'"
+    else
+        cache = ''
+    MAP[file] = ->
+        require("async-module!../ms#{file}.coffee") ->
+            _body """<ms-#{hname} :widget="{$id:'#{name}'#{cache}}"/>"""
+            _CACHE = cache
+
 MAP = {
     "": ->
         if $user
@@ -26,18 +38,6 @@ MAP = {
         window.$user = 0
         URL "/"
 }
-
-_render = (name, cache=1) ->
-    hname = avalon.hyphen(name)
-    file = "/"+hname.replace(/-/g,'/')
-    if cache
-        cache =",cached:'true'"
-    else
-        cache = ''
-    MAP[file] = ->
-        require("async-module!../ms#{file}.coffee") ->
-            _body """<ms-#{hname} :widget="{$id:'#{name}'#{cache}}"/>"""
-            _CACHE = cache
 
 _render 'authLogin'
 _render 'authNew', 0
