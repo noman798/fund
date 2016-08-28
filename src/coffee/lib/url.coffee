@@ -26,9 +26,7 @@ window.URL = (url, title)->
     history.pushState(null, title or document.title, url)
     if url.charAt(0) == "/"
         url = url.slice(1)
-    # URL.fire url.split("#")[0]
-
-
+    URL.fire url.split("#")[0]
 
 URL.history = {}
 
@@ -49,7 +47,6 @@ _pop = (url) ->
         if array.length == 1
             delete _history[url]
         return array.pop()
-
 
 
 URL.back = (url)->
