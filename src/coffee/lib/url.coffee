@@ -1,5 +1,17 @@
 require "../../js/crossroads.js"
 
+crossroads.bypassed.bind (url)->
+    console.log "404", url
+    return
+    require("async-module!url/#{url}.coffee")(
+        (func)->
+            console.log func
+            func()
+        ->
+            URL "/"
+    )
+
+
 crossroads.shouldTypecast = true
 
 _pre_url = 0
@@ -14,7 +26,7 @@ window.URL = (url, title)->
     history.pushState(null, title or document.title, url)
     if url.charAt(0) == "/"
         url = url.slice(1)
-    URL.fire url.split("#")[0]
+    # URL.fire url.split("#")[0]
 
 
 

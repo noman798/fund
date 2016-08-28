@@ -40,14 +40,3 @@ _render 'authReset', 0
 
 URL.map MAP
 
-crossroads.bypassed.bind (url)->
-    console.log url
-    return
-    require("async-module!../url/#{url}.coffee")(
-        (func)->
-            console.log func
-            func()
-        ->
-            URL "/"
-    )
-
