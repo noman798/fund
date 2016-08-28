@@ -1,11 +1,8 @@
 require "../../js/crossroads.js"
 
 crossroads.bypassed.bind (url)->
-    console.log "404", url
-    return
     require("async-module!url/#{url}.coffee")(
-        (func)->
-            console.log func
+        (func) ->
             func()
         ->
             URL "/"
