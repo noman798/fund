@@ -1,10 +1,10 @@
 window.$ = require "jquery"
 window.Slideout = require 'coffee/lib/slideout'
 
-require './lib/baidu.coffee'
-require '../scss/init'
+require 'coffee/lib/baidu'
+require 'scss/init'
 
-require "../js/avalon.modern.js"
+require "js/avalon"
 
 avalon.config({debug: __DEBUG__})
 window.V = avalon.vmodels

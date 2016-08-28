@@ -41,6 +41,7 @@ exports = {
             file:path.join(__dirname, "./file")
             scss:path.join(__dirname, "./src/scss")
             ms:path.join(__dirname, "./src/ms")
+            js:path.join(__dirname, "./src/js")
         }
     }
     devServer:
