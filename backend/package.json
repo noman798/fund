@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "scripts": {},
   "dependencies": {
+    "request": "^2.74.0",
     "wilddog-token-generator": "0.0.0"
   }
 }
