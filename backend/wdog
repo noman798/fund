@@ -1,6 +1,6 @@
 #! /usr/bin/env coffee
-console.log process.argv
-argv = require('yargs')
+yargs = require('yargs')
+argv = yargs
 .command(
     'rule',
     '获取安全规则',
@@ -22,3 +22,5 @@ argv = require('yargs')
 .help('h')
 .alias('h', 'help').argv
 
+if not argv._.length
+    yargs.showHelp()
