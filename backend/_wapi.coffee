@@ -13,10 +13,15 @@ querystring = require('querystring')
 
 _api = (method, path, dict, callback)->
     token = tokenGenerator.createToken({uid: 0}, {
-        admin:true,expires: new Date().getTime() + 100000000
+        admin:true
+        expires: new Date().getTime() + 100000000
     })
+    data = {}
     if typeof(dict) == 'function'
         callback = dict
+        dict = {}
+    if typeof(dict) == 'string'
+        data.body = dict
         dict = {}
 
     param = querystring.stringify(dict)
@@ -24,12 +29,17 @@ _api = (method, path, dict, callback)->
     if param
         url += ("&"+param)
 
-    request[method](
-        url,callback
+    data.method = method
+    data.url = url
+    request(
+        data
+        callback
     )
 
 module.exports = {
     get : (path, dict, callback)->
         _api("get", path, dict, callback)
+    put : (path, dict, callback)->
+        _api("put", path, dict, callback)
 }
 
