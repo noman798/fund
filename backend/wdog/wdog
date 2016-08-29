@@ -1,25 +1,39 @@
 #! /usr/bin/env coffee
+wapi = require("./_wapi.coffee")
+
+_rule = (func)->
+    wapi.get(
+        ".settings/rules", (error, res, body)->
+            func JSON.stringify(
+                JSON.parse(body)
+                null
+                4
+            )
+    )
+
 yargs = require('yargs')
 argv = yargs
 .command(
     'rule',
     '获取安全规则',
     ->
-        console.log "!!!"
+        _rule (rule) ->
+            console.log rule
 )
 .command(
-    'rule push',
+    'rulepush',
     '上传安全规则',
     ->
         console.log "!!! push"
 )
 .command(
-    'rule pull',
+    'rulepull',
     '下载安全规则',
     ->
         console.log "!!! pull"
 )
 .help('h')
+.recommendCommands()
 .alias('h', 'help').argv
 
 if not argv._.length
