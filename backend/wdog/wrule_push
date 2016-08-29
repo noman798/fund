@@ -1,6 +1,0 @@
-#! /usr/bin/env coffee
-
-wapi = require("./_wapi.coffee")
-rule = require("./rule.coffee")
-
-
