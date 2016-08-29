@@ -12,13 +12,15 @@ _rule = (func)->
             )
     )
 
+cwd = process.cwd()
+
 yargs = require('yargs')
 argv = yargs
 .command(
     'rulepush',
-    '上传安全规则',
+    "上传读写权限 ，源文件 #{cwd}/wdog_rules.coffee",
     ->
-        rule = require("#{process.cwd()}/wdog_rules.coffee")
+        rule = require("#{cwd}/wdog_rules.coffee")
         wapi.put(
             ".settings/rules"
             JSON.stringify(rule, null, 4)
@@ -29,11 +31,11 @@ argv = yargs
 )
 .command(
     'rulepull',
-    '下载安全规则',
+    "下载读写权限到 #{cwd}/wdog_rules.coffee",
     ->
         _rule (o) ->
             fs.open(
-                "#{process.cwd()}//wdog_rules.coffee"
+                "#{cwd}//wdog_rules.coffee"
                 "w"
                 (e,fd) ->
                     if e
@@ -53,7 +55,7 @@ argv = yargs
 )
 .command(
     'rule',
-    '显示安全规则',
+    '显示线上的读写权限',
     ->
         _rule (o) ->
             console.log o
