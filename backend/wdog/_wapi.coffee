@@ -8,7 +8,7 @@ request = require('request')
 tokenGenerator = new WilddogTokenGenerator(CONFIG.WILDDOG.KEY)
 
 
-URL = "https://#{CONFIG.WILDDOG.DB}.wilddogio.com/"
+URL = "https://#{CONFIG.WILDDOG.SITE}.wilddogio.com/"
 querystring = require('querystring')
 
 _api = (method, path, dict, callback)->
