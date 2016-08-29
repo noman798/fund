@@ -1,3 +1,4 @@
+#! /usr/bin/env coffee
 
 CONFIG = require('./config.coffee')
 Wilddog = require("wilddog")
