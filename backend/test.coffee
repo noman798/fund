@@ -6,7 +6,15 @@ COFNIG = {
 }
 Wilddog = require("wilddog")
 WilddogTokenGenerator = require("wilddog-token-generator")
+request = require('request')
 
+request(
+    'http://www.baidu.com'
+    (error, response, body) ->
+        if not error and response.statusCode == 200
+            console.log(body)
+            process.exit()
+)
 
 tokenGenerator = new WilddogTokenGenerator(COFNIG.WILDDOG.KEY)
 
@@ -17,7 +25,6 @@ DB.authWithCustomToken(
     ->
         DB.child('.auth').on('value', (o)->
             console.log o.val()
-            process.exit()
         )
 )
 
