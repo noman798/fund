@@ -1,6 +1,6 @@
-GROUP_ADMIN = "root.child('group').child('auth.uid').val() == true"
+USER_IS_ADMIN = "root.child('group').child('admin').child(auth.uid).val() == true"
 
-GROUP_ADMIN_RW = "#{GROUP_ADMIN} || (!root.hasChildren(['group','admin']))"
+GROUP_ADMIN_RW = "#{USER_IS_ADMIN} || (!root.hasChildren(['group','admin']))"
 
 
 module.exports = \
@@ -14,5 +14,9 @@ module.exports = \
                 ".write": GROUP_ADMIN_RW
                 ".validate" : "newData.isNumber() && newData.val().isBoolean()"
             }
+        admin_log:{
+            ".read": USER_IS_ADMIN
+            ".write": USER_IS_ADMIN
+        }
     }
 }
