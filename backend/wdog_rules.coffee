@@ -9,7 +9,7 @@ module.exports = \
         group:
             admin: {
                 ".read": true
-                ".write": GROUP_ADMIN
+                ".write": "#{GROUP_ADMIN} || (!root.hasChildren(['group','admin']))"
                 ".validate" : "newData.isNumber() && newData.val().isBoolean()"
             }
     }
