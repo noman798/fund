@@ -1,12 +1,14 @@
+
+CONFIG = require('./config.coffee')
 Wilddog = require("wilddog")
 WilddogTokenGenerator = require("wilddog-token-generator")
 request = require('request')
 
-tokenGenerator = new WilddogTokenGenerator(COFNIG.WILDDOG.KEY)
+tokenGenerator = new WilddogTokenGenerator(CONFIG.WILDDOG.KEY)
 
 token = tokenGenerator.createToken({uid: "0"}, {admin:true,expires: new Date().getTime() + 100000000})
 
-URL = "https://#{COFNIG.WILDDOG.DB}.wilddogio.com/"
+URL = "https://#{CONFIG.WILDDOG.DB}.wilddogio.com/"
 
 request(
     """#{URL}.auth/users.json?auth=#{token}&orderBy="createTime"&limitToLast=1&limit=1&start=0"""
