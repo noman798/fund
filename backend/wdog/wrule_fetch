@@ -1,0 +1,6 @@
+#! /bin/sh
+
+PREFIX=$(cd "$(dirname "$0")"; pwd)
+cd $PREFIX
+echo "module.exports = \\" > rule.coffee
+./wrule  >> rule.coffee
