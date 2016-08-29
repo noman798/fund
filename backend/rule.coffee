@@ -1,3 +1,4 @@
+module.exports = \
 {
     "rules": {
         ".read": true,
