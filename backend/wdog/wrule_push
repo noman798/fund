@@ -3,10 +3,4 @@
 wapi = require("./_wapi.coffee")
 rule = require("./rule.coffee")
 
-wapi.put(
-    ".settings/rules"
-    JSON.stringify(rule, null, 4)
-    (error, res, body)->
-        console.log body
-)
 

@@ -1,5 +1,6 @@
 #! /usr/bin/env coffee
 wapi = require("./_wapi.coffee")
+fs = require('fs')
 
 _rule = (func)->
     wapi.get(
@@ -14,27 +15,54 @@ _rule = (func)->
 yargs = require('yargs')
 argv = yargs
 .command(
-    'rule',
-    '获取安全规则',
-    ->
-        _rule (rule) ->
-            console.log rule
-)
-.command(
     'rulepush',
     '上传安全规则',
     ->
-        console.log "!!! push"
+        rule = require("#{process.cwd()}/wdog_rules.coffee")
+        wapi.put(
+            ".settings/rules"
+            JSON.stringify(rule, null, 4)
+            (error, res, body)->
+                console.log body
+        )
+        0
 )
 .command(
     'rulepull',
     '下载安全规则',
     ->
-        console.log "!!! pull"
+        _rule (o) ->
+            fs.open(
+                "#{process.cwd()}//wdog_rules.coffee"
+                "w"
+                (e,fd) ->
+                    if e
+                        throw e
+                    fs.write(
+                        fd
+                        "module.exports = \\\n" + o
+                        0,'utf8'
+                        (e)->
+                            if e
+                                throw e
+                            fs.closeSync(fd)
+                    )
+            )
+            
+        0
+)
+.command(
+    'rule',
+    '显示安全规则',
+    ->
+        _rule (o) ->
+            console.log o
+        0
 )
 .help('h')
+.alias('h', 'help')
 .recommendCommands()
-.alias('h', 'help').argv
+.argv
 
 if not argv._.length
     yargs.showHelp()
