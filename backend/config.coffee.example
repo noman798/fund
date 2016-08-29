@@ -1,7 +1,8 @@
 
-COFNIG = {
+
+moduels.exports = {
     WILDDOG:{
-        KEY : "xxxxx"
-        DB : "xxx"
+        KEY : ""
+        SITE : ""
     }
 }
