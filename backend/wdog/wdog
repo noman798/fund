@@ -36,5 +36,6 @@ argv = yargs
 .recommendCommands()
 .alias('h', 'help').argv
 
+console.log argv
 if not argv._.length
     yargs.showHelp()

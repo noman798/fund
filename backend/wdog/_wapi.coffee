@@ -1,6 +1,6 @@
 #! /usr/bin/env coffee
 
-CONFIG = require('./config.coffee')
+CONFIG = require("#{process.cwd()}/config.coffee")
 Wilddog = require("wilddog")
 WilddogTokenGenerator = require("wilddog-token-generator")
 request = require('request')
