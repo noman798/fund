@@ -1,7 +1,11 @@
 module.exports = \
 {
     "rules": {
-        ".read": true,
+        ".read": true
         ".write": true
+        admin:{
+            ".read": true
+            ".write": """0 == auth.uid"""
+        }
     }
 }
