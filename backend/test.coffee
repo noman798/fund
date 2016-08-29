@@ -1,9 +1,3 @@
-COFNIG = {
-    WILDDOG:{
-        KEY : "J7iGBi11S8fuT3fzdfBRbCkh8Jql6mmx4JhY13gZ"
-        DB : "u88"
-    }
-}
 Wilddog = require("wilddog")
 WilddogTokenGenerator = require("wilddog-token-generator")
 request = require('request')

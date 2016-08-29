@@ -1,0 +1,7 @@
+
+COFNIG = {
+    WILDDOG:{
+        KEY : "xxxxx"
+        DB : "xxx"
+    }
+}
