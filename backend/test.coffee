@@ -5,17 +5,19 @@ COFNIG = {
     }
 }
 Wilddog = require("wilddog")
+WilddogTokenGenerator = require("wilddog-token-generator")
+
+
+tokenGenerator = new WilddogTokenGenerator(COFNIG.WILDDOG.KEY)
+
+token = tokenGenerator.createToken({uid: "0"}, {admin:true,expires: new Date().getTime() + 100000000})
 DB = new Wilddog("https://#{COFNIG.WILDDOG.DB}.wilddogio.com/")
-
-DB.set(
-    test:{ '.sv':'timestamp' }
-).then (o)->
-    process.exit()
-# wApp = wilddog.initializeApp(
-    # authDomain: "#{COFNIG.WILDDOG.DB}.wilddog.com",
-    # databaseURL: "//#{COFNIG.WILDDOG.DB}.wilddogio.com"
-# )
-# DB = wilddog.database().ref()
-
-# window.$user = wilddog.auth().currentUser
+DB.authWithCustomToken(
+    token
+    ->
+        DB.child('.auth').on('value', (o)->
+            console.log o.val()
+            process.exit()
+        )
+)
 
