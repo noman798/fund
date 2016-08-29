@@ -1,0 +1,8 @@
+{
+  "name": "tzfund-backend",
+  "version": "0.0.1",
+  "scripts": {},
+  "dependencies": {
+    "wilddog-token-generator": "0.0.0"
+  }
+}
