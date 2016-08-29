@@ -4,6 +4,10 @@ wapi = require("./_wapi.coffee")
 
 wapi.get(
     ".settings/rules", (error, res, body)->
-        console.log body
+        console.log JSON.stringify(
+            JSON.parse(body)
+            null
+            4
+        )
 )
 
