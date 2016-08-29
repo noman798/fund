@@ -1,6 +1,4 @@
-
-
-moduels.exports = {
+modules.exports = {
     WILDDOG:{
         KEY : ""
         SITE : ""
