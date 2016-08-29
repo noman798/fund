@@ -1,11 +1,16 @@
+GROUP_ADMIN = "root.child('group').child('auth.uid').val() == true"
+
+
 module.exports = \
 {
-    "rules": {
+    rules: {
         ".read": true,
         ".write": true,
-        "admin": {
-            ".read": true,
-            ".write": "0 == auth.uid"
-        }
+        group:
+            admin: {
+                ".read": true
+                ".write": GROUP_ADMIN
+                ".validate" : "newData.isNumber() && newData.val().isBoolean()"
+            }
     }
 }
