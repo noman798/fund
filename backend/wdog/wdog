@@ -18,7 +18,7 @@ yargs = require('yargs')
 argv = yargs
 .command(
     'rulepush',
-    "上传读写权限 ，源文件 #{cwd}/wdog_rules.coffee",
+    "上传读写权限 ，源文件 当前目录/wdog_rules.coffee",
     ->
         rule = require("#{cwd}/wdog_rules.coffee")
         wapi.put(
@@ -31,7 +31,7 @@ argv = yargs
 )
 .command(
     'rulepull',
-    "下载读写权限到 #{cwd}/wdog_rules.coffee",
+    "下载读写权限到 当前目录/wdog_rules.coffee",
     ->
         _rule (o) ->
             fs.open(
@@ -63,6 +63,7 @@ argv = yargs
 )
 .help('h')
 .alias('h', 'help')
+.epilog("当前目录 #{cwd}\n\n更多信息参见 http://wilddog.com")
 .recommendCommands()
 .argv
 
