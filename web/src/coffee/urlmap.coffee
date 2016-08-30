@@ -1,8 +1,11 @@
 body = $ 'body'
 
 _CACHE = 0
-
+_pre  =  ''
 _body = (html)->
+    if html == _pre
+        return
+    _pre = html
     if not _CACHE
         body.html ''
     V.BODY.HTML = html
@@ -25,7 +28,6 @@ MAP = {
             page = "body"
         else
             page = "auth"
-
         require("async-module!../ms/#{page}/init.coffee") ->
             _CACHE = 0
             _body """<ms-#{page} :widget="{$id:'#{page}'}"/>"""
