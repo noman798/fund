@@ -26,5 +26,6 @@
   .VC2
     .VC1
       .VC0
+        .link
         .logout
           a href="/auth/logout" 退出登录
