@@ -1,15 +1,21 @@
 require 'scss/util/_slideout'
 
-wDB.child('adminGroup').child($user.uid).on(
-    'value'
-    (o) ->
-        if not o.val()
-            data = {}
-            data[$user.uid] = true
-            wDB.child('adminGroup').set(data)
-    (err) ->
-        console.log err
-)
+IS_ADMIN = 0
+wilddog.auth().onAuthStateChanged (user) ->
+    IS_ADMIN = 0
+    if not user
+        return
+
+    wDB.child('adminGroup').child(user.uid).on(
+        'value'
+        (o) ->
+            IS_ADMIN = true
+            if not o.val()
+                data = {}
+                data[$user.uid] = true
+                wDB.child('adminGroup').set(data)
+        ->
+    )
 
 MS 'body', require("slm/_main")+require('./sidebar.slm'), {
     onReady: ->
@@ -27,6 +33,9 @@ MS 'body', require("slm/_main")+require('./sidebar.slm'), {
         )
 
         slideout.on('open', ->
+            console.log IS_ADMIN
+            if IS_ADMIN
+                $('#sM .logout').before """<a href="/god">管理后台</a>"""
             if $(window).width() < 800
                 $("#sP").one(
                     'click.slideout', ->
