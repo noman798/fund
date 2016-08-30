@@ -26,12 +26,14 @@ MS 'auth-new', html.html(), {
             elem.find('.authBk').html require("./new_done.slm")
         ).catch (err) ->
             code = err.code
+            console.log code
             _tiper = ->
                 self.err = tip = {
                     invalid_arguments:"请输入密码"
                     authentication_disabled:"请输入邮箱"
                     email_already_in_use:"邮箱已注册"
                     invalid_email:"邮箱无效"
+                    "password-length-error":"密码长度为6到15位"
                 }[code] or err.message
                 elem.find('input').removeClass('err')
                 elem.find(
