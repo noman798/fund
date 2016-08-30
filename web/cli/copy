@@ -1,6 +1,6 @@
 PREFIX=`realpath $(cd "$(dirname "$0")"; pwd)/..`
 cd $PREFIX
 
-rsync /home/dev/fund/web/dist  dev@wq123.u88.vc:/home/dev/fund/web -avz -e 'ssh -p 30000'
-rsync /home/dev/fund/web/dist  dev@robomaker.org :/home/dev/fund/web -avz 
+rsync /home/dev/fund/web/dist dev@wq123.u88.vc:/home/dev/fund/web -avz -e 'ssh -p 30000'
+rsync /home/dev/fund/web/dist dev@robomaker.org:/home/dev/fund/web -avz 
 

@@ -26,7 +26,6 @@ MS 'auth-new', html.html(), {
             elem.find('.authBk').html require("./new_done.slm")
         ).catch (err) ->
             code = err.code
-            console.log code
             _tiper = ->
                 self.err = tip = {
                     invalid_arguments:"请输入密码"
