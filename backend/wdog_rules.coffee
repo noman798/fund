@@ -5,15 +5,18 @@ ADMIN_GROUP_RW = "(!root.hasChild('adminGroup')) || #{USER_IS_ADMIN}"
 module.exports = \
 {
     rules: {
-        $read: false
-        $write: false
+        _read: false
+        _write: false
         adminGroup: {
-            $read: ADMIN_GROUP_RW
-            $write: ADMIN_GROUP_RW
+            _read: ADMIN_GROUP_RW
+            _write: ADMIN_GROUP_RW
+            $item:{
+                _validate : "newData.val().isBoolean()"
+            }
         }
         adminLog:{
-            $read: USER_IS_ADMIN
-            $write: USER_IS_ADMIN
+            _read: USER_IS_ADMIN
+            _write: USER_IS_ADMIN
         }
     }
 }
