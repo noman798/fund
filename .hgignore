@@ -5,4 +5,5 @@ bundle.js
 npm-debug.log
 config.coffee
 file/font/.font-spider/*.ttf
+.*
 bundle.js.map
