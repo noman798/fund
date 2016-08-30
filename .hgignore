@@ -6,4 +6,5 @@ npm-debug.log
 config.coffee
 file/font/.font-spider/*.ttf
 .*
+npm-debug.log.*
 bundle.js.map

@@ -1,5 +1,5 @@
 {
-  "name": "tzfund",
+  "name": "u88",
   "version": "0.0.1",
   "scripts": {
     "dist": "NODE_ENV=production webpack --progress --colors -p"
