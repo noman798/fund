@@ -35,7 +35,7 @@ MS 'body', require("slm/_main")+require('./sidebar.slm'), {
         slideout.on('open', ->
             if ADMIN_APPEND
                 ADMIN_APPEND = undefined
-                $('#sM .logout').before """<a href="/god">管理后台</a>"""
+                $('#sM .link').append """<a href="/god">管理后台</a>"""
             if $(window).width() < 800
                 $("#sP").one(
                     'click.slideout', ->
