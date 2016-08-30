@@ -1,28 +1,28 @@
-scss:
-  .logout{
-    text-align:center;
-    a{
-      font-weight:100;
-      color:#000;
-      padding:8px 16px;
-      background-image:linear-gradient(180deg, #000, #000 50%, transparent 50%),
-      linear-gradient(270deg, #000, #000 50%, transparent 50%),
-      linear-gradient(0deg, #000, #000 50%, transparent 50%),
-      linear-gradient(90deg, #000, #000 50%, transparent 50%);
-      background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
-      background-repeat: no-repeat;
-      background-position: top, right top,  bottom, left top;
-      &:hover{
-        color:#f01716;
-		background-image:linear-gradient(180deg, #f01716, #f01716 50%, transparent 50%),
-		linear-gradient(270deg, #f01716, #f01716 50%, transparent 50%),
-		linear-gradient(0deg, #f01716, #f01716 50%, transparent 50%),
-		linear-gradient(90deg, #f01716, #f01716 50%, transparent 50%);
-		background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
+#sM
+  scss:
+    .logout{
+      text-align:center;
+      a{
+        font-weight:100;
+        color:#000;
+        padding:8px 16px;
+        background-image:linear-gradient(180deg, #000, #000 50%, transparent 50%),
+        linear-gradient(270deg, #000, #000 50%, transparent 50%),
+        linear-gradient(0deg, #000, #000 50%, transparent 50%),
+        linear-gradient(90deg, #000, #000 50%, transparent 50%);
+        background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
+        background-repeat: no-repeat;
+        background-position: top, right top,  bottom, left top;
+        &:hover{
+          color:#f01716;
+          background-image:linear-gradient(180deg, #f01716, #f01716 50%, transparent 50%),
+          linear-gradient(270deg, #f01716, #f01716 50%, transparent 50%),
+          linear-gradient(0deg, #f01716, #f01716 50%, transparent 50%),
+          linear-gradient(90deg, #f01716, #f01716 50%, transparent 50%);
+          background-size: 100% 1px,1px 100% ,100% 1px, 1px 100%;
+        }
       }
     }
-  }
-#sM
   .VC2
     .VC1
       .VC0
