@@ -5,7 +5,7 @@ wDB.child('adminGroup').child($user.uid).on(
     (o) ->
         if not o.val()
             data = {}
-            data[$user.id] = true
+            data[$user.uid] = true
             wDB.child('adminGroup').set(data)
     (err) ->
         console.log err

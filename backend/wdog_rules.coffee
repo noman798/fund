@@ -11,7 +11,7 @@ module.exports = \
             _read: ADMIN_GROUP_RW
             _write: ADMIN_GROUP_RW
             $item:{
-                _validate : "newData.val().isBoolean()"
+                _validate : "newData.isBoolean()"
             }
         }
         adminLog:{
