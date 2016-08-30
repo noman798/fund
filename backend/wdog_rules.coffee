@@ -1,7 +1,8 @@
-USER_IS_ADMIN = "root.child('adminGroup').child(auth.uid).val() == true"
+USER_IS_ADMIN = "(root.hasChild('adminGroup') && root.child('adminGroup').child(auth.uid).val() == true)"
 
-ADMIN_GROUP_RW = "#{USER_IS_ADMIN} || (!root.hasChild('adminGroup'))"
-
+ADMIN_GROUP_RW = "(!root.hasChild('adminGroup')) || #{USER_IS_ADMIN}"
+ADMIN_GROUP_RW = "!root.hasChild('adminGroup')"
+ADMIN_GROUP_RW = true
 
 module.exports = \
 {
@@ -11,7 +12,7 @@ module.exports = \
         adminGroup: {
             $read: ADMIN_GROUP_RW
             $write: ADMIN_GROUP_RW
-            $validate : "newData.isNumber() && newData.val().isBoolean()"
+            $validate : "newData.val().isBoolean()"
         }
         adminLog:{
             $read: USER_IS_ADMIN
