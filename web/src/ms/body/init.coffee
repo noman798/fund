@@ -8,6 +8,7 @@ wDB.child('adminGroup').child($user.uid).on(
             data[$user.id] = true
             wDB.child('adminGroup').set(data)
     (err) ->
+        console.log err
 )
 
 MS 'body', require("slm/_main")+require('./sidebar.slm'), {
