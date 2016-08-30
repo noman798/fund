@@ -1,5 +1,15 @@
 require 'scss/util/_slideout'
 
+wDB.child('adminGroup').child($user.uid).on(
+    'value'
+    (o) ->
+        if not o.val()
+            data = {}
+            data[$user.id] = true
+            wDB.child('adminGroup').set(data)
+    (err) ->
+)
+
 MS 'body', require("slm/_main")+require('./sidebar.slm'), {
     onReady: ->
         topbar = $("#topbar")
