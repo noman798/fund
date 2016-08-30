@@ -10,7 +10,6 @@ module.exports = \
         adminGroup: {
             $read: ADMIN_GROUP_RW
             $write: ADMIN_GROUP_RW
-            # $validate : "newData.val().isBoolean()"
         }
         adminLog:{
             $read: USER_IS_ADMIN
