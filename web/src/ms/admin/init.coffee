@@ -6,7 +6,6 @@ MS 'admin-init', html.html(), {
     submit: (e)->
         e.preventDefault()
         q = $.trim @q
-        console.log q
         if not q
             $(@$element).find('input').focus()
             return
