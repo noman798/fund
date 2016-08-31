@@ -10,7 +10,7 @@ _body = (html)->
         body.html ''
     V.BODY.HTML = html
 
-_render = (name, cache=1) ->
+_render = (name, cache=0) ->
     hname = avalon.hyphen(name)
     file = "/"+hname.replace(/-/g,'/')
     if cache
@@ -40,9 +40,9 @@ MAP = {
 }
 
 _render 'authLogin'
-_render 'authNew', 0
-_render 'authName', 0
-_render 'authReset', 0
+_render 'authNew'
+_render 'authName'
+_render 'authReset'
 _render 'adminInit'
 
 URL.map MAP
