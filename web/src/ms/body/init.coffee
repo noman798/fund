@@ -18,8 +18,9 @@ wilddog.auth().onAuthStateChanged (user) ->
     )
 
 MS 'body', require("slm/_main")+require('./sidebar.slm'), {
-    admin : admin
+    admin : 0
     onReady: ->
+        @admin = admin
         topbar = $("#topbar")
         topbar.find(".slideoutBtnW").html """<div id=sB class=slideoutBtn><span/></div>"""
         slideout = new Slideout({
