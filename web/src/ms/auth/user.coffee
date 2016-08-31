@@ -6,6 +6,7 @@ html.find('.txt').html require('./_name.slm')
 
 MS 'auth-user', html.html(), {
     slogo:"个人资料"
+    err:""
     name:""
     onReady: $login ->
         if not $user
@@ -21,7 +22,7 @@ MS 'auth-user', html.html(), {
         name = $.trim @name
         if not name
             return
-
+        self = @
         $user.updateProfile(
             displayName: name
         ).then(
@@ -29,6 +30,9 @@ MS 'auth-user', html.html(), {
                 $user.displayName = name
                 URL "/"
             (err)->
-                console.log err.code
+                message = {
+                    "display-name-length-error":"名字长度不查过十六个字符"
+                }[err.code] or err.message
+                self.err = message
         )
 }
