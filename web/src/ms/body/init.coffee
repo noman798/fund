@@ -35,13 +35,15 @@ MS 'body', require("slm/_main")+require('./sidebar.slm'), {
         )
 
         slideout.on('open', ->
-            $("#sP").bind(
-                'click.slideout', ->
+            $("body").on(
+                'click.slideout'
+                '#sP'
+                ->
                     slideout.close()
             )
         )
         slideout.on('close', ->
-            $("#sP").unbind(
+            $("body").off(
                 'click.slideout'
             )
         )
