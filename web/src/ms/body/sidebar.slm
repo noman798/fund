@@ -39,6 +39,7 @@
     .VC1
       .VC0
         .link
+            a href="/auth/user" 个人资料
             a :if="@admin" href="/admin" 管理后台
         .logout
           a href="/auth/logout" 退出登录
