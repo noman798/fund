@@ -21,9 +21,11 @@ scss:
           color:#fff;
           background:#0078D2;
        }
+       button.loading{
+          background:url(../../../file/loading.svg) 0 0 / 50%;
+       }
     }
      
 form.userSearch :submit="@submit"
-  button.I.I-search type="submit"
+  button.loading.I.I-search type="submit"
   input placeholder="请输入用户邮箱"
-.loading
