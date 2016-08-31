@@ -26,4 +26,4 @@ scss:
 form.userSearch :submit="@submit"
   button.I.I-search type="submit"
   input placeholder="请输入用户邮箱"
-  .loading
+.loading
