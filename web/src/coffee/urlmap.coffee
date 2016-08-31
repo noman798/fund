@@ -17,7 +17,10 @@ _render = (name, cache=1) ->
         cache =",cached:'true'"
     else
         cache = ''
-    MAP[file] = ->
+    url = file
+    if url.slice(-5) == "/init"
+        url = url.slice(0, -5)
+    MAP[url] = ->
         require("async-module!../ms#{file}.coffee") ->
             _body """<ms-#{hname} :widget="{$id:'#{name}'#{cache}}"/>"""
             _CACHE = cache
