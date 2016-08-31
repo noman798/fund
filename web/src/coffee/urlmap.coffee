@@ -39,7 +39,7 @@ MAP = {
 _render 'authLogin'
 _render 'authNew', 0
 _render 'authReset', 0
-_render 'authInit'
+_render 'adminInit'
 
 URL.map MAP
 
