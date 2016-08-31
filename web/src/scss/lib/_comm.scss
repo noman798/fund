@@ -1,13 +1,15 @@
 [ms-controller]{visibility:hidden;}
 body{
     max-width: 500px;
-    box-shadow:0 0 5px #ccc;
+    box-shadow:0 0 4px #eee;
     height: 100%;
     border-left:1px solid #eee;
     border-right:1px solid #eee;
     position: relative;
-    background: require("file/geometry2.png") 0 0 #fff;
     margin: auto;
+}
+html{
+    background: url(../../file/geometry2.png) 0 0 #fff;
 }
 // 清除浮动
 .C{ *zoom: 1; }
