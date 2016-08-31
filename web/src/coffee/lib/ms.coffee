@@ -6,6 +6,6 @@ window.MS = (name, slm, defaults)->
 
     id = "ms-#{name}"
     avalon.component(id, {
-        template: """<div id="#{id}">#{slm}</div>"""
+        template: """<div class="ms" id="#{id}">#{slm}</div>"""
         defaults: defaults
     })
