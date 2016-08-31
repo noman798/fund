@@ -4,7 +4,8 @@ window.MS = (name, slm, defaults)->
         onDispose?.call @
         delete avalon.vmodels[@$id]
 
-    avalon.component('ms-'+name,{
-        template: "<div>#{slm}</div>"
+    id = "ms-#{name}"
+    avalon.component(id, {
+        template: """<div id="#{id}">#{slm}</div>"""
         defaults: defaults
     })
