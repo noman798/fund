@@ -15,12 +15,16 @@
       width:80px;
       right:0;
       font-weight:200;
+      height:69px;
    }
    button:hover{
       color:#fff;
       background:#0078D2;
    }
    button.loading{
-      background:url(../../../file/loading.svg) 0 0 / 50%;
+      background:url(../../../file/loading.svg) 50% 50% / 40% no-repeat;
+   }
+   button.loading:before{
+       content:""
    }
 }
