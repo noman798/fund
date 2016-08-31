@@ -29,13 +29,6 @@ scss:
     }
   }
 
-#topbar.C
-  a.slideoutBtnW.slideout-open href="/"
-      #sB.slideoutBtn
-        span
-  h1 
-    b.logo
-    | 云资本
 
 .MAIN
   .VC2
