@@ -1,4 +1,6 @@
 .line
   label for="authAccount" 姓名 
-  input :duplex="@account" id="authAccount" name="account" autocomplete="off" spellcheck="false"
+  input :duplex="@name" id="authAccount" name="account" autocomplete="off" spellcheck="false"
 
+p
+  button type="submit" 保存设置 

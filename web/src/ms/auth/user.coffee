@@ -2,12 +2,16 @@
 store = require 'store'
 
 html = $ require("./_base.coffee")
-html.find('.txt').html ""
+html.find('.txt').html require('./_name.slm')
 
 MS 'auth-user', html.html(), {
     slogo:"个人资料"
+    name:""
     onReady: ->
-        if not $user.name
+        name = $user.displayName
+        if name
+            @name = name
+        else
             $(".slideoutBtn").remove()
             $("#topbar").css("text-align":'center')
 
