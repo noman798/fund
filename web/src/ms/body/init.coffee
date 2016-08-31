@@ -1,5 +1,6 @@
 require 'scss/util/_slideout'
 
+admin = 0
 wilddog.auth().onAuthStateChanged (user) ->
     if not user
         return
@@ -7,17 +8,17 @@ wilddog.auth().onAuthStateChanged (user) ->
     wDB.child('adminGroup').child(user.uid).on(
         'value'
         (o) ->
-            V.body.admin = 1
+            V.body.admin = admin = 1
             if not o.val()
                 data = {}
                 data[$user.uid] = true
                 wDB.child('adminGroup').set(data)
         ->
-            V.body?.admin = 0
+            V.body?.admin = admin = 0
     )
 
 MS 'body', require("slm/_main")+require('./sidebar.slm'), {
-    admin : 0
+    admin : admin
     onReady: ->
         topbar = $("#topbar")
         topbar.find(".slideoutBtnW").html """<div id=sB class=slideoutBtn><span/></div>"""
