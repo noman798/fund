@@ -16,17 +16,9 @@ $width:256px;
 	width: $width;
 }
 
-@media (min-width: 800px){
-    .slideout-open #sP{
-        right:$width;
-    }
-}
-@media (max-width: 799px){
-    .slideout-open{
-        #sP{
-            transform: translate3d(-$width, 0, 0);
-            opacity:0.9;
-        }
-        body{background:#000;}
-    }
+.slideout-open{
+	#sP{
+		transform: translate3d(-$width, 0, 0);
+		opacity:0.9;
+	}
 }

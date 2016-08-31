@@ -1,5 +1,14 @@
 [ms-controller]{visibility:hidden;}
-body{background:#fff;}
+body{
+    max-width: 500px;
+    box-shadow:0 0 5px #ccc;
+    height: 100%;
+    border-left:1px solid #eee;
+    border-right:1px solid #eee;
+    position: relative;
+    background: require("file/geometry2.png") 0 0 #fff;
+    margin: auto;
+}
 // 清除浮动
 .C{ *zoom: 1; }
 .C:before,
@@ -7,7 +16,7 @@ body{background:#fff;}
 .C:after { clear: both; }
 
 // VC2 VC1 VC0
-.VC2{ height:100%; width:100%; display:table; .VC1{display:table-cell; vertical-align:middle; } } 
+.VC2{ height:100%; width:100%; display:table; .VC1{display:table-cell; vertical-align:middle; } }
 .FC0{ float:left; position:relative; left:50%; .FC1{ position:relative; right:50%; float:left; } }
 /* 基本样式 */
 .R{ float: right; }
