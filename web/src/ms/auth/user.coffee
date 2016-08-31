@@ -14,5 +14,9 @@ MS 'auth-user', html.html(), {
         else
             $(".slideoutBtn").remove()
             $("#topbar").css("text-align":'center')
-
+    submit: (e)->
+        e.preventDefault()
+        if not @name
+            return
+        console.log @name
 }
