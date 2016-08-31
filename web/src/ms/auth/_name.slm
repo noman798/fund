@@ -1,0 +1,4 @@
+.line
+  label for="authAccount" 姓名 
+  input :duplex="@account" id="authAccount" name="account" autocomplete="off" spellcheck="false"
+

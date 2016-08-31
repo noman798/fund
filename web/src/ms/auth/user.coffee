@@ -10,4 +10,5 @@ MS 'auth-user', html.html(), {
         if not $user.name
             $(".slideoutBtn").remove()
             $("#topbar").css("text-align":'center')
+
 }
