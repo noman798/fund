@@ -2,8 +2,11 @@ require 'scss/util/_slideout'
 
 admin = 0
 wilddog.auth().onAuthStateChanged (user) ->
+    window.$user = user
     if not user
         return
+    if not user.displayName
+        URL "/auth/user"
 
     wDB.child('adminGroup').child(user.uid).on(
         'value'
