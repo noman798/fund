@@ -1,0 +1,26 @@
+.userSearch{
+    input, input:focus, input:active, input:hover{
+        outline:0;
+        font-weight:200;
+        border:0;
+        border-bottom:1px solid #eee;
+   }
+   button, button:hover, button:active{
+      border:0;
+      outline:0;
+      font-size:18px;
+      color:#999;
+      border-left:1px solid #eee;
+      position:absolute;
+      width:80px;
+      right:0;
+      font-weight:200;
+   }
+   button:hover{
+      color:#fff;
+      background:#0078D2;
+   }
+   button.loading{
+      background:url(../../../file/loading.svg) 0 0 / 50%;
+   }
+}
