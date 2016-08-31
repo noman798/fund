@@ -4,8 +4,14 @@ $.extend(
         $id : (id)->
             document.getElementById(id)
         $login : (func)->
-            if $user
+            ->
+                if not $user
+                    URL "/"
+                    return
+                func.apply @, arguments
+
 
     }
 )
+
 

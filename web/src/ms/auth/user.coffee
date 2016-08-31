@@ -7,7 +7,7 @@ html.find('.txt').html require('./_name.slm')
 MS 'auth-user', html.html(), {
     slogo:"个人资料"
     name:""
-    onReady: ->
+    onReady: $login ->
         if not $user
             URL "/"
         name = $user.displayName
