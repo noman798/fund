@@ -10,6 +10,10 @@
           font-weight:bold;
         }
       }
+      .link a{
+        display:block;
+        margin-bottom:21px;
+      }
       .logout{
         font-weight:100;
         margin-top:32px;
