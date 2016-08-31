@@ -1,6 +1,6 @@
 store = require 'store'
 
-html = $ """<div>#{require("./_base.slm")}</div>"""
+html = $ require("./_base.coffee")
 html.find('.txt').html require("./_input.slm")+require("./new.slm")
 
 MS 'auth-new', html.html(), {
