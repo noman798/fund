@@ -73,7 +73,10 @@ exports = {
             {
                 test: /\.(png|jpg|gif|svg)$/
                 # loader: 'url-loader?limit=8192&name=[hash].[ext]'
-                loader: 'url-loader?limit=1&name=[hash:base64:7].[ext]'
+                loaders: [
+                    'file?limit=1&name=[hash:base64:7].[ext]'
+                    'image-webpack'
+                ]
             }
         ]
 
