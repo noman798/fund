@@ -33,11 +33,10 @@ MS 'body', require("slm/_main")+require('./sidebar.slm'), {
         )
 
         slideout.on('open', ->
-            if $(window).width() < 800
-                $("#sP").one(
-                    'click.slideout', ->
-                        slideout.close()
-                )
+            $("#sP").one(
+                'click.slideout', ->
+                    slideout.close()
+            )
         )
         slideout.on('close', ->
             $("#sP").unbind(
