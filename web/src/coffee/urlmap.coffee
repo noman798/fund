@@ -41,7 +41,7 @@ MAP = {
 
 _render 'authLogin'
 _render 'authNew'
-_render 'authName'
+_render 'authUser'
 _render 'authReset'
 _render 'adminInit'
 
