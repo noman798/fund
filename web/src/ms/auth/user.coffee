@@ -8,6 +8,8 @@ MS 'auth-user', html.html(), {
     slogo:"个人资料"
     name:""
     onReady: ->
+        if not $user
+            URL "/"
         name = $user.displayName
         if name
             @name = name
@@ -16,7 +18,17 @@ MS 'auth-user', html.html(), {
             $("#topbar").css("text-align":'center')
     submit: (e)->
         e.preventDefault()
-        if not @name
+        name = $.trim @name
+        if not name
             return
-        console.log @name
+
+        $user.updateProfile(
+            displayName: name
+        ).then(
+            (user)->
+                $user.displayName = name
+                URL "/"
+            (err)->
+                console.log err.code
+        )
 }
