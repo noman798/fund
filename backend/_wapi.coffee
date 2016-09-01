@@ -34,6 +34,7 @@ _api = (method, path, dict, callback)->
     token = tokenGenerator.createToken({uid: 0}, {
         admin:true
         expires: 100000000+begin
+        iat:begin
     })
     data = {}
     if typeof(dict) == 'function'
@@ -44,7 +45,7 @@ _api = (method, path, dict, callback)->
         dict = {}
 
     param = querystring.stringify(dict)
-    url = """#{URL}#{path}.json?auth=#{token}&iat=#{begin}"""
+    url = """#{URL}#{path}.json?auth=#{token}"""
     if param
         url += ("&"+param)
 
