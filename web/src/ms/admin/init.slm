@@ -20,6 +20,22 @@ form.userSearch :submit="@submit"
 .bar
   .I.I-cash
   | 云梦
-  span style="font-size:14px;margin-left:16px;color:#999;float:right;margin-right:18px" 
+  .tip 
     | 份额 
-    span style="margin-left:4px"  232.3
+    span.ml4  239922.3
+
+
+.bar
+  .I.I-cash
+  | 闻一
+  .tip 
+    | 份额 
+    span.ml4  32423
+
+
+.bar
+  .I.I-cash
+  | 碧海潮生
+  .tip 
+    | 份额 
+    span.ml4  12423
