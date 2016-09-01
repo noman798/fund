@@ -30,7 +30,6 @@ module.exports = (site, key) ->
 
         data.method = method
         data.url = url
-        console.log(data)
         request(
             data
             callback

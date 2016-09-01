@@ -32,7 +32,8 @@ fetchUser = (callback, end, begin=0) ->
 
 fetchUser(
     (user)->
-        console.log user
+        if user.email
+            DB.child("email_id").update(user.email, user.userId)
     ->
         process.exit()
 )
