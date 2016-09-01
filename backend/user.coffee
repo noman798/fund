@@ -1,7 +1,7 @@
 #! /usr/bin/coffee
 
-wapi = require("./wapi.coffee")(require("./config"))
-console.log wapi.url
+CONFIG = require("./config")
+wapi = require("./wapi.coffee")(CONFIG.WILDDOG.SITE, CONFIG.WILDDOG.KEY)
 
 Wilddog = require("wilddog")
 
@@ -11,14 +11,17 @@ DB.once('value', (o)->
     console.log o.val()
 )
 
+begin = 0
+
 wapi.get(
     ".auth/users"
     {
         limit:1
-        start:0
+        start:begin
     }
     (error, res, body)->
         body = JSON.parse(body)
-        console.log(body)
+        begin += body.userList
         process.exit()
+
 )
