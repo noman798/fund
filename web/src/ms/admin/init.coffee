@@ -1,7 +1,7 @@
 require("./init.scss")
 
 html = $ """<div>#{require("slm/_topbar")}#{require("./init.slm")}</div>"""
-MS 'admin-init', html.html(), {
+MS 'admin', html.html(), {
     slogo:"管理后台"
     loading:0
     q:""
