@@ -21,6 +21,7 @@ module.exports = \
         userIdEmail:{
             _read:false
             _write:false
+            _indexOn: ".value"
         }
     }
 }
