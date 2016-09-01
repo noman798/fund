@@ -2,7 +2,7 @@ form.userSearch :submit="@submit"
   button.I.I-search :class="{loading:@loading}" type="submit"
   input placeholder="请输入用户邮箱" :duplex="@q"
 
-div style="line-height:67px;font-size:18px;padding:0 18px;border-bottom:1px solid #eee;font-weight:200;color:#03a" 
+.bar
   .I.I-pie style="float:right;border-left:1px solid #eee;height:67px;width:61px;padding:0;text-align:center"
   | 份额一览
   span style="font-size:14px;margin-left:16px;color:#999;float:right;margin-right:18px" 
