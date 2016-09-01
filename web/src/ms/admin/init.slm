@@ -15,14 +15,56 @@ form.userSearch :submit="@submit"
   | 份额一览
   span style="font-size:14px;margin-left:16px;color:#999;float:right;margin-right:18px" 
     | 总份额
-    span style="margin-left:4px"  322323
+    span style="margin-left:4px"  1292.8203 万
 
 .bar
   .I.I-cash
   | 云梦
   .tip 
     | 份额 
-    span.ml4  239922.3
+    span.ml4  2239922.3
+
+.bar
+  .I.I-cash
+  | 石敢当 
+  .tip 
+    | 份额 
+    span.ml4  997500
+
+.bar
+  .I.I-cash
+  | 地球摩羯座 
+  .tip 
+    | 份额 
+    span.ml4  900500
+
+.bar
+  .I.I-cash
+  | 高文斌 
+  .tip 
+    | 份额 
+    span.ml4  800323
+
+.bar
+  .I.I-cash
+  | 唐家三少 
+  .tip 
+    | 份额 
+    span.ml4  500323
+
+.bar
+  .I.I-cash
+  | 佛本是道
+  .tip 
+    | 份额 
+    span.ml4  418234
+
+.bar
+  .I.I-cash
+  | 秋天来了
+  .tip 
+    | 份额 
+    span.ml4  88234
 
 
 .bar
