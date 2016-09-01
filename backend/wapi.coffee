@@ -5,6 +5,7 @@ module.exports = (site, key) ->
     tokenGenerator = new WilddogTokenGenerator(key)
 
     token = ->
+        begin = new Date().getTime()
         tokenGenerator.createToken({uid: 0}, {
             admin:true
             expires: 100000000+begin
@@ -15,7 +16,6 @@ module.exports = (site, key) ->
     querystring = require('querystring')
 
     _api = (method, path, dict, callback)->
-        begin = new Date().getTime()
         data = {}
         if typeof(dict) == 'function'
             callback = dict

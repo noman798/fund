@@ -5,7 +5,6 @@ wapi = require("./wapi.coffee")(CONFIG.WILDDOG.SITE, CONFIG.WILDDOG.KEY)
 
 
 fetchUser = (callback, end, begin=0) ->
-    console.log begin
     wapi.get(
         ".auth/users"
         {
@@ -31,14 +30,14 @@ DB = new Wilddog(wapi.url)
 DB.authWithCustomToken(
     wapi.token()
     ->
-        DB_EMAIL_ID = DB.child("email_id").ref()
+        DB_USER_ID_EMAIL = DB.child("userIdEmail").ref()
 
         fetchUser(
             (user)->
                 if user.email
                     data = {}
                     data[user.userId] = user.email
-                    DB_EMAIL_ID.update(data)
+                    DB_USER_ID_EMAIL.update(data)
             ->
                 process.exit()
         )
