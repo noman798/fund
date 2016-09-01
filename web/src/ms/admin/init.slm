@@ -3,7 +3,14 @@ form.userSearch :submit="@submit"
   input placeholder="请输入用户邮箱" :duplex="@q"
 
 .bar
-  .I.I-add
+  span style="color:#999" 查无此人
+  .I.I-mail 邀请注册
+    
+  span style="font-size:14px;margin-left:16px;color:#999;float:right;margin-right:18px;" 
+    | zsp042@gmail.com 
+
+.bar
+  .I.I-cash
   | 云梦
   span style="font-size:14px;margin-left:16px;color:#999;float:right;margin-right:18px" 
     | 份额 

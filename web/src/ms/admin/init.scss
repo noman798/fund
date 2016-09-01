@@ -36,8 +36,8 @@
     font-weight:200;
     padding:0 0 0 18px;
     color:#03a;
-    cursor:pointer;
     .I{
+        cursor:pointer;
         float: right;
         border-left: 1px solid #eee;
         height: 67px;
@@ -46,6 +46,16 @@
         text-align: center;
         color: #999;
         font-size: 19px;
+    }
+    .I-mail{
+        font-size: 14px;
+        width: 124px;
+        font-weight:200;
+        &:before{
+            font-size: 22px;
+            vertical-align: -4px;
+            margin-right: 7px;
+        }
     }
 }
 }
