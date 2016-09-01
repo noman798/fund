@@ -30,9 +30,11 @@ DB = new Wilddog(wapi.url)
 DB.authWithCustomToken(
     wapi.token()
     ->
-        DB.child('userIdNew').on('child_added', (o)->
+        _userInit = (o)->
             console.log o
-        )
+        userIdNew = DB.child('userIdNew').ref()
+        userIdNew.on('child_added', _userInit)
+        userIdNew.on('child_changed', _userInit)
         false
         return
         DB_USER_ID_EMAIL = DB.child("userIdEmail").ref()
