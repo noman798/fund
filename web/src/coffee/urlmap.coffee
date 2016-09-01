@@ -20,6 +20,8 @@ _render = (name, cache=0) ->
     url = file
     if url.slice(-5) == "/init"
         url = url.slice(0, -5)
+        name = name.slice(0, -4)
+        hname = hname.slice(0, -5)
     MAP[url] = ->
         require("async-module!../ms#{file}.coffee") ->
             _body """<ms-#{hname} :widget="{$id:'#{name}'#{cache}}"/>"""
