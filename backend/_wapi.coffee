@@ -30,9 +30,10 @@ URL = "https://#{CONFIG.WILDDOG.SITE}.wilddogio.com/"
 querystring = require('querystring')
 
 _api = (method, path, dict, callback)->
+    begin = new Date().getTime()
     token = tokenGenerator.createToken({uid: 0}, {
         admin:true
-        expires: new Date().getTime() + 100000000
+        expires: 100000000+begin
     })
     data = {}
     if typeof(dict) == 'function'
@@ -43,7 +44,7 @@ _api = (method, path, dict, callback)->
         dict = {}
 
     param = querystring.stringify(dict)
-    url = """#{URL}#{path}.json?auth=#{token}"""
+    url = """#{URL}#{path}.json?auth=#{token}&iat=#{begin}"""
     if param
         url += ("&"+param)
 
