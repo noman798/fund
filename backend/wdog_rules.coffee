@@ -26,6 +26,9 @@ module.exports = \
         userIdNew:{
             _write: "$user_id == auth.uid"
             _read: "$user_id == auth.uid"
+            $item:{
+                _validate : "(newData.val() > (now-60000)) && (newData.val() < (now+60000))"
+            }
         }
     }
 }
