@@ -11,17 +11,21 @@ DB.once('value', (o)->
     console.log o.val()
 )
 
-begin = 0
+foreachUser = () ->
+    wapi.get(
+        ".auth/users"
+        {
+            limit:1
+            start:begin
+        }
+        (error, res, body)->
+            body = JSON.parse(body)
+            begin += body.userList.length
+            for i in body.userList
+                callback(i)
+            process.exit()
 
-wapi.get(
-    ".auth/users"
-    {
-        limit:1
-        start:begin
-    }
-    (error, res, body)->
-        body = JSON.parse(body)
-        begin += body.userList
-        process.exit()
+    )
 
-)
+foreachUser (position, user)->
+    console.log user
