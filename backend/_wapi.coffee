@@ -49,6 +49,7 @@ _api = (method, path, dict, callback)->
 
     data.method = method
     data.url = url
+    console.log(data)
     request(
         data
         callback
