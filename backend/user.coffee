@@ -5,6 +5,7 @@ wapi = require("./wapi.coffee")(CONFIG.WILDDOG.SITE, CONFIG.WILDDOG.KEY)
 
 
 fetchUser = (callback, end, begin=0) ->
+    console.log begin
     wapi.get(
         ".auth/users"
         {
