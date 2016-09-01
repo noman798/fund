@@ -1,3 +1,4 @@
+#ms-admin{
 .userSearch{
     input, input:focus, input:active, input:hover{
         outline:0;
@@ -31,8 +32,19 @@
 .bar{
     line-height:67px;
     font-size:18px;
-    padding:0 18px;
     border-bottom:1px solid #eee;
     font-weight:200;
+    padding:0 0 0 18px;
     color:#03a;
+}
+.I-pie{
+    float: right;
+    border-left: 1px solid #eee;
+    height: 67px;
+    width: 79px;
+    padding: 0;
+    text-align: center;
+    color: #999;
+    font-size: 18px;
+}
 }

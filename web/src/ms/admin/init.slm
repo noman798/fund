@@ -3,7 +3,7 @@ form.userSearch :submit="@submit"
   input placeholder="请输入用户邮箱" :duplex="@q"
 
 .bar
-  .I.I-pie style="float:right;border-left:1px solid #eee;height:67px;width:61px;padding:0;text-align:center"
+  .I.I-pie
   | 份额一览
   span style="font-size:14px;margin-left:16px;color:#999;float:right;margin-right:18px" 
     | 总份额
