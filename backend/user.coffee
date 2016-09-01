@@ -38,6 +38,7 @@ DB.authWithCustomToken(
                     data = {}
                     data[user.userId] = user.email
                     DB_USER_ID_EMAIL.update(data)
+                false
             ->
                 process.exit()
         )
