@@ -1,5 +1,3 @@
-#! /usr/bin/env coffee
-
 module.exports = (site, key) ->
     WilddogTokenGenerator = require("wilddog-token-generator")
     request = require('request')

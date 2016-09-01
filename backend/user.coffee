@@ -1,10 +1,9 @@
 #! /usr/bin/coffee
 
-wapi = require("./wapi.coffee")
+wapi = require("./wapi.coffee")(require("./config"))
 
-CONFIG = require "../config.coffee"
 Wilddog = require("wilddog")
-DB = new Wilddog("https://#{CONFIG.WILDDOG.SITE}.wilddogio.com/")
+DB = new Wilddog(wapi.url)
 
 DB.once('value', (o)->
     console.log o.val()
