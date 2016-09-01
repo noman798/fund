@@ -27,7 +27,9 @@ MS 'auth-new', html.html(), {
             data[user.userId] = {".sv": "timestamp"}
             userIdNew.update(
                 data
-                ->
+                (o,err)->
+                    console.log o,"!"
+                    console.log err,"err"
                     elem.find('.authBk').html require("./new_done.slm")
             )
         ).catch (err) ->

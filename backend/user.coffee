@@ -31,7 +31,7 @@ DB.authWithCustomToken(
     wapi.token()
     ->
         _userInit = (o)->
-            console.log o
+            console.log o.val()
         userIdNew = DB.child('userIdNew').ref()
         userIdNew.on('child_added', _userInit)
         userIdNew.on('child_changed', _userInit)

@@ -24,10 +24,11 @@ module.exports = \
             _indexOn: ".value"
         }
         userIdNew:{
-            _write: "$user_id == auth.uid"
-            _read: "$user_id == auth.uid"
-            $item:{
-                _validate : "newData.isNumber() && (newData.val() > (now-60000)) && (newData.val() < (now+60000))"
+            $user_id:{
+                _write:true
+                _read:true
+                # _write: "$user_id == auth.uid"
+                # _read: "$user_id == auth.uid"
             }
         }
     }
