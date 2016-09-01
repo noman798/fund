@@ -5,7 +5,7 @@ form.userSearch :submit="@submit"
 div style="line-height:67px;font-size:18px;padding:0 18px;border-bottom:1px solid #eee;font-weight:200;color:#03a" 
   .I.I-search style="float:right;background:#fff;border-left:1px solid #eee;height:67px;width:61px;padding:0;text-align:center"
   | 份额一览
-  span style="font-size:14px;margin-left:16px;color:#444;float:right;margin-right:18px" 
+  span style="font-size:14px;margin-left:16px;color:#999;float:right;margin-right:18px" 
     | 总份额
     span style="margin-left:4px"  322323
 
