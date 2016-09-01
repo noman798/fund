@@ -18,5 +18,9 @@ module.exports = \
             _read: USER_IS_ADMIN
             _write: USER_IS_ADMIN
         }
+        userIdEmail:{
+            _read:false
+            _write:false
+        }
     }
 }
