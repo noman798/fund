@@ -6,7 +6,7 @@ CONFIG = require "../config.coffee"
 Wilddog = require("wilddog")
 DB = new Wilddog("https://#{CONFIG.WILDDOG.SITE}.wilddogio.com/")
 
-DB.on('value', (o)->
+DB.once('value', (o)->
     console.log o.val()
 )
 
