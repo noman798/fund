@@ -11,21 +11,28 @@ DB.once('value', (o)->
     console.log o.val()
 )
 
-foreachUser = () ->
+fetchUser = (callback, end, begin=0) ->
     wapi.get(
         ".auth/users"
         {
-            limit:1
+            limit:5
             start:begin
         }
         (error, res, body)->
             body = JSON.parse(body)
-            begin += body.userList.length
-            for i in body.userList
+            userList = body.userList
+            begin += userList.length
+            for i in userList
                 callback(i)
-            process.exit()
-
+            if begin < body.userCount
+                fetchUser(callback, end, begin)
+            else
+                end()
     )
 
-foreachUser (position, user)->
-    console.log user
+fetchUser(
+    (user)->
+        console.log user
+    ->
+        process.exit()
+)
