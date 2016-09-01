@@ -44,7 +44,7 @@ _api = (method, path, dict, callback)->
         dict = {}
 
     param = querystring.stringify(dict)
-    url = """#{URL}#{path}.json?auth=#{token}&lat=#{begin}"""
+    url = """#{URL}#{path}.json?auth=#{token}&iat=#{begin}"""
     if param
         url += ("&"+param)
 
