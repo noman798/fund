@@ -1,4 +1,4 @@
-USER_IS_ADMIN = "(root.child('adminGroup').child(auth.uid).val() == true)"
+USER_IS_ADMIN = "(root.child('adminGroup/'+auth.uid).val() == true)"
 
 ADMIN_GROUP_RW = "(!root.hasChild('adminGroup')) || #{USER_IS_ADMIN}"
 
