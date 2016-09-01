@@ -1,3 +1,5 @@
+#! /usr/bin/coffee
+
 wapi = require("./_wapi.coffee")
 wapi.get(
     ".auth/users"
