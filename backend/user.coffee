@@ -40,6 +40,11 @@ DB.authWithCustomToken(
     ->
         _userInit = (o)->
             console.log o.key()
+            wapi.get(
+                ".auth/users/#{o.key()}"
+                (error, res, body)->
+                    console.log(error, body)
+            )
             return
             fetchUser(
                 (userList)->
