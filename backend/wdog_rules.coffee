@@ -18,16 +18,16 @@ module.exports = \
             _read: USER_IS_ADMIN
             _write: USER_IS_ADMIN
         }
-        userIdEmail:{
-            _read:USER_IS_ADMIN
-            _write:false
-            _indexOn: ".value"
-        }
         userIdNew:{
             $userId:{
                 _write: "$userId == auth.uid && newData.isNumber() && newData.val == now"
                 _read: false
             }
+        }
+        userIdEmail:{
+            _read:USER_IS_ADMIN
+            _write:false
+            _indexOn: ".value"
         }
         userIdInfo:{
             $userId:{
