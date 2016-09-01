@@ -25,5 +25,5 @@ wApp = wilddog.initializeApp(
     authDomain: "#{COFNIG.WILDDOG}.wilddog.com",
     databaseURL: "//#{COFNIG.WILDDOG}.wilddogio.com"
 )
-window.wDB = wilddog.database().ref()
+window.wDB = wilddog.database()
 window.$user = wilddog.auth().currentUser

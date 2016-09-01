@@ -22,7 +22,14 @@ MS 'auth-new', html.html(), {
             account, password
         ).then((user)->
             store.set('account', account)
-            elem.find('.authBk').html require("./new_done.slm")
+            userIdNew = wDB.ref("userIdNew")
+            data = {}
+            data[user.userId] = {".sv": "timestamp"}
+            userIdNew.update(
+                data
+                ->
+                    elem.find('.authBk').html require("./new_done.slm")
+            )
         ).catch (err) ->
             code = err.code
             _tiper = ->
