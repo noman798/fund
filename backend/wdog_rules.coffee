@@ -29,5 +29,11 @@ module.exports = \
                 _read: false
             }
         }
+        userIdInfo:{
+            $userId:{
+                _write: "$userId == auth.uid"
+                _read: true
+            }
+        }
     }
 }
