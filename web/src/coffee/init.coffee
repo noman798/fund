@@ -23,7 +23,7 @@ COFNIG = require "../../config.coffee"
 
 wApp = wilddog.initializeApp(
     authDomain: "#{COFNIG.WILDDOG}.wilddog.com",
-    databaseURL: "//#{COFNIG.WILDDOG}.wilddogio.com"
+    syncURL: "//#{COFNIG.WILDDOG}.wilddogio.com"
 )
-window.wDB = wilddog.database()
+window.wDB = wilddog.sync()
 window.$user = wilddog.auth().currentUser
