@@ -1,6 +1,6 @@
 #! /usr/bin/coffee
 
-wapi = require("./_wapi.coffee")
+wapi = require("./wapi.coffee")
 
 CONFIG = require "../config.coffee"
 Wilddog = require("wilddog")
