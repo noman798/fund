@@ -31,7 +31,7 @@ module.exports = \
         }
         userIdInfo:{
             $userId:{
-                _write: "$userId == auth.uid"
+                _write: false
                 _read: true
             }
         }
