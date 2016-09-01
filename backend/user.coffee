@@ -30,6 +30,11 @@ DB = new Wilddog(wapi.url)
 DB.authWithCustomToken(
     wapi.token()
     ->
+        DB.child('userIdNew').on('child_added', (o)->
+            console.log o
+        )
+        false
+        return
         DB_USER_ID_EMAIL = DB.child("userIdEmail").ref()
 
         fetchUser(
@@ -43,5 +48,4 @@ DB.authWithCustomToken(
                 process.exit()
         )
 )
-
 

@@ -23,7 +23,7 @@ module.exports = \
             _write:false
             _indexOn: ".value"
         }
-        userNew:{
+        userIdNew:{
             _write: "$user_id == auth.uid"
             _read: "$user_id == auth.uid"
         }
