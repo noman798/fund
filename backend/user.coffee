@@ -7,9 +7,6 @@ Wilddog = require("wilddog")
 
 DB = new Wilddog(wapi.url)
 
-DB.once('value', (o)->
-    console.log o.val()
-)
 
 fetchUser = (callback, end, begin=0) ->
     wapi.get(
@@ -30,10 +27,14 @@ fetchUser = (callback, end, begin=0) ->
                 end()
     )
 
+DB_EMAIL_ID = DB.child("email_id").ref()
+
 fetchUser(
     (user)->
         if user.email
-            DB.child("email_id").update(user.email, user.userId)
+            data = {}
+            data[user.userId] = user.email
+            DB_EMAIL_ID.update(data)
     ->
         process.exit()
 )
