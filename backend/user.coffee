@@ -15,8 +15,7 @@ fetchUser = (callback, end, begin=0) ->
             body = JSON.parse(body)
             userList = body.userList
             begin += userList.length
-            for i in userList
-                callback(i)
+            callback(userList)
             if begin < body.userCount
                 fetchUser(callback, end, begin)
             else
@@ -33,7 +32,7 @@ DB.authWithCustomToken(
         DB_USER_ID_EMAIL = DB.child("userIdEmail").ref()
 
         fetchUser(
-            (user)->
+            (userList)->
                 if user.email
                     data = {}
                     data[user.userId] = user.email
