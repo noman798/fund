@@ -4,6 +4,6 @@ html
     meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
     meta charset='utf-8'
     title 云资本 
-    script src="//cdn.wilddog.com/js/client/v2/wilddog-web-all.js"
+    script src="//cdn.wilddog.com/sdk/js/2.0.0/wilddog.js"
 
   body :controller="BODY" :html="@HTML"
