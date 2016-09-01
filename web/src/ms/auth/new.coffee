@@ -28,8 +28,6 @@ MS 'auth-new', html.html(), {
             userIdNew.update(
                 data
                 (o,err)->
-                    console.log o,"!"
-                    console.log err,"err"
                     elem.find('.authBk').html require("./new_done.slm")
             )
         ).catch (err) ->
