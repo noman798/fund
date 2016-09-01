@@ -1,8 +1,10 @@
 #! /usr/bin/coffee
 
 wapi = require("./wapi.coffee")(require("./config"))
+console.log wapi.url
 
 Wilddog = require("wilddog")
+
 DB = new Wilddog(wapi.url)
 
 DB.once('value', (o)->
