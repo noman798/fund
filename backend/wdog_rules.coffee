@@ -24,11 +24,9 @@ module.exports = \
             _indexOn: ".value"
         }
         userIdNew:{
-            $user_id:{
-                _write:true
-                _read:true
-                # _write: "$user_id == auth.uid"
-                # _read: "$user_id == auth.uid"
+            $userId:{
+                _write: "$userId == auth.uid && newData.isNumber() && newData.val == now"
+                _read: false
             }
         }
     }

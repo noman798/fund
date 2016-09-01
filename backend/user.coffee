@@ -20,34 +20,38 @@ fetchUser = (callback, end, begin=0) ->
             if begin < body.userCount
                 fetchUser(callback, end, begin)
             else
-                end()
+                end?()
     )
 
 Wilddog = require("wilddog")
 
 DB = new Wilddog(wapi.url)
 
+DB_USER_ID_EMAIL = DB.child("userIdEmail").ref()
+
+_save = (user) ->
+    if user.email
+        data = {}
+        data[user.userId] = user.email
+        DB_USER_ID_EMAIL.update(data)
+
 DB.authWithCustomToken(
     wapi.token()
     ->
         _userInit = (o)->
-            console.log o.val()
+            console.log o.key()
+            return
+            fetchUser(
+                (userList)->
+                    for user in userList
+                        _save user
+                    false
+            )
+
         userIdNew = DB.child('userIdNew').ref()
         userIdNew.on('child_added', _userInit)
+        #userIdNew.limitToLast(1).on('child_added', _userInit)
         userIdNew.on('child_changed', _userInit)
-        false
-        return
-        DB_USER_ID_EMAIL = DB.child("userIdEmail").ref()
 
-        fetchUser(
-            (userList)->
-                if user.email
-                    data = {}
-                    data[user.userId] = user.email
-                    DB_USER_ID_EMAIL.update(data)
-                false
-            ->
-                process.exit()
-        )
 )
 

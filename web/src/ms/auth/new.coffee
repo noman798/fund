@@ -24,7 +24,7 @@ MS 'auth-new', html.html(), {
             store.set('account', account)
             userIdNew = wDB.ref("userIdNew")
             data = {}
-            data[user.userId] = {".sv": "timestamp"}
+            data[user.uid] = {".sv": "timestamp"}
             userIdNew.update(
                 data
                 (o,err)->
