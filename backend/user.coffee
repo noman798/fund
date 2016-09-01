@@ -15,7 +15,8 @@ fetchUser = (callback, end, begin=0) ->
             body = JSON.parse(body)
             userList = body.userList
             begin += userList.length
-            callback(userList)
+            if callback(userList)
+                return
             if begin < body.userCount
                 fetchUser(callback, end, begin)
             else
