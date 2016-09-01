@@ -4,17 +4,18 @@ module.exports = (site, key) ->
 
     tokenGenerator = new WilddogTokenGenerator(key)
 
+    token = ->
+        tokenGenerator.createToken({uid: 0}, {
+            admin:true
+            expires: 100000000+begin
+            iat:begin
+        })
 
     URL = "https://#{site}.wilddogio.com/"
     querystring = require('querystring')
 
     _api = (method, path, dict, callback)->
         begin = new Date().getTime()
-        token = tokenGenerator.createToken({uid: 0}, {
-            admin:true
-            expires: 100000000+begin
-            iat:begin
-        })
         data = {}
         if typeof(dict) == 'function'
             callback = dict
@@ -24,7 +25,7 @@ module.exports = (site, key) ->
             dict = {}
 
         param = querystring.stringify(dict)
-        url = """#{URL}#{path}.json?auth=#{token}"""
+        url = """#{URL}#{path}.json?auth=#{token()}"""
         if param
             url += ("&"+param)
 
@@ -37,6 +38,7 @@ module.exports = (site, key) ->
 
     {
         url :  URL
+        token
         get : (path, dict, callback)->
             _api("get", path, dict, callback)
         put : (path, dict, callback)->

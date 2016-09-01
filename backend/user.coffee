@@ -3,10 +3,6 @@
 CONFIG = require("./config")
 wapi = require("./wapi.coffee")(CONFIG.WILDDOG.SITE, CONFIG.WILDDOG.KEY)
 
-Wilddog = require("wilddog")
-
-DB = new Wilddog(wapi.url)
-
 
 fetchUser = (callback, end, begin=0) ->
     wapi.get(
@@ -27,14 +23,24 @@ fetchUser = (callback, end, begin=0) ->
                 end()
     )
 
-DB_EMAIL_ID = DB.child("email_id").ref()
+Wilddog = require("wilddog")
 
-fetchUser(
-    (user)->
-        if user.email
-            data = {}
-            data[user.userId] = user.email
-            DB_EMAIL_ID.update(data)
+DB = new Wilddog(wapi.url)
+
+DB.authWithCustomToken(
+    wapi.token()
     ->
-        process.exit()
+        DB_EMAIL_ID = DB.child("email_id").ref()
+
+        fetchUser(
+            (user)->
+                if user.email
+                    data = {}
+                    data[user.userId] = user.email
+                    DB_EMAIL_ID.update(data)
+            ->
+                process.exit()
+        )
 )
+
+

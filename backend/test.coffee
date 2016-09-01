@@ -22,11 +22,3 @@ request.get(
 )
 
 # DB = new Wilddog()
-# DB.authWithCustomToken(
-#     token
-#     ->
-#         DB.child('.auth').on('value', (o)->
-#             console.log o.val()
-#         )
-# )
-
