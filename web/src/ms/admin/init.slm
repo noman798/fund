@@ -11,7 +11,7 @@ form.userSearch :submit="@submit"
 
 
 .bar.split
-  .I.I-pie
+  .I.I-down
   | 份额一览
   span style="font-size:14px;margin-left:16px;color:#999;float:right;margin-right:18px" 
     | 总份额
