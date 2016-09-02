@@ -34,7 +34,7 @@ scss:
   .VC2
     .VC1
       .authBk
-        h2 :class="{err:@err}"
+        h2.C :class="{err:@err}"
           .tip {{@err}}
           | {{@title}}
         form.txt :submit="@submit"
