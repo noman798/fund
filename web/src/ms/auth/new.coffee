@@ -36,7 +36,7 @@ MS 'auth-new', html.html(), {
                     authentication_disabled:"请输入邮箱"
                     email_already_in_use:"邮箱已注册"
                     invalid_email:"邮箱无效"
-                    password_character_error:"密码应由数字和字母组成"
+                    # password_character_error:"密码应由数字和字母组成"
                     password_length_error:"密码长度为6到16位"
                 }[code] or err.message
                 elem.find('input').removeClass('err')
