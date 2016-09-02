@@ -6,5 +6,4 @@ html
     title 云资本 
     script src="//cdn.wilddog.com/sdk/js/2.0.0/wilddog.js"
 
-  body :controller="BODY"
-    .BODY.scrollbar-macosx :html="@HTML"
+  body :controller="BODY" :html="@HTML"
