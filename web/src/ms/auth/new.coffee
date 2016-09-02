@@ -20,11 +20,7 @@ MS 'auth-new', html.html(), {
             account, password
         ).then((user)->
             store.set('account', account)
-            userIdNew = wDB.ref("userIdNew")
-            data = {}
-            data[user.uid] = user.email
-            userIdNew.update(
-                data
+            require("async-module!coffee/idNew.coffee")
                 (o,err)->
                     elem.find('.authBk').html require("./new_done.slm")
             )
