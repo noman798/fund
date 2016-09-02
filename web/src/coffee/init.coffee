@@ -1,6 +1,8 @@
 window.$ = require "jquery"
 require "js/jquery.scrollbar.js"
 require "js/jquery.scrollbar.scss"
+$ ->
+    $(".scrollbar-macosx").scrollbar()
 
 window.Slideout = require 'coffee/lib/slideout'
 
