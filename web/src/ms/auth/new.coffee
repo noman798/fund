@@ -22,7 +22,7 @@ MS 'auth-new', html.html(), {
             store.set('account', account)
             userIdNew = wDB.ref("userIdNew")
             data = {}
-            data[user.uid] = {".sv": "timestamp"}
+            data[user.uid] = user.email
             userIdNew.update(
                 data
                 (o,err)->

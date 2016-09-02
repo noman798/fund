@@ -39,19 +39,18 @@ DB.authWithCustomToken(
     wapi.token()
     ->
         _userInit = (o)->
-            console.log o.key()
             wapi.get(
-                ".auth/users/#{o.key()}"
+                ".auth/users/#{o.val()}"
                 (error, res, body)->
-                    console.log(error, body)
+                    console.log(JSON.parse(body))
             )
-            return
-            fetchUser(
-                (userList)->
-                    for user in userList
-                        _save user
-                    false
-            )
+            # return
+            # fetchUser(
+            #     (userList)->
+            #         for user in userList
+            #             _save user
+            #         false
+            # )
 
         userIdNew = DB.child('userIdNew').ref()
         userIdNew.on('child_added', _userInit)
