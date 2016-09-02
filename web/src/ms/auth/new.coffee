@@ -31,6 +31,7 @@ MS 'auth-new', html.html(), {
         ).catch (err) ->
             code = err.code
             _tiper = ->
+                console.log err.code
                 self.err = tip = {
                     invalid_arguments:"请输入密码"
                     authentication_disabled:"请输入邮箱"
