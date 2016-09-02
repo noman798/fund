@@ -1,4 +1,7 @@
 window.$ = require "jquery"
+
+window.store = require 'store'
+
 require "js/jquery.scrollbar.js"
 require "js/jquery.scrollbar.scss"
 $ ->

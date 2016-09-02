@@ -1,5 +1,3 @@
-store = require 'store'
-
 html = $ require("./_base.coffee")
 html.find('.txt').html require("./_input.slm")+require("./new.slm")
 
