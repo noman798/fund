@@ -20,11 +20,12 @@ MS 'auth-new', html.html(), {
             account, password
         ).then((user)->
             store.set('account', account)
-            require("async-module!coffee/wdog/idNew.coffee")(
-                (o,err)->
-                    elem.find('.authBk').html require("./new_done.slm")
-                user
-            )
+            require("async-module!coffee/wdog/idNew.coffee") (func) ->
+                func(
+                    (o,err)->
+                        elem.find('.authBk').html require("./new_done.slm")
+                    user
+                )
         ).catch (err) ->
             code = err.code
             _tiper = ->
