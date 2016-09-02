@@ -1,4 +1,9 @@
-
+.BODY{
+	position: relative;
+	right: 0;
+	left: 0;
+	height:100%;
+}
 #topbar{
     border-bottom:1px solid #eee;
     h1{

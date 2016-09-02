@@ -84,8 +84,8 @@
 
 /*************** SCROLLBAR MAC OS X ***************/
 
-.scrollbar-macosx > .scroll-element,
-.scrollbar-macosx > .scroll-element div
+.macS > .scroll-element,
+.macS > .scroll-element div
 {
     background: none;
     border: none;
@@ -95,7 +95,7 @@
     z-index: 10;
 }
 
-.scrollbar-macosx > .scroll-element div {
+.macS > .scroll-element div {
     display: block;
     height: 100%;
     left: 0;
@@ -103,8 +103,8 @@
     width: 100%;
 }
 
-.scrollbar-macosx > .scroll-element .scroll-element_track { display: none; }
-.scrollbar-macosx > .scroll-element .scroll-bar {
+.macS > .scroll-element .scroll-element_track { display: none; }
+.macS > .scroll-element .scroll-bar {
     background-color: #ddd;
     display: block;
 
@@ -122,15 +122,15 @@
     -ms-transition: opacity 0.2s linear;
     transition: opacity 0.2s linear;
 }
-.scrollbar-macosx:hover > .scroll-element .scroll-bar,
-.scrollbar-macosx > .scroll-element.scroll-draggable .scroll-bar {
+.macS:hover > .scroll-element .scroll-bar,
+.macS > .scroll-element.scroll-draggable .scroll-bar {
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
     filter: alpha(opacity=50);
     opacity: 0.5;
 }
 
 
-.scrollbar-macosx > .scroll-element.scroll-x {
+.macS > .scroll-element.scroll-x {
     bottom: 0px;
     height: 0px;
     left: 0;
@@ -139,7 +139,7 @@
     width: 100%;
 }
 
-.scrollbar-macosx > .scroll-element.scroll-y {
+.macS > .scroll-element.scroll-y {
     height: 100%;
     min-height: 100%;
     right: 0px;
@@ -148,18 +148,18 @@
 }
 
 /* scrollbar height/width & offset from container borders */
-.scrollbar-macosx > .scroll-element.scroll-x .scroll-bar { height: 7px; min-width: 10px; top: -9px; }
-.scrollbar-macosx > .scroll-element.scroll-y .scroll-bar { left: -9px; min-height: 10px; width: 7px; }
+.macS > .scroll-element.scroll-x .scroll-bar { height: 7px; min-width: 10px; top: -9px; }
+.macS > .scroll-element.scroll-y .scroll-bar { left: -9px; min-height: 10px; width: 7px; }
 
-.scrollbar-macosx > .scroll-element.scroll-x .scroll-element_outer { left: 2px; }
-.scrollbar-macosx > .scroll-element.scroll-x .scroll-element_size { left: -4px; }
+.macS > .scroll-element.scroll-x .scroll-element_outer { left: 2px; }
+.macS > .scroll-element.scroll-x .scroll-element_size { left: -4px; }
 
-.scrollbar-macosx > .scroll-element.scroll-y .scroll-element_outer { top: 2px; }
-.scrollbar-macosx > .scroll-element.scroll-y .scroll-element_size { top: -4px; }
+.macS > .scroll-element.scroll-y .scroll-element_outer { top: 2px; }
+.macS > .scroll-element.scroll-y .scroll-element_size { top: -4px; }
 
 /* update scrollbar offset if both scrolls are visible */
-.scrollbar-macosx > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size { left: -11px; }
-.scrollbar-macosx > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size { top: -11px; }
+.macS > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size { left: -11px; }
+.macS > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size { top: -11px; }
 
 
 

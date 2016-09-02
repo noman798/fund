@@ -1,74 +1,75 @@
 form.userSearch :submit="@submit"
   button.I.I-search :class="{loading:@loading}" type="submit"
   input placeholder="请输入用户邮箱" :duplex="@q"
-
-.bar
-  span style="color:#999" 查无此人
-  .I.I-mail 邀请注册
-    
-  span style="font-size:14px;margin-left:16px;color:#999;float:right;margin-right:18px;" 
-    | zsp042@gmail.com 
-
-
-.bar.split
-  .I.I-down
-  | 份额明细
-  span style="font-size:14px;margin-left:16px;color:#999;float:right;margin-right:18px" 
-    | 合计 
-    span style="margin-left:4px"  1292.8203 万
-
-.bar
-  .I.I-cash
-  | 云梦
-  .tip 
-    span.ml4  2239922.3
-
-.bar
-  .I.I-cash
-  | 石敢当 
-  .tip 
-    span.ml4  997500
-
-.bar
-  .I.I-cash
-  | 地球摩羯座 
-  .tip 
-    span.ml4  900500
-
-.bar
-  .I.I-cash
-  | 高文斌 
-  .tip 
-    span.ml4  800323
-
-.bar
-  .I.I-cash
-  | 唐家三少 
-  .tip 
-    span.ml4  500323
-
-.bar
-  .I.I-cash
-  | 佛本是道
-  .tip 
-    span.ml4  418234
-
-.bar
-  .I.I-cash
-  | 秋天来了
-  .tip 
-    span.ml4  88234
+#BODY style="position:absolute;left:0;right:0;top:149px;bottom:0;"
+  .BODY.macS
+    .bar
+      span style="color:#999" 查无此人
+      .I.I-mail 邀请注册
+        
+      span style="font-size:14px;margin-left:16px;color:#999;float:right;margin-right:18px;" 
+        | zsp042@gmail.com 
 
 
-.bar
-  .I.I-cash
-  | 闻一
-  .tip 
-    span.ml4  32423
+    .bar.split
+      .I.I-down
+      | 份额明细
+      span style="font-size:14px;margin-left:16px;color:#999;float:right;margin-right:18px" 
+        | 合计 
+        span style="margin-left:4px"  1292.8203 万
+
+    .bar
+      .I.I-cash
+      | 云梦
+      .tip 
+        span.ml4  2239922.3
+
+    .bar
+      .I.I-cash
+      | 石敢当 
+      .tip 
+        span.ml4  997500
+
+    .bar
+      .I.I-cash
+      | 地球摩羯座 
+      .tip 
+        span.ml4  900500
+
+    .bar
+      .I.I-cash
+      | 高文斌 
+      .tip 
+        span.ml4  800323
+
+    .bar
+      .I.I-cash
+      | 唐家三少 
+      .tip 
+        span.ml4  500323
+
+    .bar
+      .I.I-cash
+      | 佛本是道
+      .tip 
+        span.ml4  418234
+
+    .bar
+      .I.I-cash
+      | 秋天来了
+      .tip 
+        span.ml4  88234
 
 
-.bar
-  .I.I-cash
-  | 碧海潮生
-  .tip 
-    span.ml4  12423
+    .bar
+      .I.I-cash
+      | 闻一
+      .tip 
+        span.ml4  32423
+
+
+    .bar
+      .I.I-cash
+      | 碧海潮生
+      .tip 
+        span.ml4  12423

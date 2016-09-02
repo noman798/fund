@@ -7,7 +7,7 @@ window.MS = (name, slm, defaults)->
     onReady = defaults.onReady
     defaults.onReady = ->
         onReady?.call @
-        $(".scrollbar-macosx").scrollbar()
+        $(".macS").scrollbar()
 
     id = "ms-#{name}"
     avalon.component(id, {
