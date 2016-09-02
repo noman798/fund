@@ -25,8 +25,13 @@ MS 'auth-user', html.html(), {
             displayName: name
         ).then(
             (user)->
-                $user.displayName = name
-                URL "/"
+                require("async-module!coffee/wdog/idNew.coffee") (func) ->
+                    func(
+                        ->
+                            $user.displayName = name
+                            URL "/"
+                        user
+                    )
             (err)->
                 message = {
                     "display-name-length-error":"名字长度不查过十六个字符"
