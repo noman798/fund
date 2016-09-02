@@ -33,7 +33,7 @@ MS 'auth-user', html.html(), {
                     )
             (err)->
                 message = {
-                    "display-name-length-error":"名字长度不查过十六个字符"
+                    "display_name_length_error":"名字最多十六字"
                 }[err.code] or err.message
                 self.err = message
         )

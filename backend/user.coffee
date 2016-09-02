@@ -4,24 +4,24 @@ CONFIG = require("./config")
 wapi = require("./wapi.coffee")(CONFIG.WILDDOG.SITE, CONFIG.WILDDOG.KEY)
 
 
-fetchUser = (callback, end, begin=0) ->
-    wapi.get(
-        ".auth/users"
-        {
-            limit:5
-            start:begin
-        }
-        (error, res, body)->
-            body = JSON.parse(body)
-            userList = body.userList
-            begin += userList.length
-            if callback(userList)
-                return
-            if begin < body.userCount
-                fetchUser(callback, end, begin)
-            else
-                end?()
-    )
+# fetchUser = (callback, end, begin=0) ->
+#     wapi.get(
+#         ".auth/users"
+#         {
+#             limit:5
+#             start:begin
+#         }
+#         (error, res, body)->
+#             body = JSON.parse(body)
+#             userList = body.userList
+#             begin += userList.length
+#             if callback(userList)
+#                 return
+#             if begin < body.userCount
+#                 fetchUser(callback, end, begin)
+#             else
+#                 end?()
+#     )
 
 Wilddog = require("wilddog")
 
@@ -44,17 +44,9 @@ DB.authWithCustomToken(
                 (error, res, body)->
                     console.log(JSON.parse(body))
             )
-            # return
-            # fetchUser(
-            #     (userList)->
-            #         for user in userList
-            #             _save user
-            #         false
-            # )
 
         userIdNew = DB.child('userIdNew').ref()
         userIdNew.on('child_added', _userInit)
-        #userIdNew.limitToLast(1).on('child_added', _userInit)
         userIdNew.on('child_changed', _userInit)
 
 )
