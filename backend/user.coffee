@@ -42,12 +42,12 @@ DB.authWithCustomToken(
             wapi.get(
                 ".auth/users/#{o.val()}"
                 (error, res, body)->
+                    DB.child("userIdNew/"+o.key()).remove()
                     console.log(JSON.parse(body))
             )
 
         userIdNew = DB.child('userIdNew').ref()
         userIdNew.on('child_added', _userInit)
         userIdNew.on('child_changed', _userInit)
-
 )
 
