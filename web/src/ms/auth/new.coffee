@@ -20,9 +20,10 @@ MS 'auth-new', html.html(), {
             account, password
         ).then((user)->
             store.set('account', account)
-            require("async-module!coffee/idNew.coffee")
+            require("async-module!coffee/wdog/idNew.coffee")(
                 (o,err)->
                     elem.find('.authBk').html require("./new_done.slm")
+                user
             )
         ).catch (err) ->
             code = err.code
