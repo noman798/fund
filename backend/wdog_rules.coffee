@@ -20,7 +20,7 @@ module.exports = \
         }
         userIdNew:{
             $userId:{
-                _write: "$userId == auth.uid && newData.isNumber() && newData.val == now"
+                _write: "$userId == auth.uid"
                 _read: false
             }
         }
