@@ -1,4 +1,4 @@
-body = $ 'body'
+BODY = $ '.BODY'
 
 _CACHE = 0
 _pre  =  ''
@@ -7,7 +7,7 @@ _body = (html)->
         return
     _pre = html
     if not _CACHE
-        body.html ''
+        BODY.html ''
     V.BODY.HTML = html
 
 _render = (name, cache=0) ->

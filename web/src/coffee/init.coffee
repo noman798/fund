@@ -1,4 +1,7 @@
 window.$ = require "jquery"
+require "js/jquery.scrollbar.js"
+require "js/jquery.scrollbar.scss"
+
 window.Slideout = require 'coffee/lib/slideout'
 
 require 'coffee/lib/baidu_tongji'
