@@ -30,7 +30,6 @@ MS 'auth-user', html.html(), {
                         ->
                             $user.displayName = name
                             URL "/"
-                        user
                     )
             (err)->
                 message = {
