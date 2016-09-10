@@ -53,7 +53,8 @@ SET default_with_oids = false;
 
 CREATE TABLE "user" (
     id bigint NOT NULL,
-    name character varying(20)
+    name character varying(20),
+    mail character varying(99)
 )
 WITH (autovacuum_enabled='true');
 
@@ -61,10 +62,10 @@ WITH (autovacuum_enabled='true');
 ALTER TABLE "user" OWNER TO u88;
 
 --
--- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: u88
+-- Name: id_seq; Type: SEQUENCE; Schema: public; Owner: u88
 --
 
-CREATE SEQUENCE user_id_seq
+CREATE SEQUENCE id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -72,20 +73,28 @@ CREATE SEQUENCE user_id_seq
     CACHE 1;
 
 
-ALTER TABLE user_id_seq OWNER TO u88;
+ALTER TABLE id_seq OWNER TO u88;
 
 --
--- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: u88
+-- Name: id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: u88
 --
 
-ALTER SEQUENCE user_id_seq OWNED BY "user".id;
+ALTER SEQUENCE id_seq OWNED BY "user".id;
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: u88
 --
 
-ALTER TABLE ONLY "user" ALTER COLUMN id SET DEFAULT nextval('user_id_seq'::regclass);
+ALTER TABLE ONLY "user" ALTER COLUMN id SET DEFAULT nextval('id_seq'::regclass);
+
+
+--
+-- Name: mail_uniq; Type: CONSTRAINT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY "user"
+    ADD CONSTRAINT mail_uniq UNIQUE (mail);
 
 
 --
@@ -94,6 +103,13 @@ ALTER TABLE ONLY "user" ALTER COLUMN id SET DEFAULT nextval('user_id_seq'::regcl
 
 ALTER TABLE ONLY "user"
     ADD CONSTRAINT user_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mail; Type: INDEX; Schema: public; Owner: u88
+--
+
+CREATE INDEX mail ON "user" USING btree (mail);
 
 
 --
