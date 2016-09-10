@@ -1,16 +1,9 @@
-koa = require('koa')
-route = require('koa-route')
-websockify = require('koa-websocket')
-
-app = websockify(koa())
-
-app.ws.use(route.all('/test/:id', (next) ->
-    @websocket.send('Hello World')
-    @websocket.on('message', (message) ->
-        console.log(message)
-    )
-    yield next
-))
-
-app.listen(3000)
+WebSocketServer = require('ws').Server
+wss = new WebSocketServer(port: 8080)
+wss.on 'connection', (ws) ->
+    ws.on 'message', (message) ->
+        console.log 'received: %s', message
+        return
+    ws.send 'something'
+    return
 
