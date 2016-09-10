@@ -4,8 +4,10 @@
   "scripts": {
     "dist": "NODE_ENV=production webpack --progress --colors -p"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
+    "koa": "^1.2.4",
+    "koa-route": "^2.4.2",
+    "koa-websocket": "^2.0.0"
   }
 }
