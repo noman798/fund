@@ -7,9 +7,11 @@ wss.on 'connection', (ws) ->
     ws.on 'message', (message) ->
         pos = message.indexOf(' ')
         key = message.slice(0, pos)
-        value = message.slice(pos+1,-1)
+        value = message.slice(pos+1)
 
-        console.log key, ">", value
+        if key == "login"
+            session.user_id = value
+        console.log key, ">", value, session
         return
     ws.send 'something'
     return
