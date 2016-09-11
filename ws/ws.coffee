@@ -1,7 +1,9 @@
 WebSocketServer = require('ws').Server
-wss = new WebSocketServer(port: 8080)
+wss = new WebSocketServer(port: 20032)
 wss.on 'connection', (ws) ->
-    session = {}
+    session = {
+
+    }
     ws.on 'message', (message) ->
         console.log 'received: %s', message
         return
