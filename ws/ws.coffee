@@ -6,8 +6,10 @@ wss.on 'connection', (ws) ->
     }
     ws.on 'message', (message) ->
         pos = message.indexOf(' ')
+        key = message.slice(0, pos)
+        value = message.slice(pos+1,-1)
 
-        console.log 'received: %s', message
+        console.log key, ">", value
         return
     ws.send 'something'
     return
