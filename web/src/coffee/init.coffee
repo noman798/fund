@@ -22,6 +22,7 @@ avalon.define(
 
 require './lib/ms.coffee'
 require "./lib/url.coffee"
+require "./lib/ws.coffee"
 require "./urlmap.coffee"
 require "./lib/util.coffee"
 
