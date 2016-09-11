@@ -5,6 +5,7 @@ wss.on 'connection', (ws) ->
 
     }
     ws.on 'message', (message) ->
+        message = message.pop
         console.log 'received: %s', message
         return
     ws.send 'something'
