@@ -5,7 +5,8 @@ wss.on 'connection', (ws) ->
 
     }
     ws.on 'message', (message) ->
-        message = message.pop
+        pos = message.indexOf(' ')
+
         console.log 'received: %s', message
         return
     ws.send 'something'
