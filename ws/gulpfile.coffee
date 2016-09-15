@@ -7,9 +7,9 @@ gulp.task(
     ->
         if node
             node.kill()
-            node = spawn('node', ['index.js'], {
-                stdio: 'inherit'
-            })
+        node = spawn('node', ['index.js'], {
+            stdio: 'inherit'
+        })
         node.on(
             'close'
             (code) ->
