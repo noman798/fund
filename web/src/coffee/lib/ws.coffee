@@ -1,5 +1,3 @@
-Promise = require("bluebird")
-
 WebSocket = require "reconnecting-websocket"
 
 window.WS = new WebSocket('ws://u88.cn:20032')
@@ -14,9 +12,7 @@ _STACK = []
 
 call = (mod, args)->
     ->
-        r = new Promise (resolve, reject)->
-
-
+        r = $.Deferred()
         _STACK.push [++_ID, r]
 
         WS.send "> #{_ID} #{mod} "\
