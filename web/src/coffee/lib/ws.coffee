@@ -1,3 +1,5 @@
+Promise = require("bluebird")
+
 WebSocket = require "reconnecting-websocket"
 
 window.WS = new WebSocket('ws://u88.cn:20032')
@@ -45,4 +47,6 @@ WS.onmessage = (e)->
     switch key
         when "<"
             $.extend F, load_mod(JSON.parse(value))
+        when ">"
+            id = 0
 
