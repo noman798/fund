@@ -2,7 +2,6 @@ WebSocketServer = require('ws').Server
 wss = new WebSocketServer(port: 20032)
 
 
-
 wss.on 'connection', (ws) ->
     session = {
 
