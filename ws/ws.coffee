@@ -13,7 +13,7 @@ json_mod = (mod)->
             r[k] = json_mod(v)
         else
             if CONFIG.DEBUG
-                func = get_parameter_names(v)
+                func = get_parameter_names(v).join(",")
             else
                 func = 0
             r[k] = func
