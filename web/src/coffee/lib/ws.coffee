@@ -17,9 +17,9 @@ call = (mod, args)->
         r = new Promise (resolve, reject)->
 
 
-        _STACK.push r
+        _STACK.push [++_ID, r]
 
-        WS.send "> #{++_ID} #{mod} "\
+        WS.send "> #{_ID} #{mod} "\
             + \
             JSON.stringify(i for i in arguments)
 
