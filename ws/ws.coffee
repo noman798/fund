@@ -26,7 +26,7 @@ wss.on 'connection', (ws) ->
                 mod = {}
                 for k , v of _mod
                     if CONFIG.DEBUG
-                        func = get_parameter_names(v)
+                        func = v.toString()
                     else
                         func = 0
                     mod[k] = func
