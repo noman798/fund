@@ -7,17 +7,17 @@ wss = new WebSocketServer(port: 20032)
 
 
 json_mod = (mod)->
-    mod = {}
-    for k , v of _mod
+    r = {}
+    for k , v of mod
         if typeof(v) == 'object'
-            mod[k] = json_mod(v)
+            r[k] = json_mod(v)
         else
             if CONFIG.DEBUG
                 func = get_parameter_names(v)
             else
                 func = 0
-            mod[k] = func
-    mod
+            r[k] = func
+    r
 
 
 wss.on 'connection', (ws) ->
@@ -44,6 +44,5 @@ wss.on 'connection', (ws) ->
 
 
         return
-    ws.send 'something'
     return
 
