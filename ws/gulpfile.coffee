@@ -1,6 +1,6 @@
 gulp = require('gulp')
 spawn = require('child_process').spawn
-node
+node = 0
 
 gulp.task(
     'server'
