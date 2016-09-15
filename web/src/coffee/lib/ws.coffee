@@ -10,12 +10,22 @@ WS.onopen = ->
 window.F = {}
 
 _ID = 0
+_STACK = []
 
 call = (mod, args)->
     ->
+        r = new Promise (resolve, reject)->
+
+
+        _STACK.push r
+
         WS.send "> #{++_ID} #{mod} "\
             + \
             JSON.stringify(i for i in arguments)
+
+        r
+
+
 
 window._F = {}
 
