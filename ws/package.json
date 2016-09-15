@@ -4,7 +4,9 @@
   "scripts": {
     "dist": "NODE_ENV=production webpack --progress --colors -p"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-develop-server": "^0.5.2"
+  },
   "dependencies": {
     "bufferutil": "^1.2.1",
     "utf-8-validate": "^1.2.1",
