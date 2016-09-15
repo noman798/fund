@@ -7,13 +7,14 @@ WS.onopen = ->
 
 window.F = {}
 
-_ID = 0
+_ID = 1
 _STACK = []
 
 call = (mod, args)->
     ->
         r = $.Deferred()
-        _STACK.push [++_ID, r]
+        _STACK.unshift [++_ID, r]
+        console.log _STACK
 
         WS.send "> #{_ID} #{mod} "\
             + \
@@ -55,4 +56,6 @@ WS.onmessage = (e)->
             $.extend F, load_mod(JSON.parse(value))
         when ">"
             id = 0
-
+            for i in _STACK
+                if i[0] == id
+                    i[1].resolve()
