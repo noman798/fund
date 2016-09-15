@@ -12,9 +12,9 @@ wss.on 'connection', (ws) ->
         value = message.slice(pos+1)
 
         switch key
-            when "<"
+            when "<" # import
                 console.log 'LOAD'
-            when ">"
+            when ">" # call function
                 console.log 'CALL'
 
 
