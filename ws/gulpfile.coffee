@@ -25,8 +25,7 @@ gulp.task(
 
         gulp.watch(
             ['./**.coffee']
-            ->
-                gulp.run('server')
+            ['server']
         )
 )
 
