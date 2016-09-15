@@ -11,9 +11,13 @@ wss.on 'connection', (ws) ->
         key = message.slice(0, pos)
         value = message.slice(pos+1)
 
-        if key == "login"
-            session.user_id = value
-        console.log key, ">", value, session
+        switch key
+            when "LOAD"
+                console.log 'LOAD'
+            when "CALL"
+                console.log 'CALL'
+
+
         return
     ws.send 'something'
     return
