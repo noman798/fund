@@ -11,18 +11,24 @@ call = (mod, args)->
     ->
         WS.send "> "+mod+" "+JSON.stringify(i for i in arguments)
 
-load_mod = (mod)->
+window._F = {}
+
+load_mod = (mod, prefix='')->
     r = {}
+    if prefix
+        prefix += "."
+
     for k, v of mod
+        path = prefix+k
         if typeof(v) == 'object'
-            o = load_mod(v)
+            o = load_mod(v, path)
         else
+            o = call(path)
             if v
+                _F[path] = o
                 o = new Function(
-                    """return function(#{v}){}"""
+                    """return function(#{v})\n{return _F['#{path}'].apply(this,arguments)}"""
                 )()
-            else
-                o = call(k)
         r[k] = o
     r
 
