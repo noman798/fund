@@ -7,9 +7,13 @@ WS.onopen = ->
 
 window.F = {}
 
+_ID = 0
+
 call = (mod, args)->
     ->
-        WS.send "> "+mod+" "+JSON.stringify(i for i in arguments)
+        WS.send "> #{++_ID} #{mod} "\
+            + \
+            JSON.stringify(i for i in arguments)
 
 window._F = {}
 
