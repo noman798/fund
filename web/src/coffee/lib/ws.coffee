@@ -9,9 +9,18 @@ window.F = {}
 
 load_mod = (mod)->
     r = {}
-    for k, v of _mod
-        _mod[func_name] = new Function("""return function (/* #{func_args} */){return _Py.#{cls_name}.#{func_name}.apply(this,arguments)}""")()
-
+    for k, v of mod
+        if typeof(v) == 'object'
+            o = load_mod(v)
+        else
+            if v
+                o = new Function(
+                    """return function(#{v}){}"""
+                )()
+            else
+                o = ->
+        r[k] = o
+    r
 
 WS.onmessage = (e)->
     message = e.data

@@ -10,13 +10,13 @@ dump_mod = (mod)->
     r = {}
     for k , v of mod
         if typeof(v) == 'object'
-            r[k] = dump_mod(v)
+            func = dump_mod(v)
         else
             if CONFIG.DEBUG
                 func = get_parameter_names(v).join(",")
             else
                 func = 0
-            r[k] = func
+        r[k] = func
     r
 
 
