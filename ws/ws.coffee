@@ -1,3 +1,5 @@
+get_parameter_names = require('get-parameter-names')
+
 WebSocketServer = require('ws').Server
 wss = new WebSocketServer(port: 20032)
 
@@ -18,8 +20,9 @@ wss.on 'connection', (ws) ->
                 catch error
                     console.error error
                     break
+                for k , v of mod
+                    console.log mod
 
-                console.log mod
             when ">" # call function
                 console.log 'CALL'
 
