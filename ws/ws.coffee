@@ -6,6 +6,20 @@ WebSocketServer = require('ws').Server
 wss = new WebSocketServer(port: 20032)
 
 
+json_mod = (mod)->
+    mod = {}
+    for k , v of _mod
+        if typeof(v) == 'object'
+            mod[k] = json_mod(v)
+        else
+            if CONFIG.DEBUG
+                func = get_parameter_names(v)
+            else
+                func = 0
+            mod[k] = func
+    mod
+
+
 wss.on 'connection', (ws) ->
     session = {
 
@@ -18,20 +32,12 @@ wss.on 'connection', (ws) ->
         switch key
             when "<" # import
                 try
-                    _mod = require("./src/#{value}.coffee")
+                    mod = require("./src/#{value}.coffee")
                 catch error
                     console.error error
                     break
 
-                mod = {}
-                for k , v of _mod
-                    if CONFIG.DEBUG
-                        func = v.toString()
-                    else
-                        func = 0
-                    mod[k] = func
-
-                ws.send JSON.stringify(mod)
+                ws.send JSON.stringify(json_mod(mod))
 
             when ">" # call function
                 console.log 'CALL'
