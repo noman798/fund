@@ -21,7 +21,7 @@ wss.on 'connection', (ws) ->
                     console.error error
                     break
                 for k , v of mod
-                    console.log mod
+                    console.log k, v, get_parameter_names(v)
 
             when ">" # call function
                 console.log 'CALL'
