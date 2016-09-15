@@ -31,7 +31,7 @@ wss.on 'connection', (ws) ->
                         func = 0
                     mod[k] = func
 
-                ws.session mod
+                ws.send JSON.stringify(mod)
 
             when ">" # call function
                 console.log 'CALL'
