@@ -13,7 +13,12 @@ wss.on 'connection', (ws) ->
 
         switch key
             when "<" # import
-                mod = require("./src/#{value}.coffee")
+                try
+                    mod = require("./src/#{value}.coffee")
+                catch error
+                    console.error error
+                    break
+
                 console.log mod
             when ">" # call function
                 console.log 'CALL'
