@@ -42,7 +42,7 @@ wss.on 'connection', (ws) ->
                 ws.send "< "+JSON.stringify(r)
 
             when ">" # call function
-                console.log 'CALL'
+                console.log 'CALL', key, value
 
 
         return

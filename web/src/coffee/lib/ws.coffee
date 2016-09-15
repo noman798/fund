@@ -7,6 +7,10 @@ WS.onopen = ->
 
 window.F = {}
 
+call = (mod, args)->
+    ->
+        WS.send "> "+mod+" "+JSON.stringify(i for i in arguments)
+
 load_mod = (mod)->
     r = {}
     for k, v of mod
@@ -18,7 +22,7 @@ load_mod = (mod)->
                     """return function(#{v}){}"""
                 )()
             else
-                o = ->
+                o = call(k)
         r[k] = o
     r
 
