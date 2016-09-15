@@ -2,10 +2,23 @@ from config import CONFIG
 import requests
 from f42.extract import extract, extract_all
 import demjson
+from html import unescape
 
 
 def fetch_wx(url):
+    o = requests.get(url + "&f=json").json()
+    title = o['title']
+    desc = o['desc']
+    content = o['content']
+    nick_name = o['nick_name']
+    alias = o.get('alias', '')
+    url = o.get('source_url') or o.get('link')
+    print(title)
+    print(desc)
+    print(content)
+    print(nick_name)
     print(url)
+    print(alias)
 
 
 def fetch_qq_space(qq):
@@ -20,7 +33,7 @@ def fetch_qq_space(qq):
         if i and 'html' in i:
             for url in extract_all('href="', '"', i['html']):
                 if url.startswith("http://mp.weixin.qq.com/"):
-                    fetch_wx(url)
+                    fetch_wx(unescape(url).rsplit("#", 1)[0])
                     break
 
 
