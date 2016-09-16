@@ -19,7 +19,11 @@ def wx_xueqiu_post_save(user_id, post_id):
 
 def wx_xueqiu_sync():
     pre_user_id = 0
-    for i in Q.WxXueqiuPost.iter(sort=[['user_id', 1], ['_id', -1]]):
+    for i in Q.WxXueqiuPost.find(
+        xueqiu__exists=False
+    ).iter(
+        sort=[['user_id', 1], ['_id', -1]]
+    ):
         post = Q.WxPost.get(i.post_id)
         html = post.html
         html = RE_BR.sub('', html).replace(

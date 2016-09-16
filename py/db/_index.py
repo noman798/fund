@@ -19,3 +19,10 @@ Q.WxXueqiuPost.ensure_index(
     ],
     unique=True
 )
+Q.WxXueqiuPost.ensure_index(
+    [
+        ("xueqiu", pymongo.DESCENDING),
+    ],
+    unique=True,
+    sparse=True
+)
