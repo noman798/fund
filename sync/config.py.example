@@ -1,3 +1,10 @@
 class CONFIG:
+    class MONGO:
+        USER = ""
+        HOST = ""
+        PASSWORD = ""
+        PORT = 33036
+        DB = ""
+
     class QQ:
-        ID = "377"
+        ID = "37556667"
