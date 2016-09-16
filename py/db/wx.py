@@ -8,7 +8,7 @@ from binascii import b2a_hex
 def post_save(url, src, title, desc, html, author, wx_name, wx_alias, create_time):
     url = urlparse(url)
     url = dict(parse_qsl(url.query))
-    _biz = url['__biz']
+    _biz = int(b64decode(url['__biz']))
     biz = Q.Wx.get(biz=_biz)
     if biz:
         wx_id = biz._id
@@ -16,7 +16,7 @@ def post_save(url, src, title, desc, html, author, wx_name, wx_alias, create_tim
         wx_id = gid()
         Q.Wx.save(
             _id=wx_id,
-            biz=int(b64decode(_biz)),
+            biz=_biz,
             wx_name=wx_name,
             wx_alias=wx_alias
         )
@@ -38,8 +38,8 @@ def post_save(url, src, title, desc, html, author, wx_name, wx_alias, create_tim
             title=title,
             sn=b2a_hex(url['sn'].encode('ascii')),
             desc=desc,
-            author=author,
-            src=src,
+            author=author or None,
+            src=src or None,
             html=html,
             time=int(create_time)
         )
