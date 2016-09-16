@@ -70,7 +70,7 @@ wss.on 'connection', (ws) ->
                 p.then (result)->
                     ws.send("> #{msg_id} #{JSON.stringify(result)}")
                 p.catch (error)->
-                    ws.send("> #{msg_id} #{JSON.stringify(error)}")
+                    ws.send("! #{msg_id} #{JSON.stringify(error)}")
 
 
         return
