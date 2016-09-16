@@ -1,9 +1,2 @@
-# from time import time
-
-# def main():
-#     pass
-
-if __name__ == "__main__":
-    pass
-    # main()
-
+from db import Q
+Q.Wx.ensure_index('biz', unique=True)

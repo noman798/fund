@@ -1,5 +1,5 @@
 from ztz.redis.sync.cid import gid
-from __init__ import Q
+from db import Q
 from urllib.parse import urlparse, parse_qsl
 
 
@@ -13,12 +13,12 @@ def post_save(url, src, title, desc, html, author, wx_name, wx_alias):
     url = dict(parse_qsl(url.query))
     print(url)
     _biz = url['__biz']
-    biz = Q.WxBiz.get(biz=_biz)
+    biz = Q.Wx.get(biz=_biz)
     if biz:
         wx_id = biz._id
     else:
         wx_id = gid()
-        Q.WxBiz.save(
+        Q.Wx.save(
             _id=wx_id,
             biz=_biz,
             wx_name=wx_name,
