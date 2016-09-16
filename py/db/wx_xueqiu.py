@@ -55,7 +55,7 @@ def wx_xueqiu_sync():
         if post.author and post.author != wx.wx_name:
             html += ("<p>作者 ：%s</p>" % escape(post.author))
 
-        html += "<p>转自微信公众号 ：%s ( %s ) </p>" % (wx.wx_name, wx.wx_alias)
+        html += "<p>转自微信公众号 ：%s ( %s ) </p>" % (wx.name, wx.en)
 
         if i.user_id != pre_user_id:
             xueqiu = Xueqiu()
@@ -64,8 +64,10 @@ def wx_xueqiu_sync():
         if 'target' in r:
             url = r['target']
             print(url)
+            Q.WxXueqiuPost.upsert(_id=post._id)(xueqiu=url)
         else:
             print(r)
+
 
 if __name__ == "__main__":
     wx_xueqiu_sync()
