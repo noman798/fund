@@ -16,7 +16,8 @@ def fetch_wx(url):
     author = o.get('author')
     src = o.get('source_url')
     url = o.get('link')
-    post_save(url, src, title, desc, html, author, nick_name, alias)
+    create_time = o.get('ori_create_time')
+    post_save(url, src, title, desc, html, author, nick_name, alias, create_time)
 
 
 def fetch_qq_space(qq):
