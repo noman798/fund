@@ -3,6 +3,7 @@ import pymongo
 
 
 Q.Wx.ensure_index('biz', unique=True)
+Q.Qq.ensure_index('qq', unique=True)
 Q.WxPost.ensure_index(
     [
         ("wx_id", pymongo.DESCENDING),
