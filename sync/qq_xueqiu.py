@@ -12,11 +12,13 @@ def fetch_wx(url):
     content = o['content']
     nick_name = o['nick_name']
     alias = o.get('alias', '')
-    url = o.get('source_url') or o.get('link')
+    src = o.get('source_url')
+    url = o.get('link')
     print(title)
     print(desc)
     print(content)
     print(nick_name)
+    print(src)
     print(url)
     print(alias)
 
