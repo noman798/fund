@@ -25,9 +25,14 @@ def post_save(url, src, title, desc, html, author, wx_name, wx_alias):
         idx=int(url['idx']),
         mid=int(url['mid'])
     )
+
     wx_post = Q.WxPost.get(**wx_args)
     if wx_post:
+        wx_post_id = wx_post._id
+    else:
+        wx_post_id = gid()
         Q.WxPost.upsert(
+            _id=wx_post_id
         )(
             title=title,
             sn=int(url['sn'], 16),
