@@ -5,6 +5,7 @@ import demjson
 from html import unescape
 from db.wx import post_save
 
+
 def fetch_wx(url):
     o = requests.get(url + "&f=json").json()
     title = o['title']
@@ -12,9 +13,10 @@ def fetch_wx(url):
     html = o['content']
     nick_name = o['nick_name']
     alias = o.get('alias', '')
+    author = o.get('author')
     src = o.get('source_url')
     url = o.get('link')
-    post_save(url, title, desc, html, nick_name, src, alias)
+    post_save(url, src, title, desc, html, author, nick_name, alias)
 
 
 def fetch_qq_space(qq):
