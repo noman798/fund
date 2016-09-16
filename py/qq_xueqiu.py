@@ -4,6 +4,7 @@ from f42.extract import extract, extract_all
 import demjson
 from html import unescape
 from db.wx import post_save
+from db.qq import qq_save
 
 
 def fetch_wx(url):
@@ -22,6 +23,8 @@ def fetch_wx(url):
 
 
 def fetch_qq_space(qq):
+    user_id = qq_save(qq)
+    print(user_id)
     r = requests.get(
         """http://ic2.s21.qzone.qq.com/cgi-bin/feeds/feeds_html_act_all?hostuin=%s""" % qq
     ).content.decode('utf-8')
