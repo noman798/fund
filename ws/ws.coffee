@@ -20,15 +20,26 @@ dump_mod = (mod)->
     r
 
 
+split_n = (str, split, n)->
+    r = []
+    n = n - 1
+    while r.length < n
+        pos = str.indexOf(split)
+        if pos < 0
+            break
+        key = str.slice(0, pos)
+        str = str.slice(pos+1)
+        r.push(key)
+    r.push(str)
+    r
+
+_MOD = {}
 wss.on 'connection', (ws) ->
     session = {
 
     }
     ws.on 'message', (message) ->
-        pos = message.indexOf(' ')
-        key = message.slice(0, pos)
-        value = message.slice(pos+1)
-
+        [key, value] = split_n(message, " ", 2)
         switch key
             when "<" # import
                 r = {}
@@ -38,11 +49,17 @@ wss.on 'connection', (ws) ->
                     catch error
                         console.error error
                         break
+                    _MOD[v] = mod
                     r[v] = dump_mod(mod)
                 ws.send "< "+JSON.stringify(r)
 
             when ">" # call function
-                console.log 'CALL', key, value
+                [msg_id, mod, args] =  value.split(" ",3)
+                func = _MOD
+                for i in mod.split(".")
+                    func = func[i]
+                func.apply ws, JSON.parse(args)
+
 
 
         return
