@@ -1,17 +1,12 @@
 from ztz.redis.sync.cid import gid
 from db import Q
 from urllib.parse import urlparse, parse_qsl
+from base64 import b64decode
 
 
 def post_save(url, src, title, desc, html, author, wx_name, wx_alias):
-    print(title)
-    print(desc)
-    # print(html)
-    print(author)
-    print(src)
     url = urlparse(url)
     url = dict(parse_qsl(url.query))
-    print(url)
     _biz = url['__biz']
     biz = Q.Wx.get(biz=_biz)
     if biz:
@@ -20,8 +15,23 @@ def post_save(url, src, title, desc, html, author, wx_name, wx_alias):
         wx_id = gid()
         Q.Wx.save(
             _id=wx_id,
-            biz=_biz,
+            biz=int(b64decode(_biz)),
             wx_name=wx_name,
             wx_alias=wx_alias
         )
-        print(wx_id)
+
+    wx_args = dict(
+        wx_id=wx_id,
+        idx=int(url['idx']),
+        mid=int(url['mid'])
+    )
+    wx_post = Q.WxPost.get(**wx_args)
+    if wx_post:
+        Q.WxPost.upsert(
+        )(
+            title=title,
+            sn=int(url['sn'], 16),
+            desc=desc,
+            author=author,
+            src=src,
+        )
