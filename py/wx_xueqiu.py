@@ -5,7 +5,7 @@ import demjson
 from html import unescape
 from db.wx import post_save
 from db.qq import qq_save
-from db.qq_xueqiu import qq_xueqiu_post_save
+from db.wx_xueqiu import wx_xueqiu_post_save
 
 
 def fetch_wx(url):
@@ -37,7 +37,7 @@ def fetch_qq_space(qq):
             for url in extract_all('href="', '"', i['html']):
                 if url.startswith("http://mp.weixin.qq.com/"):
                     post_id = fetch_wx(unescape(url).rsplit("#", 1)[0])
-                    qq_xueqiu_post_save(user_id, post_id)
+                    wx_xueqiu_post_save(user_id, post_id)
                     break
 
 
