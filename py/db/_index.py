@@ -9,4 +9,5 @@ Q.WxPost.ensure_index(
         ("idx", pymongo.DESCENDING),
         ("mid", pymongo.DESCENDING),
     ],
+    unique=True
 )

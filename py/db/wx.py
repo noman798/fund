@@ -41,6 +41,7 @@ def post_save(url, src, title, desc, html, author, wx_name, wx_alias, create_tim
             author=author or None,
             src=src or None,
             html=html,
-            time=int(create_time)
+            time=int(create_time),
+            **wx_args
         )
     print(wx_post_id)
