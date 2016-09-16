@@ -42,4 +42,4 @@ def fetch_qq_space(qq):
 
 
 if __name__ == "__main__":
-    fetch_qq_space(CONFIG.QQ.ID)
+    fetch_qq_space(375956667)

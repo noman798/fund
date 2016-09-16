@@ -2,7 +2,7 @@ from ztz.redis.sync.cid import gid
 from db import Q
 from urllib.parse import urlparse, parse_qsl
 from base64 import b64decode
-from binascii import b2a_hex
+from binascii import a2b_hex
 
 
 def post_save(url, src, title, desc, html, author, wx_name, wx_alias, create_time):
@@ -17,8 +17,8 @@ def post_save(url, src, title, desc, html, author, wx_name, wx_alias, create_tim
         Q.Wx.save(
             _id=wx_id,
             biz=_biz,
-            wx_name=wx_name,
-            wx_alias=wx_alias
+            name=wx_name,
+            en=wx_alias
         )
 
     wx_args = dict(
@@ -36,7 +36,7 @@ def post_save(url, src, title, desc, html, author, wx_name, wx_alias, create_tim
             _id=wx_post_id
         )(
             title=title,
-            sn=b2a_hex(url['sn'].encode('ascii')),
+            sn=a2b_hex(url['sn'].encode('ascii')),
             desc=desc,
             author=author or None,
             src=src or None,
