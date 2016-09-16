@@ -65,7 +65,10 @@ wss.on 'connection', (ws) ->
                     catch error
                         reject error
                         return
-                    resolve result
+                    if result and result.then and typeof(result.then) == 'function'
+                        result.then(resolve).catch(reject)
+                    else
+                        resolve result
 
                 p.then (result)->
                     ws.send("> #{msg_id} #{JSON.stringify(result)}")
