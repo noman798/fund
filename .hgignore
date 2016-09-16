@@ -4,6 +4,7 @@ dist
 bundle.js
 npm-debug.log
 config.coffee
+config.py
 file/font/.font-spider/*.ttf
 .*
 npm-debug.log.*
