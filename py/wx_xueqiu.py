@@ -1,6 +1,5 @@
-from config import CONFIG
 import requests
-from f42.extract import extract, extract_all
+from ztz.util.extract import extract, extract_all
 import demjson
 from html import unescape
 from db.wx import post_save

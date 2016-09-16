@@ -6,9 +6,11 @@ import re
 from html import escape
 from ztz.util.url_short import url_short
 from binascii import b2a_hex
+from ztz.util.extract import extract
 
 RE_BR = re.compile(r'\s*<br\s*/?\s*>\s*', re.I)
 RE_STYLE = re.compile(r'\s+style="[^"]*"', re.I)
+RE_IMG = re.compile(r'<img[^>]*>', re.I)
 
 
 def wx_xueqiu_post_save(user_id, post_id):
@@ -16,6 +18,15 @@ def wx_xueqiu_post_save(user_id, post_id):
     if not o:
         _id = gid()
         Q.WxXueqiuPost.upsert(post_id=post_id, user_id=user_id)(_id=_id)
+
+
+def img_upload_xueqiu(xueqiu, img):
+    img = img.group(0)
+    src = extract('data-src="', '"', img)
+    src = xueqiu.upload_img(src)
+    return """<img src="%s">""" % src
+
+
 
 
 def wx_xueqiu_sync():
@@ -56,13 +67,16 @@ def wx_xueqiu_sync():
         else:
             html += """<p>原文链接 : <a href="%s">%s</a></p>""" % (url, url)
 
+        if wx_xueqiu_post.user_id != pre_user_id:
+            xueqiu = Xueqiu()
+            xueqiu.login(*tuple(Q.Qq.get(wx_xueqiu_post.user_id).xueqiu))
+
+        html = RE_IMG.sub(img_upload_xueqiu, html)
+
         if post.author and post.author != wx.name:
             html += ("<p>作者 ：%s</p>" % escape(post.author))
 
         html += "<p>转自微信公众号 ：%s ( %s ) </p>" % (wx.name, wx.en)
-        if wx_xueqiu_post.user_id != pre_user_id:
-            xueqiu = Xueqiu()
-            xueqiu.login(*tuple(Q.Qq.get(wx_xueqiu_post.user_id).xueqiu))
         r = xueqiu.new_post(post.title, html)
         if 'target' in r:
             url = r['target']
