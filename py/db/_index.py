@@ -12,3 +12,10 @@ Q.WxPost.ensure_index(
     ],
     unique=True
 )
+Q.WxXueqiuPost.ensure_index(
+    [
+        ("user_id", pymongo.DESCENDING),
+        ("post_id", pymongo.DESCENDING),
+    ],
+    unique=True
+)

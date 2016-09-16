@@ -5,6 +5,7 @@ import demjson
 from html import unescape
 from db.wx import post_save
 from db.qq import qq_save
+from db.qq_xueqiu import qq_xueqiu_post_save
 
 
 def fetch_wx(url):
@@ -18,13 +19,12 @@ def fetch_wx(url):
     src = o.get('source_url')
     url = o.get('link')
     create_time = o.get('ori_create_time')
-    post_save(url, src, title, desc, html, author,
-              nick_name, alias, create_time)
+    return post_save(url, src, title, desc, html, author,
+                     nick_name, alias, create_time)
 
 
 def fetch_qq_space(qq):
     user_id = qq_save(qq)
-    print(user_id)
     r = requests.get(
         """http://ic2.s21.qzone.qq.com/cgi-bin/feeds/feeds_html_act_all?hostuin=%s""" % qq
     ).content.decode('utf-8')
@@ -36,7 +36,8 @@ def fetch_qq_space(qq):
         if i and 'html' in i:
             for url in extract_all('href="', '"', i['html']):
                 if url.startswith("http://mp.weixin.qq.com/"):
-                    fetch_wx(unescape(url).rsplit("#", 1)[0])
+                    post_id = fetch_wx(unescape(url).rsplit("#", 1)[0])
+                    qq_xueqiu_post_save(user_id, post_id)
                     break
 
 
