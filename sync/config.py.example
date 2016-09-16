@@ -1,0 +1,3 @@
+class CONFIG:
+    class QQ:
+        ID = "377"
