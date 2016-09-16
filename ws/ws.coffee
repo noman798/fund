@@ -58,8 +58,19 @@ wss.on 'connection', (ws) ->
                 func = _MOD
                 for i in mod.split(".")
                     func = func[i]
-                func.apply ws, JSON.parse(args)
 
+                p = new Promise (resolve, reject)->
+                    try
+                        result = func.apply ws, JSON.parse(args)
+                    catch error
+                        reject error
+                        return
+                    resolve result
+
+                p.then (result)->
+                    ws.send("> #{msg_id} #{JSON.stringify(result)}")
+                p.catch (error)->
+                    ws.send("> #{msg_id} #{JSON.stringify(error)}")
 
 
         return
