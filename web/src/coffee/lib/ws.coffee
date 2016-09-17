@@ -6,7 +6,8 @@ window.WS = new WebSocket('ws://u88.cn:20032')
 #     @send "< auth"
 
 WS.import = (name)->
-    @send "< auth"
+    WS.send("< "+name)
+
 
 window.F = {}
 
