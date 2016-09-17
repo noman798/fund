@@ -12,6 +12,7 @@
     "child_process": "^1.0.2",
     "get-parameter-names": "^0.3.0",
     "jsonwebtoken": "^7.1.9",
+    "knex": "^0.12.1",
     "pg": "^6.1.0",
     "pg-native": "^1.10.0",
     "underscore": "^1.8.3",
