@@ -9,6 +9,6 @@ module.exports = POOL = new Pool(CONFIG.PSQL)
 POOL.on(
     'error'
     (err, client) ->
-        console.error('PG idle client error', err.message, err.stack)
+        console.error('PG ERROR', err.message, err.stack)
 )
 
