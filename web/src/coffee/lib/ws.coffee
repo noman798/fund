@@ -1,6 +1,8 @@
 WebSocket = require "reconnecting-websocket"
 
-window.WS = new WebSocket('ws://u88.cn:20032')
+window.WS = 0
+
+_WS = new WebSocket('ws://u88.cn:20032')
 
 # WS.onopen = ->
 #     @send "< auth"
