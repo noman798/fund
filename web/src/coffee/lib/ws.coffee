@@ -9,8 +9,15 @@ WebSocket.prototype.import = (name)->
     self = @
     new Promise(
         (resolve, reject)->
-            name.split(" ")
-            self.send("< "+name)
+            result = []
+            for i in name.split(" ")
+                if not F[i]
+                    result.push i
+            if result.length
+                self.send("< "+result.join(' '))
+            else
+                resolve()
+
     )
 
 window.F = {}
