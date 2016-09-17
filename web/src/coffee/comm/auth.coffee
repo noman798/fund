@@ -4,7 +4,7 @@ wilddog.auth().onAuthStateChanged (user) ->
 
     window.$user = user
 
-    if (not _user and user)
+    if (not _user and user) or (not user and _user) or (user and user.uid != _user.uid)
         URL.fire(location.pathname)
 
     if not user
