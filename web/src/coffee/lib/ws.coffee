@@ -6,8 +6,10 @@ window.WS = new WebSocket('ws://u88.cn:20032')
 #     @send "< auth"
 
 WS.import = (name)->
-    WS.send("< "+name)
-
+    new Promise(
+        (resolve, reject)->
+            WS.send("< "+name)
+    )
 
 window.F = {}
 
