@@ -1,4 +1,7 @@
 CONFIG = require('config.coffee')
-pg = require('pg')
-client = new pg.Pool(CONFIG.PSQL)
+pg = require('pg').native
+Pool = pg.Pool
+Client = pg.Client
+
+client = new Pool(CONFIG.PSQL)
 
