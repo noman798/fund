@@ -5,7 +5,7 @@ window.WS = new WebSocket('ws://u88.cn:20032')
 # WS.onopen = ->
 #     @send "< auth"
 
-WS.import = (name)->
+WebSocket.prototype.import = (name)->
     new Promise(
         (resolve, reject)->
             WS.send("< "+name)
