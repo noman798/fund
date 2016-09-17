@@ -1,11 +1,14 @@
 module.exports = {
+    PORT: 20032
     DEBUG: 1
     PSQL : {
         PORT:30009
-        USER:"u88"
+        USER:""
         HOST:"127.0.0.1"
-        DATABASE:"u88"
+        DATABASE:""
         PASSWORD:""
     }
-    WDOG:""
+    WDOG:{
+        SECRET:""
+    }
 }
