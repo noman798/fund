@@ -3,5 +3,5 @@ pg = require('pg').native
 Pool = pg.Pool
 Client = pg.Client
 
-client = new Pool(CONFIG.PSQL)
+module.exports = new Pool(CONFIG.PSQL)
 
