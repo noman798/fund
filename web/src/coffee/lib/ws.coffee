@@ -22,19 +22,19 @@ _IMPORT = []
 
 WebSocket.prototype.import = (name)->
     self = @
-    new Promise(
-        (resolve, reject)->
-            result = []
-            for i in name.split(" ")
-                if not F[i]
-                    result.push i
-            if result.length
-                self.send("< "+result.join(' '))
-                _IMPORT.push([result, resolve])
-            else
-                resolve()
-
-    )
+    _wait WS, ->
+        new Promise(
+            (resolve, reject)->
+                result = []
+                for i in name.split(" ")
+                    if not F[i]
+                        result.push i
+                if result.length
+                    self.send("< "+result.join(' '))
+                    _IMPORT.push([result, resolve])
+                else
+                    resolve()
+        )
 
 window.F = {}
 
