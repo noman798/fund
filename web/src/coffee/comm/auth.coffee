@@ -1,2 +1,3 @@
 WS.import "auth", ->
-    console.log F
+    token = wilddog.auth().currentUser.getToken()
+    console.log token
