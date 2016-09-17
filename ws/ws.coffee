@@ -43,7 +43,7 @@ wss.on 'connection', (ws) ->
         switch key
             when "<" # import
                 r = {}
-                for v in value.split(",")
+                for v in value.split(" ")
                     try
                         mod = require("./src/#{v}.coffee")
                     catch error

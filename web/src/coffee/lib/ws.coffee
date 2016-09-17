@@ -6,9 +6,11 @@ window.WS = new WebSocket('ws://u88.cn:20032')
 #     @send "< auth"
 
 WebSocket.prototype.import = (name)->
+    self = @
     new Promise(
         (resolve, reject)->
-            @send("< "+name)
+            name.split(" ")
+            self.send("< "+name)
     )
 
 window.F = {}
