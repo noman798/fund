@@ -4,8 +4,8 @@ window.WS = 0
 
 _WS = new WebSocket('ws://u88.cn:20032')
 
-# WS.onopen = ->
-#     @send "< auth"
+WS.onopen = ->
+    WS = _WS
 
 _IMPORT = []
 
