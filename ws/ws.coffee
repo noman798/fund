@@ -3,7 +3,7 @@ CONFIG = require("./config.coffee")
 get_parameter_names = require('get-parameter-names')
 
 WebSocketServer = require('ws').Server
-wss = new WebSocketServer(port: 20032)
+wss = new WebSocketServer(port: CONFIG.PORT)
 
 
 dump_mod = (mod)->
