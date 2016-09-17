@@ -6,14 +6,13 @@ window.WS = new WebSocket('ws://u88.cn:20032')
 #     @send "< auth"
 
 _wait = (socket, callback) ->
-    setTimeout(
-        ->
-            if socket.readyState == 1
-                callback()
-            else
-                _wait socket, callback
-        5
-    )
+    func = ->
+        if socket.readyState == 1
+            callback()
+        else
+            _wait socket, callback
+
+    setTimeout func, 5
 
 
 _IMPORT = []
