@@ -3,8 +3,7 @@ WebSocket = require "reconnecting-websocket"
 window.WS = new WebSocket('ws://u88.cn:20032')
 
 
-_wait = (socket, callback) ->
-
+_wait = (socket, callback, timeout=100) ->
     if socket.readyState == 1
         callback()
     else
@@ -13,28 +12,25 @@ _wait = (socket, callback) ->
                 if socket.readyState == 1
                     callback()
                 else
-                    _wait socket, callback
-            1000
+                    _wait socket, callback, Math.min(timeout+100, 1000)
+            timeout
         )
 
 
 _IMPORT = []
 
-WebSocket.prototype.import = (name)->
+WebSocket.prototype.import = (name, callback)->
     self = @
-    _wait WS, ->
-        new Promise(
-            (resolve, reject)->
-                result = []
-                for i in name.split(" ")
-                    if not F[i]
-                        result.push i
-                if result.length
-                    self.send("< "+result.join(' '))
-                    _IMPORT.push([result, resolve])
-                else
-                    resolve()
-        )
+    _wait self, ->
+        result = []
+        for i in name.split(" ")
+            if not F[i]
+                result.push i
+        if result.length
+            self.send("< "+result.join(' '))
+            _IMPORT.push([result, callback])
+        else
+            callback()
 
 window.F = {}
 
