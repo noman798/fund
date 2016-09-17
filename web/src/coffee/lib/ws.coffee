@@ -14,7 +14,6 @@ call = (mod, args)->
     ->
         r = $.Deferred()
         _STACK.unshift [++_ID, r]
-        console.log _STACK
 
         WS.send "> #{_ID} #{mod} "\
             + \
@@ -54,8 +53,15 @@ WS.onmessage = (e)->
     switch key
         when "<"
             $.extend F, load_mod(JSON.parse(value))
-        when ">"
-            id = 0
-            for i in _STACK
+        when ">", "!"
+            pos = value.indexOf(" ")
+            id = value.slice(0, pos)-0
+            msg = value.slice(pos+1)
+            for i, pos in _STACK
                 if i[0] == id
-                    i[1].resolve()
+                    func = i[1]
+                    func[if key==">" then 'resolve' else "reject"].apply(func, [JSON.parse(msg)])
+                    _STACK.splice(pos, 1)
+                    break
+
+
