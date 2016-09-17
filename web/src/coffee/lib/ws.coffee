@@ -8,7 +8,7 @@ window.WS = new WebSocket('ws://u88.cn:20032')
 WebSocket.prototype.import = (name)->
     new Promise(
         (resolve, reject)->
-            WS.send("< "+name)
+            @send("< "+name)
     )
 
 window.F = {}
