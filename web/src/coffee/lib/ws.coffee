@@ -61,6 +61,8 @@ load_mod = (mod, prefix='')->
                 )()
         r[k] = o
     r
+    # for i in _IMPORT
+    #     console.log i
 
 WS.onmessage = (e)->
     message = e.data
@@ -70,7 +72,19 @@ WS.onmessage = (e)->
 
     switch key
         when "<"
-            $.extend F, load_mod(JSON.parse(value))
+            o = load_mod(JSON.parse(value))
+            $.extend F, o
+            _import = []
+            for [li, resolve] in _IMPORT
+                _li = []
+                for mod, pos in li
+                    if not o[mod]
+                        _li.push mod
+                if _li.length
+                    _import.push([_li, resolve])
+                else
+                    resolve()
+            _IMPORT = _import
         when ">", "!"
             pos = value.indexOf(" ")
             if pos > 0
