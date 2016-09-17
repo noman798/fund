@@ -23,7 +23,6 @@ avalon.define(
 require './lib/ms.coffee'
 require "./lib/url.coffee"
 require "./lib/ws.coffee"
-require "./comm/auth.coffee"
 require "./urlmap.coffee"
 require "./lib/util.coffee"
 
@@ -35,3 +34,5 @@ wApp = wilddog.initializeApp(
 )
 window.wDB = wilddog.sync()
 window.$user = wilddog.auth().currentUser
+
+require "./comm/auth.coffee"
