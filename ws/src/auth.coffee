@@ -6,7 +6,8 @@ module.exports = {
     init:(token)->
         user = JWT.verify(token, CONFIG.WDOG.SECRET)
         console.log user.user_id, user.email, user.name, user.exp
-        PG.connect().then ->
+        PG.connect().then (C)->
+            # C.query()
             console.log "!!!"
 
 }
