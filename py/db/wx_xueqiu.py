@@ -25,7 +25,7 @@ def img_upload_xueqiu(xueqiu):
         img = img.group(0)
         src = extract('data-src="', '"', img)
         src = xueqiu.upload_img(src)
-        return """<img src="%s">""" % src
+        return """<img style="max-width:100%" src="%s">""" % src
     return _
 
 
