@@ -1,3 +1,4 @@
+require('db.coffee')
 CONFIG = require('config.coffee')
 jwt = require('jsonwebtoken')
 
