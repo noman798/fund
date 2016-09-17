@@ -1,5 +1,5 @@
-CONFIG = require('config.coffee')
 JWT = require('jsonwebtoken')
+CONFIG = require('config.coffee')
 PG = require("pg.coffee")
 
 module.exports = {
