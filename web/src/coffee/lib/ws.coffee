@@ -1,8 +1,7 @@
 WebSocket = require "reconnecting-websocket"
 CONFIG = require "config.coffee"
-console.log CONFIG
-window.WS = new WebSocket("ws://#{CONFIG.WS}")
 
+window.WS = new WebSocket("ws://#{CONFIG.WS}")
 
 _wait = (socket, callback, timeout=100) ->
     if socket.readyState == 1
