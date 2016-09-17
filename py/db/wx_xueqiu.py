@@ -20,13 +20,13 @@ def wx_xueqiu_post_save(user_id, post_id):
         Q.WxXueqiuPost.upsert(post_id=post_id, user_id=user_id)(_id=_id)
 
 
-def img_upload_xueqiu(xueqiu, img):
-    img = img.group(0)
-    src = extract('data-src="', '"', img)
-    src = xueqiu.upload_img(src)
-    return """<img src="%s">""" % src
-
-
+def img_upload_xueqiu(xueqiu):
+    def _(img):
+        img = img.group(0)
+        src = extract('data-src="', '"', img)
+        src = xueqiu.upload_img(src)
+        return """<img src="%s">""" % src
+    return _
 
 
 def wx_xueqiu_sync():
@@ -71,7 +71,7 @@ def wx_xueqiu_sync():
             xueqiu = Xueqiu()
             xueqiu.login(*tuple(Q.Qq.get(wx_xueqiu_post.user_id).xueqiu))
 
-        html = RE_IMG.sub(img_upload_xueqiu, html)
+        html = RE_IMG.sub(img_upload_xueqiu(xueqiu), html)
 
         if post.author and post.author != wx.name:
             html += ("<p>作者 ：%s</p>" % escape(post.author))
