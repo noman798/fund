@@ -1,4 +1,4 @@
-CONFIG = require('/config.coffee')
+CONFIG = require('config.coffee')
 jwt = require('jsonwebtoken')
 
 console.log CONFIG
