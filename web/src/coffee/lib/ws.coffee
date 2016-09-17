@@ -2,7 +2,10 @@ WebSocket = require "reconnecting-websocket"
 
 window.WS = new WebSocket('ws://u88.cn:20032')
 
-WS.onopen = ->
+# WS.onopen = ->
+#     @send "< auth"
+
+WS.import = (name)->
     @send "< auth"
 
 window.F = {}
