@@ -1,10 +1,12 @@
-require('db.coffee')
 CONFIG = require('config.coffee')
-jwt = require('jsonwebtoken')
+JWT = require('jsonwebtoken')
+PG = require("pg.coffee")
 
 module.exports = {
     init:(token)->
-        user = jwt.verify(token, CONFIG.WDOG.SECRET)
+        user = JWT.verify(token, CONFIG.WDOG.SECRET)
         console.log user.user_id, user.email, user.name, user.exp
+        PG.connect().then ->
+            console.log "!!!"
 
 }
