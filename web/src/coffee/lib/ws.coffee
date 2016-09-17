@@ -14,7 +14,7 @@ _wait = (socket, callback) ->
                     callback()
                 else
                     _wait socket, callback
-            5
+            1000
         )
 
 
