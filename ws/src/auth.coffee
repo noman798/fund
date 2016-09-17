@@ -2,5 +2,5 @@ jwt = require('jsonwebtoken')
 
 module.exports = {
     init:(token)->
-        console.log token
+        console.log jwt.decode(token)
 }
