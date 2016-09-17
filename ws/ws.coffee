@@ -1,4 +1,4 @@
-CONFIG = require("./config.coffee")
+CONFIG = require("config.coffee")
 
 get_parameter_names = require('get-parameter-names')
 
