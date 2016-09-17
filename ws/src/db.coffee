@@ -3,5 +3,12 @@ pg = require('pg').native
 Pool = pg.Pool
 Client = pg.Client
 
-module.exports = new Pool(CONFIG.PSQL)
+module.exports = POOL = new Pool(CONFIG.PSQL)
+
+
+POOL.on(
+    'error'
+    (err, client) ->
+        console.error('PG idle client error', err.message, err.stack)
+)
 
