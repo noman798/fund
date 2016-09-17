@@ -4,8 +4,7 @@ import demjson
 from html import unescape
 from db.wx import post_save
 from db.qq import qq_save
-from db.wx_xueqiu import wx_xueqiu_post_save
-
+from db.wx_xueqiu import wx_xueqiu_post_save, wx_xueqiu_sync
 
 def fetch_wx(url):
     o = requests.get(url + "&f=json").json()
@@ -42,3 +41,4 @@ def fetch_qq_space(qq):
 
 if __name__ == "__main__":
     fetch_qq_space(375956667)
+    wx_xueqiu_sync()
