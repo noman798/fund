@@ -3,5 +3,7 @@ jwt = require('jsonwebtoken')
 
 module.exports = {
     init:(token)->
-        console.log jwt.verify(token, CONFIG.WDOG.SECRET)
+        user = jwt.verify(token, CONFIG.WDOG.SECRET)
+        console.log user.user_id, user.email, user.name, user.exp
+
 }
