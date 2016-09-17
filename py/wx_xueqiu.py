@@ -10,7 +10,8 @@ import traceback
 
 def fetch_wx(url):
     o = requests.get(url + "&f=json").json()
-    print(o)
+    if 'title' not in o:
+        return
     title = o['title']
     desc = o['desc']
     html = o['content']
@@ -27,7 +28,8 @@ def fetch_wx(url):
 def fetch_qq_space(qq):
     user_id = qq_save(qq)
     r = requests.get(
-        """http://ic2.s21.qzone.qq.com/cgi-bin/feeds/feeds_html_act_all?hostuin=%s""" % qq
+        """http://ic2.s21.qzone.qq.com/cgi-bin/feeds/feeds_html_act_all?hostuin=%s""" % qq,
+        timeout=60
     ).content.decode('utf-8')
     data = extract('"data":', None, r)[:-3].strip()[:-1]
     data = demjson.decode(data)
