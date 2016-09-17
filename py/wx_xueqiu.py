@@ -5,9 +5,13 @@ from html import unescape
 from db.wx import post_save
 from db.qq import qq_save
 from db.wx_xueqiu import wx_xueqiu_post_save, wx_xueqiu_sync
+import traceback
+
 
 def fetch_wx(url):
     o = requests.get(url + "&f=json").json()
+    if 'title' not in o:
+        return
     title = o['title']
     desc = o['desc']
     html = o['content']
@@ -24,7 +28,8 @@ def fetch_wx(url):
 def fetch_qq_space(qq):
     user_id = qq_save(qq)
     r = requests.get(
-        """http://ic2.s21.qzone.qq.com/cgi-bin/feeds/feeds_html_act_all?hostuin=%s""" % qq
+        """http://ic2.s21.qzone.qq.com/cgi-bin/feeds/feeds_html_act_all?hostuin=%s""" % qq,
+        timeout=60
     ).content.decode('utf-8')
     data = extract('"data":', None, r)[:-3].strip()[:-1]
     data = demjson.decode(data)
@@ -34,8 +39,11 @@ def fetch_qq_space(qq):
         if i and 'html' in i:
             for url in extract_all('href="', '"', i['html']):
                 if url.startswith("http://mp.weixin.qq.com/"):
-                    post_id = fetch_wx(unescape(url).rsplit("#", 1)[0])
-                    wx_xueqiu_post_save(user_id, post_id)
+                    try:
+                        post_id = fetch_wx(unescape(url).rsplit("#", 1)[0])
+                        wx_xueqiu_post_save(user_id, post_id)
+                    except:
+                        traceback.print_exc()
                     break
 
 
