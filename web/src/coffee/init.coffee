@@ -33,6 +33,6 @@ wApp = wilddog.initializeApp(
     syncURL: "//#{COFNIG.WILDDOG}.wilddogio.com"
 )
 window.wDB = wilddog.sync()
-window.$user = wilddog.auth().currentUser
+window.$user = 0
 
 require "./comm/auth.coffee"

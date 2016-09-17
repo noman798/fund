@@ -21,7 +21,6 @@ MS 'auth-login', html.html() , {
             password
         ).then(->
             store.set 'account', account
-            window.$user = wilddog.auth().currentUser
             URL '/'
         ).catch (err) =>
             if err.code == "invalid_password"

@@ -50,7 +50,6 @@ MS 'auth-new', html.html(), {
                     self.account
                     self.password
                 ).then(->
-                    window.$user = wilddog.auth().currentUser
                     URL '/'
                 ).catch (err) -> _tiper()
             else
