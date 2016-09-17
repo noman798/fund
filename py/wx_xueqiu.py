@@ -5,9 +5,12 @@ from html import unescape
 from db.wx import post_save
 from db.qq import qq_save
 from db.wx_xueqiu import wx_xueqiu_post_save, wx_xueqiu_sync
+import traceback
+
 
 def fetch_wx(url):
     o = requests.get(url + "&f=json").json()
+    print(o)
     title = o['title']
     desc = o['desc']
     html = o['content']
@@ -34,8 +37,11 @@ def fetch_qq_space(qq):
         if i and 'html' in i:
             for url in extract_all('href="', '"', i['html']):
                 if url.startswith("http://mp.weixin.qq.com/"):
-                    post_id = fetch_wx(unescape(url).rsplit("#", 1)[0])
-                    wx_xueqiu_post_save(user_id, post_id)
+                    try:
+                        post_id = fetch_wx(unescape(url).rsplit("#", 1)[0])
+                        wx_xueqiu_post_save(user_id, post_id)
+                    except:
+                        traceback.print_exc()
                     break
 
 
