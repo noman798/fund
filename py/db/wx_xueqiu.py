@@ -43,7 +43,7 @@ def wx_xueqiu_sync():
         ).replace(
             "</p><br>", "</p>"
         ).replace("<span>", '').replace("</span>", '').strip()
-        if post.desc and post.desc not in html:
+        if post.desc and post.desc[:5] not in html:
             html = ("<p>%s</p>───<br>" % post.desc) + html
         total = len(html)
         limit = 19000
