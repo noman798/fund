@@ -1,5 +1,5 @@
 CONFIG = require('config.coffee')
 pg = require('pg')
 
-client = new pg.Client()
+client = new pg.Pool(config)
 
