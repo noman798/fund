@@ -6,8 +6,14 @@ module.exports = {
     init:(token)->
         user = JWT.verify(token, CONFIG.WDOG.SECRET)
         console.log user.user_id, user.email, user.name, user.exp
-        PG.connect().then (C)->
-            # C.query()
-            console.log "!!!"
-
+        PG.raw(
+            "INSERT INTO user (wdog_id, mail, name) values (?, ?, ?) ON CONFLICT (wdog_id) DO UPDATE SET mail = ?, name = ?"
+            [
+                user.user_id
+                user.email
+                user.name
+                user.email
+                user.name
+            ]
+        )
 }
