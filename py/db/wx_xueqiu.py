@@ -77,7 +77,7 @@ def wx_xueqiu_sync():
             html += ("<p>作者 ：%s</p>" % escape(post.author))
 
         html += "<p>转自微信公众号 ：%s ( %s ) </p>" % (wx.name, wx.en)
-        r = xueqiu.new_post((post.author or wx.name) + " : "post.title, html)
+        r = xueqiu.new_post((post.author or wx.name) + " : "+ post.title, html)
         if 'target' in r:
             url = r['target']
             Q.WxXueqiuPost.upsert(_id=wx_xueqiu_post._id)(xueqiu=url)
