@@ -55,12 +55,19 @@ WS.onmessage = (e)->
             $.extend F, load_mod(JSON.parse(value))
         when ">", "!"
             pos = value.indexOf(" ")
-            id = value.slice(0, pos)-0
-            msg = value.slice(pos+1)
+            if pos > 0
+                id = value.slice(0, pos)-0
+                msg = value.slice(pos+1)
+                msg = JSON.parse(msg)
+                if not $.isArray(msg)
+                    msg = [msg]
+            else
+                msg = undefined
+                id = value - 0
             for i, pos in _STACK
                 if i[0] == id
                     func = i[1]
-                    func[if key==">" then 'resolve' else "reject"].call(func, JSON.parse(msg))
+                    func[if key==">" then 'resolve' else "reject"].apply(func, msg)
                     _STACK.splice(pos, 1)
                     break
 
