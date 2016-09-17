@@ -5,17 +5,14 @@ window.WS = new WebSocket('ws://u88.cn:20032')
 # WS.onopen = ->
 #     @send "< auth"
 
-wait_for_socket = (socket, callback) ->
+_wait = (socket, callback) ->
     setTimeout(
         ->
             if socket.readyState == 1
-                if callback != null
-                    callback()
-                  return
+                callback()
             else
-                wait_for_socket socket, callback
-            return
-          5
+                _wait socket, callback
+        5
     )
 
 
