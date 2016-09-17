@@ -3,6 +3,8 @@ CONFIG = require('config.coffee')
 PG = require("pg.coffee")
 
 module.exports = {
+    id:->
+        @ID
     init:(token)->
         self = @
         user = JWT.verify(token, CONFIG.WDOG.SECRET)
@@ -17,7 +19,7 @@ module.exports = {
             ]
         ).then(
             (r)->
-                self._ID = r.rows[0].id
+                self.ID = r.rows[0].id
         )
 
 }
