@@ -1,6 +1,6 @@
-get_parameter_names = require('get-parameter-names')
-
 CONFIG = require("./config.coffee")
+
+get_parameter_names = require('get-parameter-names')
 
 WebSocketServer = require('ws').Server
 wss = new WebSocketServer(port: 20032)
