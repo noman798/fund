@@ -60,7 +60,7 @@ WS.onmessage = (e)->
             for i, pos in _STACK
                 if i[0] == id
                     func = i[1]
-                    func[if key==">" then 'resolve' else "reject"].apply(func, [JSON.parse(msg)])
+                    func[if key==">" then 'resolve' else "reject"].call(func, JSON.parse(msg))
                     _STACK.splice(pos, 1)
                     break
 
