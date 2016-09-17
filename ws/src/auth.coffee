@@ -4,11 +4,12 @@ PG = require("pg.coffee")
 
 module.exports = {
     init:(token)->
+        self = @
         user = JWT.verify(token, CONFIG.WDOG.SECRET)
-        console.log PG.returning('id').raw(
-            "INSERT INTO user (wdog_id, mail, name) VALUES (?, ?, ?) ON CONFLICT (wdog_id) DO UPDATE SET mail = ?, name = ?"
+        PG.raw(
+            "INSERT INTO public.user (wdog_id, mail, name) VALUES (?, ?, ?) ON CONFLICT (wdog_id) DO UPDATE SET mail = ?, name = ? RETURNING id"
             [
-                user.user_id
+                "0000"+user.user_id
                 user.email
                 user.name
                 user.email
@@ -16,11 +17,9 @@ module.exports = {
             ]
         ).then(
             (r)->
-                console.log(r)
-        ).catch (err)->
-            console.log "ERR", err
+                self._ID = r.rows[0].id
+        )
 
-        console.log user.user_id, user.email, user.name, user.exp
 }
 # INSERT INTO distributors (did, dname)
 #     VALUES (5, 'Gizmo Transglobal'), (6, 'Associated Computing, Inc')
