@@ -8,10 +8,12 @@ config = {
 wilddog.initializeApp(config)
 password = base64url(uuid.parse(uuid.v4()))
 
-console.log password
-mail = "z@x.com"
+mail = "zsp.042@gmail.com"
 wilddog.auth().createUserWithEmailAndPassword(mail, password).then((user) ->
-    console.info 'user created.', user
+    wdog_id = "0000"+user.uid
+    mail = user.email
+    name = user.email.split("@")[0]
+    console.info 'user created.', wdog_id, mail, name
 ).catch (err) ->
     console.info 'create user failed.', err
 
