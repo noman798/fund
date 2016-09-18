@@ -3,8 +3,13 @@ CONFIG = require('config.coffee')
 PG = require("pg.coffee")
 
 module.exports = {
-    id:->
-        @ID
+    is_admin:->
+        PG.select('1').from('user_admin').where('id',@ID).then(
+            (id)->
+                console.log id
+        )
+
+
     init:(token)->
         self = @
         user = JWT.verify(token, CONFIG.WDOG.SECRET)
