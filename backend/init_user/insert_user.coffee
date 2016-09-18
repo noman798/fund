@@ -1,4 +1,5 @@
 uuid = require('uuid')
+user_json = require "./user.json"
 base64url = require('base64url')
 wilddog = require "wilddog"
 
@@ -13,7 +14,7 @@ config = {
 }
 wilddog.initializeApp(config)
 
-module.exports = (mail)->
+insert = (mail)->
     password = base64url(uuid.parse(uuid.v4()))
     wilddog.auth().createUserWithEmailAndPassword(mail, password).then((user) ->
         wdog_id = "0000"+user.uid
@@ -30,9 +31,12 @@ module.exports = (mail)->
                 mail
                 name
             ]
-        )
+        ).then (id)->
+            console.log id
 
     ).catch (err) ->
         console.info 'create user failed.', err
 
 
+for [user_id, user_name, user_mail, li] in user_json
+    insert(user_mail)
