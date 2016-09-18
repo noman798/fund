@@ -32,4 +32,4 @@ for i in USER:
     )
 
 with open("user.json", "w") as f:
-    f.write(dumps(result))
+    f.write(dumps(result, ensure_ascii=False, indent=4))
