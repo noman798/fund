@@ -80,6 +80,8 @@ WS.onmessage = (e)->
     value = message.slice(pos+1)
 
     switch key
+        when "/"
+            URL.fire value
         when "<"
             o = load_mod(JSON.parse(value))
             $.extend F, o
