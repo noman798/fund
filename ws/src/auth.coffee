@@ -5,7 +5,7 @@ PG = require("pg.coffee")
 module.exports = {
     is_admin:->
         li = yield PG.select(1).from('user_admin').where('id', @ID)
-        yield li.length
+        return li.length
 
 
     init:(token)->
@@ -21,9 +21,5 @@ module.exports = {
             ]
         )
         @ID = r.rows[0].id
-
+        return
 }
-# INSERT INTO distributors (did, dname)
-#     VALUES (5, 'Gizmo Transglobal'), (6, 'Associated Computing, Inc')
-#     ON CONFLICT (did) DO UPDATE SET dname = EXCLUDED.dname;
-
