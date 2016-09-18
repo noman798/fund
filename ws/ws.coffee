@@ -35,9 +35,7 @@ split_n = (str, split, n)->
 
 _MOD = {}
 wss.on 'connection', (ws) ->
-    session = {
-
-    }
+    session = {}
     ws.on 'message', (message) ->
         [key, value] = split_n(message, " ", 2)
         switch key
@@ -61,7 +59,7 @@ wss.on 'connection', (ws) ->
 
                 p = new Promise (resolve, reject)->
                     try
-                        result = func.apply ws, JSON.parse(args)
+                        result = func.apply session, JSON.parse(args)
                     catch error
                         reject error
                         return
