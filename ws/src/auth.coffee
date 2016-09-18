@@ -4,10 +4,11 @@ PG = require("pg.coffee")
 
 module.exports = {
     is_admin:->
-        PG.select('1').from('user_admin').where('id',@ID).then(
-            (id)->
-                console.log id
-        )
+        new Promise (resolve)->
+            PG.select(1).from('user_admin').where('id',@ID).then(
+                (li)->
+                    resolve(li.length)
+            )
 
 
     init:(token)->
