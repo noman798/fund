@@ -36,7 +36,6 @@ split_n = (str, split, n)->
 
 _MOD = {}
 wss.on 'connection', (ws) ->
-    session = {}
     ws.on 'message', (message) ->
         [key, value] = split_n(message, " ", 2)
         switch key
@@ -58,7 +57,7 @@ wss.on 'connection', (ws) ->
                 for i in mod.split(".")
                     func = func[i]
 
-                p = co(func.apply session, JSON.parse(args))
+                p = co(func.apply ws, JSON.parse(args))
 
                 # p = new Promise (resolve, reject)->
                 #     try

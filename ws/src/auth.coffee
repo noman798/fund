@@ -2,13 +2,17 @@ JWT = require('jsonwebtoken')
 CONFIG = require('config.coffee')
 PG = require("pg.coffee")
 
+logined = (func)->
+    if @ID
+        return func.apply(@, arguments)
+    else
+        @send "/ auth/login"
+        0
+
 module.exports = {
     is_admin:->
-        ID = @ID
-        if ID
-            li = yield PG.select(1).from('user_admin').where('id', ID)
-            return li.length
-        return 0
+        li = yield PG.select(1).from('user_admin').where('id', ID)
+        return li.length
 
     init:(token)->
         user = JWT.verify(token, CONFIG.WDOG.SECRET)
