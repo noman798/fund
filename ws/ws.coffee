@@ -1,4 +1,5 @@
 CONFIG = require("config.coffee")
+co = require('co')
 
 get_parameter_names = require('get-parameter-names')
 
@@ -57,16 +58,18 @@ wss.on 'connection', (ws) ->
                 for i in mod.split(".")
                     func = func[i]
 
-                p = new Promise (resolve, reject)->
-                    try
-                        result = func.apply session, JSON.parse(args)
-                    catch error
-                        reject error
-                        return
-                    if result and result.then and typeof(result.then) == 'function'
-                        result.then(resolve).catch(reject)
-                    else
-                        resolve result
+                p = co(func.apply session, JSON.parse(args))
+
+                # p = new Promise (resolve, reject)->
+                #     try
+                #         result = func.apply session, JSON.parse(args)
+                #     catch error
+                #         reject error
+                #         return
+                #     if result and result.then and typeof(result.then) == 'function'
+                #         result.then(resolve).catch(reject)
+                #     else
+                #         resolve result
 
                 p.then (result)->
                     msg = "> #{msg_id}"

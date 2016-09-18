@@ -10,6 +10,7 @@
   "dependencies": {
     "bufferutil": "^1.2.1",
     "child_process": "^1.0.2",
+    "co": "^4.6.0",
     "get-parameter-names": "^0.3.0",
     "jsonwebtoken": "^7.1.9",
     "knex": "^0.12.1",

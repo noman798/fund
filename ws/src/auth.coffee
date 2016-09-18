@@ -6,10 +6,8 @@ module.exports = {
     is_admin:->
         ID = @ID
         new Promise (resolve)->
-            PG.select(1).from('user_admin').where('id', ID).then(
-                (li)->
-                    resolve(li.length)
-            )
+            li = await PG.select(1).from('user_admin').where('id', ID)
+            resolve(li.length)
 
 
     init:(token)->
