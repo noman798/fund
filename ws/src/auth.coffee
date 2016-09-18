@@ -1,16 +1,10 @@
 JWT = require('jsonwebtoken')
 CONFIG = require('config.coffee')
 PG = require("pg.coffee")
-
-logined = (func)->
-    if @ID
-        return func.apply(@, arguments)
-    else
-        @send "/ auth/login"
-        0
+logined = require('logined.coffee')
 
 module.exports = {
-    is_admin:->
+    is_admin:logined ->
         li = yield PG.select(1).from('user_admin').where('id', ID)
         return li.length
 
