@@ -4,9 +4,11 @@ PG = require("pg.coffee")
 
 module.exports = {
     is_admin:->
-        li = yield PG.select(1).from('user_admin').where('id', @ID)
-        return li.length
-
+        ID = @ID
+        if ID
+            li = yield PG.select(1).from('user_admin').where('id', ID)
+            return li.length
+        return 0
 
     init:(token)->
         user = JWT.verify(token, CONFIG.WDOG.SECRET)
