@@ -1,3 +1,6 @@
+_auth = Signal()
+WS.auth = (func)->
+    _auth.bind func
 
 wilddog.auth().onAuthStateChanged (user) ->
     _user = $user
@@ -12,7 +15,8 @@ wilddog.auth().onAuthStateChanged (user) ->
 
     WS.import "auth", ->
         token = wilddog.auth().currentUser.getToken()
-        F.auth.init token
+        F.auth.init(token).then ->
+            _auth.send()
 
     if not user.displayName
         URL "/auth/user"

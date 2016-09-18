@@ -5,12 +5,11 @@ MS 'body', require("slm/_main")+require('./sidebar.slm'), {
     admin : 0
     onReady: ->
         self = @
-        console.log "!"
-        F.auth.is_admin().then(
-            (_admin)->
-                self.admin = _admin
-                console.log _admin,"!!###"
-        )
+        WS.auth ->
+            F.auth.is_admin().then(
+                (_admin)->
+                    self.admin = _admin
+            )
         topbar = $("#topbar")
         topbar.find(".slideoutBtnW").html """<div id=sB class=slideoutBtn><span/></div>"""
         slideout = new Slideout({
