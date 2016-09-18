@@ -26,7 +26,7 @@ insert = (name, mail)->
             user.updateProfile(
                 displayName:name
             ).then ->
-                console.info 'NEW', wdog_id, mail, name
+                console.info 'NEW', wdog_id, mail, user.displayName
                 PG.raw(
                     "INSERT INTO public.user (wdog_id, mail, name) VALUES (?, ?, ?) ON CONFLICT (wdog_id) DO UPDATE SET mail = ?, name = ? RETURNING id"
                     [
