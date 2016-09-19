@@ -54,7 +54,8 @@ SET default_with_oids = false;
 CREATE TABLE "user" (
     id bigint NOT NULL,
     name character varying(20),
-    mail character varying(99)
+    mail character varying(99),
+    wdog_id uuid
 )
 WITH (autovacuum_enabled='true');
 
@@ -110,6 +111,13 @@ ALTER TABLE ONLY "user"
 --
 
 CREATE INDEX mail ON "user" USING btree (mail);
+
+
+--
+-- Name: user_wdog_id_idx; Type: INDEX; Schema: public; Owner: u88
+--
+
+CREATE UNIQUE INDEX user_wdog_id_idx ON "user" USING btree (wdog_id);
 
 
 --
