@@ -1,5 +1,4 @@
 user_json = require "./user.json"
-insert_user = require "./insert_user.coffee"
 
 total = 0
 for [user_id, user_name, user_mail, li] in user_json
