@@ -62,7 +62,6 @@ user_log_by_rate = ->
         li.push.apply li, RATE_LI
         li.sort (a,b)->
             a[0] - b[0]
-        console.log ("-----------------------")
         count = 0
         for [time, val, kind] in li
             if kind == "分红"
