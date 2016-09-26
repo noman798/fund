@@ -79,13 +79,19 @@ user_log_by_rate = (mail2id)->
         count = 0
         for [time, val, kind] in li
             if kind == "分红"
-                count = count*(1+val)
+                val = count*val
+                count = count+val
             else
                 count += val
             PG.raw("SELECT id from public.user_share_log where user_id=? and time=?",[user_id, time]).then (id)->
                 if id.rowCount == 0
-                    if kind not in KIND
-                        console.log kind
+                    if not kind in KIND
+                        console.log kind, KIND[kind]
+                    else
+                        console.log "num", val
+                        PG.raw("""INSERT INTO public.user_share_log (kind, num, user_id, time) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], val, user_id, time]).then (id) ->
+                            console.log("insert ", id)
+
 
             #console.log new Date(time).toISOString(), val, kind
         total += count
