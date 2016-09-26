@@ -38,5 +38,20 @@ begin_user_dividend = ->
             count+=line[1]
     rate_li
 
-console.log begin_user_dividend()
+RATE_LI =  begin_user_dividend()
+
+user_log_by_rate_li = ->
+    for [user_id, user_name, user_mail, _li] in user_json
+        li = []
+        for [kind, amount, currency, admin, time, xxx] in _li
+            if kind == "分红"
+                continue
+            if currency != "¥"
+                console.log "!!!!!!!!!!", user_id, currency
+            else
+                li.push [(new Date(time).getTime()), amount, kind]
+        console.log user_id, user_name, li
+
+user_log_by_rate_li()
+
 
