@@ -60,7 +60,11 @@ user_log_li = ->
 
 USER_LOG_LI = user_log_li()
 
-KIND =
+KIND = {
+    "入资":1
+    "提现":2
+    "分红":3
+}
 
 
 
@@ -80,7 +84,8 @@ user_log_by_rate = (mail2id)->
                 count += val
             PG.raw("SELECT id from public.user_share_log where user_id=? and time=?",[user_id, time]).then (id)->
                 if id.rowCount == 0
-                    1
+                    if kind not in KIND
+                        console.log kind
 
             #console.log new Date(time).toISOString(), val, kind
         total += count
