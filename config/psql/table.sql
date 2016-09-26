@@ -43,25 +43,6 @@ COMMENT ON EXTENSION adminpack IS 'administrative functions for PostgreSQL';
 
 SET search_path = public, pg_catalog;
 
-SET default_tablespace = '';
-
-SET default_with_oids = false;
-
---
--- Name: user; Type: TABLE; Schema: public; Owner: u88
---
-
-CREATE TABLE "user" (
-    id bigint NOT NULL,
-    name character varying(20),
-    mail character varying(99),
-    wdog_id uuid
-)
-WITH (autovacuum_enabled='true');
-
-
-ALTER TABLE "user" OWNER TO u88;
-
 --
 -- Name: id_seq; Type: SEQUENCE; Schema: public; Owner: u88
 --
@@ -76,18 +57,152 @@ CREATE SEQUENCE id_seq
 
 ALTER TABLE id_seq OWNER TO u88;
 
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
 --
--- Name: id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: u88
+-- Name: user; Type: TABLE; Schema: public; Owner: u88
 --
 
-ALTER SEQUENCE id_seq OWNED BY "user".id;
+CREATE TABLE "user" (
+    name character varying(20),
+    mail character varying(99),
+    wdog_id uuid,
+    id bigint DEFAULT nextval('id_seq'::regclass) NOT NULL
+)
+WITH (autovacuum_enabled='true');
+
+
+ALTER TABLE "user" OWNER TO u88;
+
+--
+-- Name: user_admin; Type: TABLE; Schema: public; Owner: u88
+--
+
+CREATE TABLE user_admin (
+    id bigint DEFAULT nextval('id_seq'::regclass) NOT NULL
+);
+
+
+ALTER TABLE user_admin OWNER TO u88;
+
+--
+-- Name: user_share; Type: TABLE; Schema: public; Owner: u88
+--
+
+CREATE TABLE user_share (
+    id bigint NOT NULL,
+    val numeric
+);
+
+
+ALTER TABLE user_share OWNER TO u88;
+
+--
+-- Name: user_share_id_seq; Type: SEQUENCE; Schema: public; Owner: u88
+--
+
+CREATE SEQUENCE user_share_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE user_share_id_seq OWNER TO u88;
+
+--
+-- Name: user_share_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: u88
+--
+
+ALTER SEQUENCE user_share_id_seq OWNED BY user_share.id;
+
+
+--
+-- Name: user_share_log; Type: TABLE; Schema: public; Owner: u88
+--
+
+CREATE TABLE user_share_log (
+    id bigint DEFAULT nextval('id_seq'::regclass) NOT NULL,
+    kind smallint,
+    val numeric,
+    user_id bigint NOT NULL,
+    "time" bigint NOT NULL
+);
+
+
+ALTER TABLE user_share_log OWNER TO u88;
+
+--
+-- Name: user_share_log_id_seq; Type: SEQUENCE; Schema: public; Owner: u88
+--
+
+CREATE SEQUENCE user_share_log_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE user_share_log_id_seq OWNER TO u88;
+
+--
+-- Name: user_share_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: u88
+--
+
+ALTER SEQUENCE user_share_log_id_seq OWNED BY user_share_log.id;
+
+
+--
+-- Name: user_share_log_time_seq; Type: SEQUENCE; Schema: public; Owner: u88
+--
+
+CREATE SEQUENCE user_share_log_time_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE user_share_log_time_seq OWNER TO u88;
+
+--
+-- Name: user_share_log_time_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: u88
+--
+
+ALTER SEQUENCE user_share_log_time_seq OWNED BY user_share_log."time";
+
+
+--
+-- Name: user_share_log_user_id_seq; Type: SEQUENCE; Schema: public; Owner: u88
+--
+
+CREATE SEQUENCE user_share_log_user_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE user_share_log_user_id_seq OWNER TO u88;
+
+--
+-- Name: user_share_log_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: u88
+--
+
+ALTER SEQUENCE user_share_log_user_id_seq OWNED BY user_share_log.user_id;
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: u88
 --
 
-ALTER TABLE ONLY "user" ALTER COLUMN id SET DEFAULT nextval('id_seq'::regclass);
+ALTER TABLE ONLY user_share ALTER COLUMN id SET DEFAULT nextval('user_share_id_seq'::regclass);
 
 
 --
@@ -107,6 +222,14 @@ ALTER TABLE ONLY "user"
 
 
 --
+-- Name: user_share_log_pkey; Type: CONSTRAINT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_share_log
+    ADD CONSTRAINT user_share_log_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: mail; Type: INDEX; Schema: public; Owner: u88
 --
 
@@ -114,10 +237,41 @@ CREATE INDEX mail ON "user" USING btree (mail);
 
 
 --
+-- Name: user_share_log_user_id_time_idx; Type: INDEX; Schema: public; Owner: u88
+--
+
+CREATE INDEX user_share_log_user_id_time_idx ON user_share_log USING btree (user_id, "time");
+
+
+--
 -- Name: user_wdog_id_idx; Type: INDEX; Schema: public; Owner: u88
 --
 
 CREATE UNIQUE INDEX user_wdog_id_idx ON "user" USING btree (wdog_id);
+
+
+--
+-- Name: user_admin_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_admin
+    ADD CONSTRAINT user_admin_id_fkey FOREIGN KEY (id) REFERENCES "user"(id);
+
+
+--
+-- Name: user_share_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_share
+    ADD CONSTRAINT user_share_id_fkey FOREIGN KEY (id) REFERENCES "user"(id);
+
+
+--
+-- Name: user_share_log_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_share_log
+    ADD CONSTRAINT user_share_log_user_id_fkey FOREIGN KEY (user_id) REFERENCES "user"(id);
 
 
 --
