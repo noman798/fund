@@ -67,20 +67,21 @@ KIND = {
 }
 
 _TO_INSERT = []
-_insert = (time, kind, user_id, val)->
-    _TO_INSERT.push [time, kind, user_id, val]
 _insert_all = ->
     _TO_INSERT.sort (a,b)->
         a[0] - b[0]
+    for [time, kind, user_id, val] in _TO_INSERT
+        _insert(time, kind, user_id, val)
+
+_insert = (time, kind, user_id, val)->
     PG.raw("SELECT id from public.user_share_log where user_id=? and time=?",[user_id, time]).then (id)->
         if id.rowCount == 0
             if not kind in KIND
                 console.log kind, KIND[kind]
             else
-                if val
-                    console.log "num", val, kind
-                    PG.raw("""INSERT INTO public.user_share_log (kind, user_id, time, n) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], user_id, time, val]).then (id) ->
-                        console.log("insert ", id)
+                console.log "num", val, kind
+                PG.raw("""INSERT INTO public.user_share_log (kind, user_id, time, n) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], user_id, time, val]).then (id) ->
+                    console.log("insert ", id)
 
 user_log_by_rate = (mail2id)->
     total = 0
@@ -97,7 +98,8 @@ user_log_by_rate = (mail2id)->
                 count = count+val
             else
                 count += val
-            _insert(time, kind, user_id, val)
+            if val
+                _TO_INSERT.push [time, kind, user_id, val]
 
 
             #console.log new Date(time).toISOString(), val, kind
