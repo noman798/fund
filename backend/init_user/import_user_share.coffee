@@ -54,7 +54,7 @@ user_log_li = ->
             if currency != "¥"
                 console.log "!!!!!!!!!!", user_id, currency
             else
-                li.push [(new Date(time).getTime()), amount, kind]
+                li.push [parseInt((new Date(time).getTime())/1000), amount, kind]
         result.push [user_mail , li]
     result
 
@@ -74,14 +74,8 @@ _insert_all = ->
         _insert(time, kind, user_id, val)
 
 _insert = (time, kind, user_id, val)->
-    PG.raw("SELECT id from public.user_share_log where user_id=? and time=?",[user_id, time]).then (id)->
-        if id.rowCount == 0
-            if not kind in KIND
-                console.log kind, KIND[kind]
-            else
-                console.log "num", val, kind
-                PG.raw("""INSERT INTO public.user_share_log (kind, user_id, time, n) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], user_id, time, val]).then (id) ->
-                    console.log("insert ", id)
+    PG.raw("""INSERT INTO public.user_share_log (kind, user_id, time, n) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], user_id, time, val]).then (id) ->
+        console.log("insert ", id)
 
 user_log_by_rate = (mail2id)->
     total = 0
