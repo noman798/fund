@@ -66,12 +66,15 @@ KIND = {
 
 _TO_INSERT = []
 _insert_all = ->
-    _TO_INSERT.sort (a,b)->
-        b[0] - a[0]
-    _insert()
+    PG.raw("select count(1) from public.user_share_log").then (n)->
+        if n.rows[0].count == 0
+            _TO_INSERT.sort (a,b)->
+                b[0] - a[0]
+            _insert()
 
 _insert = ()->
     [time, kind, user_id, val] = _TO_INSERT.pop()
+    console.log _TO_INSERT.length
     time = parseInt(time/1000)
     val = parseInt(val*100000)/100000
     PG.raw("""INSERT INTO public.user_share_log (kind, user_id, time, n) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], user_id, time, val]).then (id) ->
