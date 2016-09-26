@@ -66,7 +66,15 @@ KIND = {
     "分红":3
 }
 
-
+_insert = (kind, user_id, time, val)->
+    PG.raw("SELECT id from public.user_share_log where user_id=? and time=?",[user_id, time]).then (id)->
+        if id.rowCount == 0
+            if not kind in KIND
+                console.log kind, KIND[kind]
+            else
+                console.log "num", val, kind
+                PG.raw("""INSERT INTO public.user_share_log (kind, num, user_id, time) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], val, user_id, time]).then (id) ->
+                    console.log("insert ", id)
 
 user_log_by_rate = (mail2id)->
     total = 0
@@ -83,14 +91,7 @@ user_log_by_rate = (mail2id)->
                 count = count+val
             else
                 count += val
-            PG.raw("SELECT id from public.user_share_log where user_id=? and time=?",[user_id, time]).then (id)->
-                if id.rowCount == 0
-                    if not kind in KIND
-                        console.log kind, KIND[kind]
-                    else
-                        console.log "num", val, kind
-                        PG.raw("""INSERT INTO public.user_share_log (kind, num, user_id, time) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], val, user_id, time]).then (id) ->
-                            console.log("insert ", id)
+            _insert(kind, user_id, time, val)
 
 
             #console.log new Date(time).toISOString(), val, kind
