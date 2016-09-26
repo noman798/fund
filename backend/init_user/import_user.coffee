@@ -50,7 +50,7 @@ user_log_by_rate_li = ->
                 console.log "!!!!!!!!!!", user_id, currency
             else
                 li.push [(new Date(time).getTime()), amount, kind]
-        console.log user_id, user_name, li
+        console.log user_id, user_mail , li
 
 user_log_by_rate_li()
 
