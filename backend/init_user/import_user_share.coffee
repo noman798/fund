@@ -20,7 +20,6 @@ find_begin_user = ->
 
             count += line[1]
         total += count
-        console.log user_mail, count
     console.log total
     # console.log begin_line
     return begin_line[0]
@@ -73,6 +72,7 @@ _insert_all = ->
         _insert(time, kind, user_id, val)
 
 _insert = (time, kind, user_id, val)->
+    time = parseInt(time/1000)
     PG.raw("""INSERT INTO public.user_share_log (kind, user_id, time, n) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], user_id, time, val]).then (id) ->
         # console.log("insert ", id)
         0
@@ -95,8 +95,6 @@ user_log_by_rate = (mail2id)->
             if val != 0
                 _TO_INSERT.push [time, kind, user_id, val]
 
-        console.log user_mail, count
-            #console.log new Date(time).toISOString(), val, kind
         total += count
     console.log total
     _insert_all()
