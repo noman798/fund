@@ -49,11 +49,26 @@ SET search_path = public, pg_catalog;
 
 CREATE FUNCTION trigger_user_share_log_update() RETURNS trigger
     LANGUAGE plpgsql
-    AS $$ BEGIN
+    AS $$
+DECLARE sum_n numeric;
+DECLARE user_n numeric;
+
+BEGIN
  INSERT INTO user_share (id,n) VALUES (new.user_id, new.n) 
- ON CONFLICT (id) DO UPDATE SET n = user_share.n + new.n;
+ ON CONFLICT (id) DO UPDATE SET n = user_share.n + new.n RETURNING n INTO user_n;
+ 
+ INSERT INTO user_share_sum (id,n) VALUES (0, new.n) 
+ ON CONFLICT (id) DO UPDATE SET n = user_share_sum.n + new.n RETURNING n INTO sum_n;
+
+ INSERT INTO user_share_sum (id,n) VALUES ( new.time/86400::int, sum_n) 
+ ON CONFLICT (id) DO UPDATE SET n =  sum_n;
+
+ INSERT INTO user_share_snapshot (n,user_id,"time",user_n,user_share_log_id) VALUES (
+   sum_n,new.user_id,new.time,user_n,new.id
+ );
+
  RETURN NEW;
- END;
+END;
 $$;
 
 
@@ -216,10 +231,178 @@ ALTER SEQUENCE user_share_log_user_id_seq OWNED BY user_share_log.user_id;
 
 
 --
+-- Name: user_share_snapshot; Type: TABLE; Schema: public; Owner: u88
+--
+
+CREATE TABLE user_share_snapshot (
+    id bigint NOT NULL,
+    n numeric,
+    user_id bigint NOT NULL,
+    "time" bigint NOT NULL,
+    user_n numeric,
+    user_share_log_id bigint NOT NULL
+);
+
+
+ALTER TABLE user_share_snapshot OWNER TO u88;
+
+--
+-- Name: user_share_sum; Type: TABLE; Schema: public; Owner: u88
+--
+
+CREATE TABLE user_share_sum (
+    id bigint NOT NULL,
+    n numeric
+);
+
+
+ALTER TABLE user_share_sum OWNER TO u88;
+
+--
+-- Name: user_share_sum_id_seq; Type: SEQUENCE; Schema: public; Owner: u88
+--
+
+CREATE SEQUENCE user_share_sum_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE user_share_sum_id_seq OWNER TO u88;
+
+--
+-- Name: user_share_sum_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: u88
+--
+
+ALTER SEQUENCE user_share_sum_id_seq OWNED BY user_share_sum.id;
+
+
+--
+-- Name: user_share_sum_log_id_seq; Type: SEQUENCE; Schema: public; Owner: u88
+--
+
+CREATE SEQUENCE user_share_sum_log_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE user_share_sum_log_id_seq OWNER TO u88;
+
+--
+-- Name: user_share_sum_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: u88
+--
+
+ALTER SEQUENCE user_share_sum_log_id_seq OWNED BY user_share_snapshot.id;
+
+
+--
+-- Name: user_share_sum_log_time_seq; Type: SEQUENCE; Schema: public; Owner: u88
+--
+
+CREATE SEQUENCE user_share_sum_log_time_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE user_share_sum_log_time_seq OWNER TO u88;
+
+--
+-- Name: user_share_sum_log_time_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: u88
+--
+
+ALTER SEQUENCE user_share_sum_log_time_seq OWNED BY user_share_snapshot."time";
+
+
+--
+-- Name: user_share_sum_log_user_id_seq; Type: SEQUENCE; Schema: public; Owner: u88
+--
+
+CREATE SEQUENCE user_share_sum_log_user_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE user_share_sum_log_user_id_seq OWNER TO u88;
+
+--
+-- Name: user_share_sum_log_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: u88
+--
+
+ALTER SEQUENCE user_share_sum_log_user_id_seq OWNED BY user_share_snapshot.user_id;
+
+
+--
+-- Name: user_share_sum_log_user_share_log_id_seq; Type: SEQUENCE; Schema: public; Owner: u88
+--
+
+CREATE SEQUENCE user_share_sum_log_user_share_log_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE user_share_sum_log_user_share_log_id_seq OWNER TO u88;
+
+--
+-- Name: user_share_sum_log_user_share_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: u88
+--
+
+ALTER SEQUENCE user_share_sum_log_user_share_log_id_seq OWNED BY user_share_snapshot.user_share_log_id;
+
+
+--
 -- Name: id; Type: DEFAULT; Schema: public; Owner: u88
 --
 
 ALTER TABLE ONLY user_share ALTER COLUMN id SET DEFAULT nextval('user_share_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_share_snapshot ALTER COLUMN id SET DEFAULT nextval('user_share_sum_log_id_seq'::regclass);
+
+
+--
+-- Name: user_id; Type: DEFAULT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_share_snapshot ALTER COLUMN user_id SET DEFAULT nextval('user_share_sum_log_user_id_seq'::regclass);
+
+
+--
+-- Name: time; Type: DEFAULT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_share_snapshot ALTER COLUMN "time" SET DEFAULT nextval('user_share_sum_log_time_seq'::regclass);
+
+
+--
+-- Name: user_share_log_id; Type: DEFAULT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_share_snapshot ALTER COLUMN user_share_log_id SET DEFAULT nextval('user_share_sum_log_user_share_log_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_share_sum ALTER COLUMN id SET DEFAULT nextval('user_share_sum_id_seq'::regclass);
 
 
 --
@@ -260,6 +443,22 @@ ALTER TABLE ONLY user_share_log
 
 ALTER TABLE ONLY user_share
     ADD CONSTRAINT user_share_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user_share_sum_log_pkey; Type: CONSTRAINT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_share_snapshot
+    ADD CONSTRAINT user_share_sum_log_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user_share_sum_pkey; Type: CONSTRAINT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_share_sum
+    ADD CONSTRAINT user_share_sum_pkey PRIMARY KEY (id);
 
 
 --
@@ -328,6 +527,22 @@ ALTER TABLE ONLY user_share
 
 ALTER TABLE ONLY user_share_log
     ADD CONSTRAINT user_share_log_user_id_fkey FOREIGN KEY (user_id) REFERENCES "user"(id);
+
+
+--
+-- Name: user_share_sum_log_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_share_snapshot
+    ADD CONSTRAINT user_share_sum_log_user_id_fkey FOREIGN KEY (user_id) REFERENCES "user"(id);
+
+
+--
+-- Name: user_share_sum_log_user_share_log_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_share_snapshot
+    ADD CONSTRAINT user_share_sum_log_user_share_log_id_fkey FOREIGN KEY (user_share_log_id) REFERENCES user_share_log(id);
 
 
 --
