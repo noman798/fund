@@ -77,6 +77,8 @@ user_log_by_rate = (mail2id)->
                 count = count*(1+val)
             else
                 count += val
+            PG.raw("SELECT id from public.user_share_log where user_id=? and time=?",[user_id, time]).then (id)->
+                if id.rowCount == 0
 
             #console.log new Date(time).toISOString(), val, kind
         total += count
