@@ -20,7 +20,7 @@ find_begin_user = ->
 
             count += line[1]
         total += count
-
+        console.log user_mail, count
     console.log total
     # console.log begin_line
     return begin_line[0]
@@ -43,7 +43,6 @@ begin_user_dividend = ->
     rate_li
 
 RATE_LI =  begin_user_dividend()
-
 user_log_li = ->
     result = []
     for [user_id, user_name, user_mail, _li] in user_json
@@ -54,8 +53,8 @@ user_log_li = ->
             if currency != "¥"
                 console.log "!!!!!!!!!!", user_id, currency
             else
-                li.push [parseInt((new Date(time).getTime())/1000), amount, kind]
-        console.log li
+                li.push [new Date(time).getTime(), amount, kind]
+        # console.log li
         result.push [user_mail , li]
     result
 USER_LOG_LI = user_log_li()
@@ -93,10 +92,10 @@ user_log_by_rate = (mail2id)->
                 count = count+val
             else
                 count += val
-            if val
+            if val != 0
                 _TO_INSERT.push [time, kind, user_id, val]
 
-
+        console.log user_mail, count
             #console.log new Date(time).toISOString(), val, kind
         total += count
     console.log total
