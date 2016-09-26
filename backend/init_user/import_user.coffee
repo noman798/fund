@@ -34,7 +34,7 @@ begin_user_dividend = ->
             if line[0] == "分红"
                 time = new Date(line[4]).getTime()
                 rate = line[1]/count
-                rate_li.push ([time, rate])
+                rate_li.push ([time, rate, '分红'])
             count+=line[1]
     rate_li
 
