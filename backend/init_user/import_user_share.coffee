@@ -66,8 +66,10 @@ KIND = {
 
 _TO_INSERT = []
 _insert_all = ->
-    PG.raw("select count(1) from public.user_share_log").then (n)->
+    PG.raw("select count(1)::int from public.user_share_log").then (n)->
+        console.log n.rows[0].count
         if n.rows[0].count == 0
+            console.log "insert"
             _TO_INSERT.sort (a,b)->
                 b[0] - a[0]
             _insert()
