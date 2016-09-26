@@ -1,22 +1,36 @@
 user_json = require "./user.json"
 
 
-begin = 9007199254740992
-begin_line = 0
+find_begin_user = ->
+    begin = 9007199254740992
+    begin_line = 0
 
-total = 0
-for [user_id, user_name, user_mail, li] in user_json
-    count = 0
-    for line in li
-        console.log line
-        time = new Date(line[4]).getTime()
-        if time < begin
-            begin = time
-            begin_line = [user_id, line]
+    total = 0
+    for [user_id, user_name, user_mail, li] in user_json
+        count = 0
+        for line in li
+            console.log line
+            time = new Date(line[4]).getTime()
+            if time < begin
+                begin = time
+                begin_line = [user_id, line]
 
-        count += line[1]
-    console.log user_id, user_name, count
-    total += count
+            count += line[1]
+        console.log user_id, user_name, count
+        total += count
 
-console.log total
-console.log begin_line
+    console.log total
+    console.log begin_line
+    return begin_line[0]
+
+begin_user_dividend = ->
+    begin_user_id = find_begin_user()
+    for [user_id, user_name, user_mail, li] in user_json
+        if user_id != begin_user_id
+            continue
+        for line in li
+            console.log line
+
+
+begin_user_dividend()
+
