@@ -74,7 +74,7 @@ _insert = (kind, user_id, time, val)->
             else
                 if val
                     console.log "num", val, kind
-                    PG.raw("""INSERT INTO public.user_share_log (kind, num, user_id, time) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], val, user_id, time]).then (id) ->
+                    PG.raw("""INSERT INTO public.user_share_log (kind, user_id, time, num) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], user_id, time, val]).then (id) ->
                         console.log("insert ", id)
 
 user_log_by_rate = (mail2id)->
