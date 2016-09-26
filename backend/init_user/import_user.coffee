@@ -1,5 +1,9 @@
 user_json = require "./user.json"
 
+process.env.NODE_PATH += (":"+__dirname+"/../../ws/src/")
+require('module').Module._initPaths()
+
+PG = require "pg.coffee"
 
 find_begin_user = ->
     begin = 9007199254740992
@@ -56,13 +60,19 @@ user_log_li = ->
 
 USER_LOG_LI = user_log_li()
 
+
+PG.raw(
+    "SELECT id,mail from public.user"
+).then (li)->
+    console.log li
+
+
 user_log_by_rate = ->
     total = 0
     for [user_mail, li] in USER_LOG_LI
         li.push.apply li, RATE_LI
         li.sort (a,b)->
             a[0] - b[0]
-        console.log ("-----------------------")
         count = 0
         for [time, val, kind] in li
             if kind == "分红"
@@ -75,4 +85,10 @@ user_log_by_rate = ->
 
 user_log_by_rate()
 
+user_rate = ->
+    v = 1
+    for i in RATE_LI
+        v *= (1+i[1]*2)
+    v
+user_rate()
 
