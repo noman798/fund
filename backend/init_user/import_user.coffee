@@ -40,7 +40,8 @@ begin_user_dividend = ->
 
 RATE_LI =  begin_user_dividend()
 
-user_log_by_rate_li = ->
+user_log_li = ->
+    result = []
     for [user_id, user_name, user_mail, _li] in user_json
         li = []
         for [kind, amount, currency, admin, time, xxx] in _li
@@ -50,8 +51,18 @@ user_log_by_rate_li = ->
                 console.log "!!!!!!!!!!", user_id, currency
             else
                 li.push [(new Date(time).getTime()), amount, kind]
-        console.log user_id, user_mail , li
+        result.push [user_mail , li]
+    result
 
-user_log_by_rate_li()
+USER_LOG_LI = user_log_li()
+
+user_log_by_rate = ->
+    for [user_mail, li] in USER_LOG_LI
+        li.push.apply li, RATE_LI
+        for [time, val, kind] in li
+            console.log time, val, kind
+
+
+user_log_by_rate()
 
 
