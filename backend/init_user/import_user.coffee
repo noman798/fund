@@ -24,13 +24,22 @@ find_begin_user = ->
     return begin_line[0]
 
 begin_user_dividend = ->
+    rate_li = []
     begin_user_id = find_begin_user()
     for [user_id, user_name, user_mail, li] in user_json
         if user_id != begin_user_id
             continue
-        for line in li
-            console.log line
 
+        count = 0
+        li.reverse()
+        for line in li
+            if line[0] == "分红"
+                time = new Date(line[4]).getTime()
+                rate = line[1]/count
+                console.log rate, count
+                rate_li.push rate
+            count+=line[1]
+    rate_li
 
 begin_user_dividend()
 
