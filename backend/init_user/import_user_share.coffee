@@ -88,7 +88,7 @@ user_log_by_rate = (mail2id)->
                     if not kind in KIND
                         console.log kind, KIND[kind]
                     else
-                        console.log "num", val
+                        console.log "num", val, kind
                         PG.raw("""INSERT INTO public.user_share_log (kind, num, user_id, time) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], val, user_id, time]).then (id) ->
                             console.log("insert ", id)
 
