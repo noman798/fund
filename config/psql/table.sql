@@ -145,7 +145,8 @@ CREATE TABLE user_share_log (
     kind smallint,
     val numeric,
     user_id bigint NOT NULL,
-    "time" bigint NOT NULL
+    "time" bigint NOT NULL,
+    txt text
 );
 
 
@@ -280,6 +281,14 @@ CREATE INDEX user_share_log_user_id_time_idx ON user_share_log USING btree (user
 --
 
 CREATE UNIQUE INDEX user_wdog_id_idx ON "user" USING btree (wdog_id);
+
+
+--
+-- Name: user_share_log_ignore_update; Type: RULE; Schema: public; Owner: u88
+--
+
+CREATE RULE user_share_log_ignore_update AS
+    ON UPDATE TO user_share_log DO INSTEAD NOTHING;
 
 
 --
