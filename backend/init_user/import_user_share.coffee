@@ -67,15 +67,16 @@ KIND = {
 _TO_INSERT = []
 _insert_all = ->
     _TO_INSERT.sort (a,b)->
-        a[0] - b[0]
-    for [time, kind, user_id, val] in _TO_INSERT
-        _insert(time, kind, user_id, val)
+        b[0] - a[0]
+    _insert()
 
-_insert = (time, kind, user_id, val)->
+_insert = ()->
+    [time, kind, user_id, val] = _TO_INSERT.pop()
     time = parseInt(time/1000)
+    val = parseInt(val*100000)/100000
     PG.raw("""INSERT INTO public.user_share_log (kind, user_id, time, n) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], user_id, time, val]).then (id) ->
-        # console.log("insert ", id)
-        0
+        if _TO_INSERT.length
+            _insert()
 
 user_log_by_rate = (mail2id)->
     total = 0
