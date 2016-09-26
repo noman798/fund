@@ -57,11 +57,21 @@ user_log_li = ->
 USER_LOG_LI = user_log_li()
 
 user_log_by_rate = ->
+    total = 0
     for [user_mail, li] in USER_LOG_LI
         li.push.apply li, RATE_LI
+        li.sort (a,b)->
+            a[0] - b[0]
+        console.log ("-----------------------")
+        count = 0
         for [time, val, kind] in li
-            console.log time, val, kind
-
+            if kind == "分红"
+                count = count*(1+val)
+            else
+                count += val
+            #console.log new Date(time).toISOString(), val, kind
+        total += count
+    console.log total
 
 user_log_by_rate()
 
