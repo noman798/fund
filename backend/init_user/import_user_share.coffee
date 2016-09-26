@@ -90,7 +90,7 @@ user_log_by_rate = (mail2id)->
         for [time, val, kind] in li
             if kind == "分红"
                 val = count*val
-                count = count+val
+                count = count*(1+val)
             else
                 count += val
             if val
