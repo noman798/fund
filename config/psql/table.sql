@@ -50,8 +50,8 @@ SET search_path = public, pg_catalog;
 CREATE FUNCTION trigger_user_share_log_update() RETURNS trigger
     LANGUAGE plpgsql
     AS $$ BEGIN
- INSERT INTO user_share (id,val) VALUES (new.user_id, new.val) 
- ON CONFLICT (id) DO UPDATE SET val = val + new.val;
+ INSERT INTO user_share (id,n) VALUES (new.user_id, new.n) 
+ ON CONFLICT (id) DO UPDATE SET n = user_share.n + new.n;
  RETURN NEW;
  END;
 $$;
@@ -109,7 +109,7 @@ ALTER TABLE user_admin OWNER TO u88;
 
 CREATE TABLE user_share (
     id bigint NOT NULL,
-    val numeric
+    n numeric
 );
 
 
@@ -143,10 +143,10 @@ ALTER SEQUENCE user_share_id_seq OWNED BY user_share.id;
 CREATE TABLE user_share_log (
     id bigint DEFAULT nextval('id_seq'::regclass) NOT NULL,
     kind smallint,
-    val numeric,
+    n numeric,
     user_id bigint NOT NULL,
     "time" bigint NOT NULL,
-    txt text
+    txt text DEFAULT ''::text NOT NULL
 );
 
 
@@ -231,11 +231,11 @@ ALTER TABLE ONLY "user"
 
 
 --
--- Name: user_admin_id_key; Type: CONSTRAINT; Schema: public; Owner: u88
+-- Name: user_admin_pkey; Type: CONSTRAINT; Schema: public; Owner: u88
 --
 
 ALTER TABLE ONLY user_admin
-    ADD CONSTRAINT user_admin_id_key UNIQUE (id);
+    ADD CONSTRAINT user_admin_pkey PRIMARY KEY (id);
 
 
 --
@@ -247,19 +247,19 @@ ALTER TABLE ONLY "user"
 
 
 --
--- Name: user_share_id_key; Type: CONSTRAINT; Schema: public; Owner: u88
---
-
-ALTER TABLE ONLY user_share
-    ADD CONSTRAINT user_share_id_key UNIQUE (id);
-
-
---
 -- Name: user_share_log_pkey; Type: CONSTRAINT; Schema: public; Owner: u88
 --
 
 ALTER TABLE ONLY user_share_log
     ADD CONSTRAINT user_share_log_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user_share_pkey; Type: CONSTRAINT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_share
+    ADD CONSTRAINT user_share_pkey PRIMARY KEY (id);
 
 
 --
