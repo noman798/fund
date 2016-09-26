@@ -1,5 +1,9 @@
 user_json = require "./user.json"
 
+process.env.NODE_PATH += (":"+__dirname+"/../../ws/src/")
+require('module').Module._initPaths()
+
+PG = require "pg.coffee"
 
 find_begin_user = ->
     begin = 9007199254740992
@@ -55,6 +59,10 @@ user_log_li = ->
     result
 
 USER_LOG_LI = user_log_li()
+
+
+PG.raw(
+    "SELECT id,mail from public.user"
 
 user_log_by_rate = ->
     total = 0
