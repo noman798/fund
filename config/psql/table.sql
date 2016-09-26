@@ -1,4 +1,3 @@
-<<<<<<< local
 --
 -- PostgreSQL database dump
 --
@@ -301,6 +300,13 @@ CREATE RULE user_share_log_ignore_update AS
 
 
 --
+-- Name: user_share_log_insert; Type: TRIGGER; Schema: public; Owner: u88
+--
+
+CREATE TRIGGER user_share_log_insert AFTER INSERT ON user_share_log FOR EACH ROW EXECUTE PROCEDURE trigger_user_share_log_update();
+
+
+--
 -- Name: user_admin_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: u88
 --
 
@@ -338,5 +344,3 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 -- PostgreSQL database dump complete
 --
 
-=======
->>>>>>> other
