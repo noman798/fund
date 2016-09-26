@@ -75,4 +75,10 @@ user_log_by_rate = ->
 
 user_log_by_rate()
 
+user_rate = ->
+    v = 1
+    for i in RATE_LI
+        v *= (1+i[1]*2)
+    v
+user_rate()
 
