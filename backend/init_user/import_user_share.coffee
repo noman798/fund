@@ -76,7 +76,8 @@ _insert_all = ->
 
 _insert = ()->
     [time, kind, user_id, val] = _TO_INSERT.pop()
-    console.log _TO_INSERT.length
+    if _TO_INSERT.length % 30 == 0
+        console.log _TO_INSERT.length
     time = parseInt(time/1000)
     val = parseInt(val*100000)/100000
     PG.raw("""INSERT INTO public.user_share_log (kind, user_id, time, n) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], user_id, time, val]).then (id) ->
