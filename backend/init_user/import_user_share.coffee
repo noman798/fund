@@ -61,15 +61,13 @@ user_log_li = ->
 USER_LOG_LI = user_log_li()
 
 
-PG.raw(
-    "SELECT id,mail from public.user"
-).then (li)->
-    console.log li
 
 
-user_log_by_rate = ->
+user_log_by_rate = (mail2id)->
     total = 0
     for [user_mail, li] in USER_LOG_LI
+        user_id = mail2id[user_mail]
+        console.log "user_id", user_id
         li.push.apply li, RATE_LI
         li.sort (a,b)->
             a[0] - b[0]
@@ -79,11 +77,11 @@ user_log_by_rate = ->
                 count = count*(1+val)
             else
                 count += val
+
             #console.log new Date(time).toISOString(), val, kind
         total += count
     console.log total
 
-user_log_by_rate()
 
 user_rate = ->
     v = 1
@@ -92,3 +90,10 @@ user_rate = ->
     v
 user_rate()
 
+PG.raw(
+    "SELECT id::int,mail from public.user"
+).then (li)->
+    mail2id = {}
+    for i in li.rows
+        mail2id[i.mail] = i.id
+    user_log_by_rate(mail2id)
