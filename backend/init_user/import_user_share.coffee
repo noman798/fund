@@ -66,7 +66,12 @@ KIND = {
     "分红":3
 }
 
-_insert = (kind, user_id, time, val)->
+_TO_INSERT = []
+_insert = (time, kind, user_id, val)->
+    _TO_INSERT.push [time, kind, user_id, val]
+_insert_all = ->
+    _TO_INSERT.sort (a,b)->
+        a[0] - b[0]
     PG.raw("SELECT id from public.user_share_log where user_id=? and time=?",[user_id, time]).then (id)->
         if id.rowCount == 0
             if not kind in KIND
@@ -92,13 +97,13 @@ user_log_by_rate = (mail2id)->
                 count = count+val
             else
                 count += val
-            _insert(kind, user_id, time, val)
+            _insert(time, kind, user_id, val)
 
 
             #console.log new Date(time).toISOString(), val, kind
         total += count
     console.log total
-
+    _insert_all()
 
 user_rate = ->
     v = 1
