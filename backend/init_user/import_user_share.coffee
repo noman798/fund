@@ -55,10 +55,10 @@ user_log_li = ->
                 console.log "!!!!!!!!!!", user_id, currency
             else
                 li.push [parseInt((new Date(time).getTime())/1000), amount, kind]
+        console.log li
         result.push [user_mail , li]
     result
 USER_LOG_LI = user_log_li()
-console.log USER_LOG_LI
 
 KIND = {
     "入资":1
