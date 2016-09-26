@@ -44,6 +44,22 @@ COMMENT ON EXTENSION adminpack IS 'administrative functions for PostgreSQL';
 SET search_path = public, pg_catalog;
 
 --
+-- Name: trigger_user_share_log_update(); Type: FUNCTION; Schema: public; Owner: u88
+--
+
+CREATE FUNCTION trigger_user_share_log_update() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$ BEGIN
+ INSERT INTO user_share (id,val) VALUES (new.user_id, new.val) 
+ ON CONFLICT (id) DO UPDATE SET val = val + new.val;
+ RETURN NEW;
+ END;
+$$;
+
+
+ALTER FUNCTION public.trigger_user_share_log_update() OWNER TO u88;
+
+--
 -- Name: id_seq; Type: SEQUENCE; Schema: public; Owner: u88
 --
 
@@ -214,11 +230,27 @@ ALTER TABLE ONLY "user"
 
 
 --
+-- Name: user_admin_id_key; Type: CONSTRAINT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_admin
+    ADD CONSTRAINT user_admin_id_key UNIQUE (id);
+
+
+--
 -- Name: user_pkey; Type: CONSTRAINT; Schema: public; Owner: u88
 --
 
 ALTER TABLE ONLY "user"
     ADD CONSTRAINT user_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user_share_id_key; Type: CONSTRAINT; Schema: public; Owner: u88
+--
+
+ALTER TABLE ONLY user_share
+    ADD CONSTRAINT user_share_id_key UNIQUE (id);
 
 
 --
