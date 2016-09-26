@@ -284,11 +284,19 @@ CREATE UNIQUE INDEX user_wdog_id_idx ON "user" USING btree (wdog_id);
 
 
 --
+-- Name: user_share_log_ignore_delete; Type: RULE; Schema: public; Owner: u88
+--
+
+CREATE RULE user_share_log_ignore_delete AS
+    ON DELETE TO user_share_log DO NOTHING;
+
+
+--
 -- Name: user_share_log_ignore_update; Type: RULE; Schema: public; Owner: u88
 --
 
 CREATE RULE user_share_log_ignore_update AS
-    ON UPDATE TO user_share_log DO INSTEAD NOTHING;
+    ON UPDATE TO user_share_log DO NOTHING;
 
 
 --
