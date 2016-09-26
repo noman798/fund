@@ -22,7 +22,7 @@ find_begin_user = ->
         total += count
 
     console.log total
-    console.log begin_line
+    # console.log begin_line
     return begin_line[0]
 
 begin_user_dividend = ->
@@ -57,8 +57,8 @@ user_log_li = ->
                 li.push [parseInt((new Date(time).getTime())/1000), amount, kind]
         result.push [user_mail , li]
     result
-
 USER_LOG_LI = user_log_li()
+console.log USER_LOG_LI
 
 KIND = {
     "入资":1
@@ -75,13 +75,14 @@ _insert_all = ->
 
 _insert = (time, kind, user_id, val)->
     PG.raw("""INSERT INTO public.user_share_log (kind, user_id, time, n) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], user_id, time, val]).then (id) ->
-        console.log("insert ", id)
+        # console.log("insert ", id)
+        0
 
 user_log_by_rate = (mail2id)->
     total = 0
     for [user_mail, li] in USER_LOG_LI
         user_id = mail2id[user_mail]
-        console.log "user_id", user_id
+        # console.log "user_id", user_id
         li.push.apply li, RATE_LI
         li.sort (a,b)->
             a[0] - b[0]
