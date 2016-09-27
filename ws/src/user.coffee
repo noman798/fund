@@ -10,7 +10,6 @@ module.exports = {
             share_now = share_now.n
         else
             share_now = 0
-        console.log share_now
 
         return [share_now]
         # id_li = []
