@@ -22,6 +22,8 @@ wilddog.auth().onAuthStateChanged (user) ->
         token = wilddog.auth().currentUser.getToken()
         F.auth.init(token).then ->
             _auth.send()
+            WS.auth = (func)->
+                func()
 
     if not user.displayName
         URL "/auth/user"
