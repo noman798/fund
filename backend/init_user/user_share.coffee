@@ -23,4 +23,4 @@ module.exports = {
                 self.user_share_new_by_id(id, kind, n)
 }
 
-module.exports.user_share_new_by_mail("man@tz.world", "入资", "0.01")
+module.exports.user_share_new_by_mail("man@tz.world", "入资", "0.02")
