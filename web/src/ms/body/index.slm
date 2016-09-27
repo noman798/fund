@@ -1,0 +1,6 @@
+.bar.split
+  .I.I-down
+  | 份额明细
+  .sum 
+    | 合计 
+    span.num  

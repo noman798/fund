@@ -4,6 +4,7 @@ require 'scss/util/_slideout'
 MS 'body', require("slm/_main")+require('./sidebar.slm'), {
     admin : 0
     onReady: ->
+        $(".MAIN").html require("./index.slm")
         WS.auth_import "user", ->
             F.user.share().then (share_now, li)->
                 console.log share_now
