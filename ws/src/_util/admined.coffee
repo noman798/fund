@@ -1,6 +1,6 @@
 logined = require('_util/logined.coffee')
 PG = require("pg.coffee")
-
+co = require('co')
 
 module.exports = (func)->
     logined ->
@@ -13,7 +13,7 @@ module.exports = (func)->
             ).length
 
         if is_admin
-            return func.apply(@, arguments)
+            return co(func.apply(@, arguments))
         else
             @send "/ auth/admin"
             return 0
