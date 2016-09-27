@@ -3,4 +3,5 @@
   span.name
   .sum 
     | 持有份额 
-    span.num  
+    span.num
+.shareLog

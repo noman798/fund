@@ -11,8 +11,11 @@ MS 'body', require("slm/_main")+require('./sidebar.slm'), {
         WS.auth_import "user", ->
             F.user.share().then (share_now, li)->
                 elem.find(".bar .num").text share_now.toFixed(2)
+
+                _ = $.html()
                 for [kind, n, time, txt] in li
-                    console.log [kind, n, time, txt]
+                    _ """<div class=bar>#{kind}<b class=mail>#{n.toFixed(2)}</b><div class=tip><span class=ml4>#{$.isotime time}</span></div></div>"""
+                elem.find(".shareLog").html _.html()
 
 
 
