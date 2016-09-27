@@ -2,6 +2,11 @@ _auth = Signal()
 WS.auth = (func)->
     _auth.bind func
 
+WS.login_import = (mod, func) ->
+    WS.auth ->
+        WS.import mod, func
+
+
 wilddog.auth().onAuthStateChanged (user) ->
     _user = $user
 
