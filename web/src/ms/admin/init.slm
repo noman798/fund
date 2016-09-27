@@ -14,9 +14,9 @@ form.userSearch :submit="@submit"
     .bar.split
       .I.I-down
       | 份额明细
-      span style="font-size:14px;margin-left:16px;color:#999;float:right;margin-right:18px" 
+      .sum 
         | 合计 
-        span style="margin-left:4px"  1292.8203 万
+        span.num  1292.8203 万
 
     .bar
       .I.I-cash

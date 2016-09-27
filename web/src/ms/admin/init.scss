@@ -60,6 +60,16 @@
         background:#f9f9f9;
         box-shadow:0 0 3px #eee inset;
         color:#666;
+        .sum{
+            font-size:14px;
+            margin-left:16px;
+            color:#999;
+            float:right;
+            margin-right:18px;
+            .num{
+                margin-left:4px
+            }
+        }
     }
     .tip{
         font-size:14px;
