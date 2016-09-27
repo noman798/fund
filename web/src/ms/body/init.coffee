@@ -13,10 +13,19 @@ MS 'body', require("slm/_main")+require('./sidebar.slm'), {
         WS.auth_import "user", ->
             F.user.share().then (share_now, li)->
                 elem.find(".bar .num").text share_now.toFixed(2)
-                sum = 0
                 _ = $.html()
-                for [kind, n, time, txt] in li
-                    _ """<div class=bar>#{USER_SHARE_LOG_KIND[kind]}<b class=n>#{n.toFixed(2)}</b><div class=tip><span class=ml4>#{$.isotime time}</span></div></div>"""
+
+                li.reverse()
+
+                sum = 0
+                for [kind, n, time, txt], pos in li
+                    sum += n
+                    li[pos].push sum
+
+                li.reverse()
+                for [kind, n, time, txt, sum] in li
+                    _ """<div class=bar>#{USER_SHARE_LOG_KIND[kind]} <b class=n>#{n.toFixed(2)}</b> 份额<b class="arrow">➙</b> <b class=sum>#{sum}</b><div class=tip><span class=ml4>#{$.isotime time}</span></div></div>"""
+
                 elem.find(".shareLog").html _.html()
 
 
