@@ -5,7 +5,6 @@ module.exports = {
     user_share : logined ->
         ID = @ID
         share_now = yield PG.raw("SELECT id::int, n::float FROM user_share WHERE id=?",[ID])
-
         return [share_now]
         # id_li = []
         # share_dict = {}
