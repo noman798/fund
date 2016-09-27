@@ -22,13 +22,6 @@ MS 'admin', html.html(), {
                 if Math.abs(sum - share_sum) > 1
                     alert "数据库异常：份额合计 user_share_sum #{sum} 与 用户的share挨个加 #{share_sum} 对不上 ！！！"
 
-    # .bar
-    #   .I.I-cash
-    #   | 云梦
-    #   b.mail manx@xpure.foxmail
-    #   .tip
-    #     span.ml4  2239922.3
-
 
     slogo:"管理后台"
     loading:0
