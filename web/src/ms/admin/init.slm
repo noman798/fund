@@ -4,10 +4,10 @@ form.userSearch :submit="@submit"
 #BODY style="position:absolute;left:0;right:0;top:149px;bottom:0;"
   .BODY.macS
     .bar
-      span style="color:#999" 查无此人
+      span.c9 查无此人
       .I.I-mail 邀请注册
         
-      span style="font-size:14px;margin-left:16px;color:#999;float:right;margin-right:18px;" 
+      span.searchMail
         | zsp042@gmail.com 
 
 
