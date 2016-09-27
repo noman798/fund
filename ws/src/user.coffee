@@ -2,7 +2,7 @@ logined = require('_util/logined.coffee')
 PG = require("pg.coffee")
 
 module.exports = {
-    user_share : logined ->
+    share : logined ->
         ID = @ID
         share_now = yield PG.raw("SELECT id::int, n::float FROM user_share WHERE id=?",[ID])
         return [share_now]

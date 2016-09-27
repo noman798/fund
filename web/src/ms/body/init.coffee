@@ -5,7 +5,8 @@ MS 'body', require("slm/_main")+require('./sidebar.slm'), {
     admin : 0
     onReady: ->
         WS.auth_import "user", ->
-            F.user.
+            F.user.share().then (share_now, li)->
+                console.log share_now, li
 
 
         self = @
