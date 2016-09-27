@@ -16,7 +16,7 @@ form.userSearch :submit="@submit"
       | 份额明细
       .sum 
         | 合计 
-        span.num  1292.8203 万
+        span.num  
 
     .bar
       .I.I-cash
