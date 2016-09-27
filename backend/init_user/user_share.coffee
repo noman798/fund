@@ -15,5 +15,10 @@ module.exports = {
         PG.raw("""INSERT INTO public.user_share_log (kind, user_id, time, n) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], user_id, time, val])
 
     user_share_new_by_mail : (mail, kind, n)->
-        PG.raw("""INSERT INTO public.user_share_log (kind, user_id, time, n) VALUES (?,?,?,?) RETURNING id""", [KIND[kind], user_id, time, val])
+        PG.raw("""SELECT id FROM user WHERE mail=?""", [mail.toLowerCase()]).then (li)->
+            id = li.rows[0]
+            if id
+                console.log id
 }
+
+module.exports.user_share_new_by_mail("man@tz.world", "入资", "0.01")
