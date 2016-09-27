@@ -4,6 +4,10 @@ require 'scss/util/_slideout'
 MS 'body', require("slm/_main")+require('./sidebar.slm'), {
     admin : 0
     onReady: ->
+        WS.auth_import "user", ->
+            F.user.
+
+
         self = @
         WS.auth ->
             F.auth.is_admin().then(
