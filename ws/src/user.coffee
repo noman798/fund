@@ -11,6 +11,10 @@ module.exports = {
         else
             share_now = 0
 
+        share_li = (yield PG.raw("""SELECT kind::int,n::float,"time"::int,txt FROM user_share_log WHERE user_id=? ORDER BY time DESC""",[ID])).rows
+        console.log share_li
+
+
         return [share_now]
         # id_li = []
         # share_dict = {}
