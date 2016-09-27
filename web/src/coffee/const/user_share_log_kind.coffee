@@ -1,1 +1,1 @@
-MODULE.EXPORTS = ["?","入资","提现","分红"]
+module.exports = ["?","入资","提现","分红"]

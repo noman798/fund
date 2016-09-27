@@ -1,6 +1,8 @@
 require 'scss/util/_slideout'
-require("scss/util/_bar")
+require './index.scss'
+require "scss/util/_bar"
 
+USER_SHARE_LOG_KIND = require("coffee/const/user_share_log_kind")
 
 MS 'body', require("slm/_main")+require('./sidebar.slm'), {
     admin : 0
@@ -11,10 +13,10 @@ MS 'body', require("slm/_main")+require('./sidebar.slm'), {
         WS.auth_import "user", ->
             F.user.share().then (share_now, li)->
                 elem.find(".bar .num").text share_now.toFixed(2)
-
+                sum = 0
                 _ = $.html()
                 for [kind, n, time, txt] in li
-                    _ """<div class=bar>#{kind}<b class=mail>#{n.toFixed(2)}</b><div class=tip><span class=ml4>#{$.isotime time}</span></div></div>"""
+                    _ """<div class=bar>#{USER_SHARE_LOG_KIND[kind]}<b class=n>#{n.toFixed(2)}</b><div class=tip><span class=ml4>#{$.isotime time}</span></div></div>"""
                 elem.find(".shareLog").html _.html()
 
 
