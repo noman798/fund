@@ -19,8 +19,6 @@ module.exports = {
         for i in user_li.rows
             result.push [i.id, i.name, i.mail, share_dict[i.id]]
 
-        result = []
-
         return [total, result]
 
 

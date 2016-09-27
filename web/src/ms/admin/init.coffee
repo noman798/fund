@@ -5,6 +5,8 @@ MS 'admin', html.html(), {
     onReady: ->
         WS.login_import "admin", ->
             F.admin.user_share().then (total, li)->
+                for [id, name, mail, share] in li
+                    console.log id, name, mail, share
                 console.log total, li
 
     slogo:"管理后台"
