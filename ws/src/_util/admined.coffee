@@ -2,8 +2,8 @@ logined = require('_util/logined.coffee')
 PG = require("pg.coffee")
 
 
-module.exports = logined (func)->
-    ->
+module.exports = (func)->
+    logined ->
         is_admin = @IS_ADMIN
         if is_admin == undefined
             is_admin = @IS_ADMIN = (
