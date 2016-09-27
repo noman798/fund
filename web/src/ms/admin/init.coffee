@@ -6,14 +6,22 @@ MS 'admin', html.html(), {
         elem = $(@$element)
         WS.login_import "admin", ->
             F.admin.user_share().then (sum, li)->
-                elem.find(".sum .num").text sum
 
                 _ = $.html()
+                share_sum = 0
+                li.sort (a,b)->
+                    b[3] - a[3]
+
                 for [id, name, mail, share] in li
-                    _ """<div class=bar><div class="I I-cash"></div>#{$.escape name}</div>"""
-                    console.log id, name, mail, share
+                    share_sum += share
+                    _ """<div class=bar><div class="I I-cash"></div>#{$.escape name}<b class=mail>#{$.escape mail}</b><div class=tip><span class=ml4>#{share.toFixed(2)}</span></div></div>"""
 
                 elem.find(".userLi").html _.html()
+
+                elem.find(".sum .num").text sum
+                if Math.abs(sum - share_sum) > 1
+                    alert "数据库异常：份额合计 user_share_sum #{sum} 与 用户的share挨个加 #{share_sum} 对不上 ！！！"
+
     # .bar
     #   .I.I-cash
     #   | 云梦
