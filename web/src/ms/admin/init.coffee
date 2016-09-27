@@ -4,7 +4,7 @@ html = $ """<div>#{require("slm/_topbar")}#{require("./init.slm")}</div>"""
 MS 'admin', html.html(), {
     onReady: ->
         elem = $(@$element)
-        WS.login_import "admin", ->
+        WS.auth_import "admin", ->
             F.admin.user_share().then (sum, li)->
 
                 _ = $.html()

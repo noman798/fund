@@ -2,7 +2,7 @@ _auth = Signal()
 WS.auth = (func)->
     _auth.bind func
 
-WS.login_import = (mod, func) ->
+WS.auth_import = (mod, func) ->
     WS.auth ->
         WS.import mod, func
 
