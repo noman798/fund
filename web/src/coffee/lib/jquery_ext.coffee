@@ -1,5 +1,5 @@
 
-$.fn.extend(
+$.extend(
     html : ->
         r = []
         _ = (o) -> r.push o

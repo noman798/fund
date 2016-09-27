@@ -6,10 +6,10 @@ MS 'admin', html.html(), {
         elem = $(@$element)
         WS.login_import "admin", ->
             F.admin.user_share().then (sum, li)->
-                for [id, name, mail, share] in li
-                    console.log id, name, mail, share
-                console.log sum, li
                 _ = $.html()
+                for [id, name, mail, share] in li
+                    _ """<div class=bar><div class="I I-cash"></div>#{$.escape name}</div>"""
+                    console.log id, name, mail, share
                 elem.find(".userLi").html _.html()
                 elem.find(".sum .num").text sum
     # .bar
