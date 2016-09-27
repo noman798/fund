@@ -4,4 +4,37 @@
     border-bottom:1px solid #eee;
     font-weight:200;
     padding:0 0 0 18px;
+    .I{
+        cursor:pointer;
+        float: right;
+        border-left: 1px solid #eee;
+        height: 67px;
+        width: 79px;
+        padding: 0;
+        text-align: center;
+        color: #999;
+        font-size: 19px;
+    }
+    &.split{
+        background:#f9f9f9;
+        box-shadow:0 0 3px #eee inset;
+        color:#666;
+        .sum{
+            font-size:14px;
+            margin-left:16px;
+            color:#999;
+            float:right;
+            margin-right:18px;
+            .num{
+                margin-left:4px
+            }
+        }
+    }
+    .tip{
+        font-size:14px;
+        margin-left:16px;
+        color:#999;
+        float:right;
+        margin-right:18px;
+    }
 }

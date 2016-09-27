@@ -1,4 +1,5 @@
 require 'scss/util/_slideout'
+require("scss/util/_bar")
 
 
 MS 'body', require("slm/_main")+require('./sidebar.slm'), {

@@ -1,5 +1,5 @@
 require("./init.scss")
-require("scss/util/_bar.scss")
+require("scss/util/_bar")
 
 html = $ """<div>#{require("slm/_topbar")}#{require("./init.slm")}</div>"""
 MS 'admin', html.html(), {
