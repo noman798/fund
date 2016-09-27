@@ -4,7 +4,14 @@ PG = require("pg.coffee")
 module.exports = {
     share : logined ->
         ID = @ID
-        share_now = yield PG.raw("SELECT id::int, n::float FROM user_share WHERE id=?",[ID])
+        share_now = yield PG.raw("SELECT n::float FROM user_share WHERE id=?",[ID])
+        share_now = share_now.rows[0]
+        if share_now
+            share_now = share_now.n
+        else
+            share_now = 0
+        console.log share_now
+
         return [share_now]
         # id_li = []
         # share_dict = {}
