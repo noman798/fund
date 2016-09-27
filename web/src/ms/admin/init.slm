@@ -17,11 +17,5 @@ form.userSearch :submit="@submit"
       .sum 
         | 合计 
         span.num  
-
-    .bar
-      .I.I-cash
-      | 云梦
-      b.mail manx@xpure.foxmail
-      .tip 
-        span.ml4  2239922.3
-
+    
+    .userLi
