@@ -472,7 +472,7 @@ CREATE INDEX mail ON "user" USING btree (mail);
 -- Name: user_share_log_user_id_time_idx; Type: INDEX; Schema: public; Owner: u88
 --
 
-CREATE INDEX user_share_log_user_id_time_idx ON user_share_log USING btree (user_id, "time");
+CREATE INDEX user_share_log_user_id_time_idx ON user_share_log USING btree (user_id, "time" DESC);
 
 
 --
