@@ -4,4 +4,4 @@ module.exports = (func)->
             return func.apply(@, arguments)
         else
             @send "/ auth/login"
-            0
+            return 0
