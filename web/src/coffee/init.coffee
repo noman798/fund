@@ -25,6 +25,7 @@ require "./lib/url.coffee"
 require "./lib/ws.coffee"
 require "./urlmap.coffee"
 require "./lib/util.coffee"
+require "./lib/jquery_ext.coffee"
 
 COFNIG = require "../../config.coffee"
 
