@@ -5,10 +5,12 @@ require("scss/util/_bar")
 MS 'body', require("slm/_main")+require('./sidebar.slm'), {
     admin : 0
     onReady: ->
-        $(".MAIN").html require("./index.slm")
+        elem = $(@$element)
+        elem.find(".MAIN").html require("./index.slm")
+        elem.find('.bar .name').text $user.displayName
         WS.auth_import "user", ->
             F.user.share().then (share_now, li)->
-                console.log share_now
+                elem.find(".bar .num").text share_now.toFixed(2)
                 for [kind, n, time, txt] in li
                     console.log [kind, n, time, txt]
 

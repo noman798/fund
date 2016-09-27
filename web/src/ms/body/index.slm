@@ -1,6 +1,6 @@
 .bar.split
   .I.I-down
-  | 份额明细
+  span.name
   .sum 
-    | 合计 
+    | 持有份额 
     span.num  
