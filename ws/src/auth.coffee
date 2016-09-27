@@ -5,7 +5,7 @@ logined = require('logined.coffee')
 
 module.exports = {
     is_admin:logined ->
-        li = yield PG.select(1).from('user_admin').where('id', ID)
+        li = yield PG.select(1).from('user_admin').where('id', @ID)
         return li.length
 
     init:(token)->

@@ -8,6 +8,7 @@ MS 'body', require("slm/_main")+require('./sidebar.slm'), {
         WS.auth ->
             F.auth.is_admin().then(
                 (_admin)->
+                    console.log "is_admin", _admin
                     self.admin = _admin
             )
         topbar = $("#topbar")
