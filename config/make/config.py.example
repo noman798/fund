@@ -1,6 +1,5 @@
 class CONFIG:
     CDN = '//ocafm1ums.qnssl.com'
-    WS = "u88.cn:20032"
     BAIDU_TONGJI = "cad47bbd37ec9bef705c95fa1aff4edf"
 
     class WILDDOG:
@@ -10,5 +9,6 @@ class CONFIG:
     PSQL = "postgres://u88:ZpHitdMRcMV9Ab9G@123.59.145.53:30009/u88"
 
     class WS:
+        HOST = "u88.cn"
         PORT = 20032
         DEBUG = "true"
