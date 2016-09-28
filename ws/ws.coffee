@@ -20,7 +20,6 @@ wss = new WebSocketServer({
     httpServer: server
     autoAcceptConnections: true
 })
-
 dump_mod = (mod)->
     r = {}
     for k , v of mod
@@ -49,7 +48,9 @@ split_n = (str, split, n)->
     r
 
 _MOD = {}
-wss.on 'connection', (ws) ->
+wss.on 'request', (request) ->
+    console.log "request", request.origin
+    ws = request.accept('echo-protocol', request.origin)
     ws.on 'message', (message) ->
         [key, value] = split_n(message, " ", 2)
         switch key
