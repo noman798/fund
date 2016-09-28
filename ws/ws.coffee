@@ -78,7 +78,6 @@ wss.on 'connection', (ws) ->
                 p.catch (error)->
                     ws.send("! #{msg_id} #{JSON.stringify(error)}")
 
-
         return
     return
 
