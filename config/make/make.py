@@ -24,7 +24,7 @@ def make_config(filepath):
             output_encoding='',
         )
 
-        filepath = join(PREFIX, outdir)
+        filepath = join(PREFIX, path)
         dirpath = dirname(filepath)
         if not exists(dirpath):
             mkdir(dirpath)
@@ -36,7 +36,7 @@ def make_config(filepath):
                 PREFIX=PREFIX,
             ))
 
-        if "." not in name or name.endswith(".sh"):
+        if "." not in path or path.endswith(".sh"):
             chmod(filepath, 0o755)
 
 
