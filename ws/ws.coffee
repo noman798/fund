@@ -3,6 +3,17 @@ co = require('co')
 
 get_parameter_names = require('get-parameter-names')
 
+WebSocketServer = require('uws').Server
+wss = new WebSocketServer(
+    port: CONFIG.PORT
+    headers: {
+        #"Access-Control-Allow-Origin": "*"
+        #"Access-Control-Allow-Headers": "http://u88.vc"
+        #"Access-Control-Allow-Methods": "PUT, GET, POST, DELETE, OPTIONS"
+    }
+)
+
+
 dump_mod = (mod)->
     r = {}
     for k , v of mod
@@ -30,27 +41,8 @@ split_n = (str, split, n)->
     r.push(str)
     r
 
-WebSocketServer = require('websocket').server
-http = require('http')
-
-server = http.createServer((request, response) ->
-    console.log((new Date()).toISOString() + ' Received request for ' + request.url)
-    response.writeHead(404)
-    response.end()
-)
-
-server.listen CONFIG.PORT, ->
-    console.log((new Date()).toISOString() + ' Server is listening on port '+CONFIG.PORT)
-
-
-wss = new WebSocketServer({
-    httpServer: server
-    autoAcceptConnections: true
-})
 _MOD = {}
-wss.on 'connection', (request) ->
-    console.log "request", request.origin
-    ws = request.accept('echo-protocol', request.origin)
+wss.on 'connection', (ws) ->
     ws.on 'message', (message) ->
         [key, value] = split_n(message, " ", 2)
         switch key
@@ -92,6 +84,7 @@ wss.on 'connection', (request) ->
                     ws.send(msg)
                 p.catch (error)->
                     ws.send("! #{msg_id} #{JSON.stringify(error)}")
+
 
         return
     return
