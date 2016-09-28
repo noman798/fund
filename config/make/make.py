@@ -4,25 +4,27 @@ from mako.template import Template
 from os import mkdir, chmod
 from os.path import join, dirname, exists, abspath
 from config import CONFIG
-from config_mapping import MAPPING
+from glob import glob
 
 
 def make_config(filepath):
     CONFIG_DIR = abspath(join(dirname(filepath), "mako"))
     PREFIX = dirname(dirname(dirname(CONFIG_DIR)))
-    for name, outdir in MAPPING:
-        with open(join(CONFIG_DIR, name)) as conf:
+    for path in glob(join(CONFIG_DIR, "**/*.*")):
+        path = path[1 + len(CONFIG_DIR):]
+        with open(join(CONFIG_DIR, path)) as conf:
             tmpl = conf.read()
 
-        T = Template(tmpl,
-                     # disable_unicode=True,
-                     encoding_errors='ignore',
-                     default_filters=['str', 'n'],
-                     input_encoding='utf-8',
-                     output_encoding='',
-                     )
+        T = Template(
+            tmpl,
+            # disable_unicode=True,
+            encoding_errors='ignore',
+            default_filters=['str', 'n'],
+            input_encoding='utf-8',
+            output_encoding='',
+        )
 
-        filepath =join(PREFIX, outdir)
+        filepath = join(PREFIX, outdir)
         dirpath = dirname(filepath)
         if not exists(dirpath):
             mkdir(dirpath)
