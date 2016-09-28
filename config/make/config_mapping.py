@@ -1,3 +1,3 @@
 MAPPING = (
-    ('coffee.coffee', "release"),
+    ('coffee.coffee', "web/config.coffee"),
 )
