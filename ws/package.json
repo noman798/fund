@@ -8,6 +8,7 @@
     "gulp-develop-server": "^0.5.2"
   },
   "dependencies": {
+    "bufferutil": "^1.2.1",
     "child_process": "^1.0.2",
     "co": "^4.6.0",
     "get-parameter-names": "^0.3.0",
@@ -16,6 +17,7 @@
     "pg": "^6.1.0",
     "pg-native": "^1.10.0",
     "underscore": "^1.8.3",
-    "websocket": "^1.0.23"
+    "utf-8-validate": "^1.2.1",
+    "ws": "^1.1.1"
   }
 }
