@@ -4,7 +4,9 @@ co = require('co')
 get_parameter_names = require('get-parameter-names')
 
 WebSocketServer = require('ws').Server
-wss = new WebSocketServer(port: CONFIG.PORT)
+wss = new WebSocketServer(
+    port: CONFIG.PORT
+)
 
 
 dump_mod = (mod)->
