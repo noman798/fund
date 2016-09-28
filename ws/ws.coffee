@@ -3,9 +3,8 @@ co = require('co')
 
 get_parameter_names = require('get-parameter-names')
 
-server = require('http').createServer()
-wss = require('socket.io')(server)
-server.listen(CONFIG.PORT, "0.0.0.0", ->console.log("connection"))
+wss = require('socket.io')()
+wss.listen(CONFIG.PORT,{"origins":"*:*"})
 
 dump_mod = (mod)->
     r = {}
@@ -36,7 +35,6 @@ split_n = (str, split, n)->
 
 _MOD = {}
 wss.on 'connection', (ws) ->
-    return
     ws.on 'message', (message) ->
         [key, value] = split_n(message, " ", 2)
         switch key
