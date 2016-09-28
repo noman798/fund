@@ -8,7 +8,7 @@ from glob import glob
 
 
 def make_config(filepath):
-    CONFIG_DIR = abspath(join(dirname(filepath), "mako"))
+    CONFIG_DIR = abspath(join(dirname(filepath), "tmpl"))
     PREFIX = dirname(dirname(dirname(CONFIG_DIR)))
     for path in glob(join(CONFIG_DIR, "**/*.*")):
         path = path[1 + len(CONFIG_DIR):]

@@ -5,3 +5,10 @@ class CONFIG:
 
     class WILDDOG:
         ID = 'u88'
+        SECRET = "J7iGBi11S8fuT3fzdfBRbCkh8Jql6mmx4JhY13gZ"
+
+    PSQL = "postgres://u88:ZpHitdMRcMV9Ab9G@123.59.145.53:30009/u88"
+
+    class WS:
+        PORT = 20032
+        DEBUG = "true"
