@@ -3,23 +3,6 @@ co = require('co')
 
 get_parameter_names = require('get-parameter-names')
 
-WebSocketServer = require('websocket').server
-http = require('http')
-
-server = http.createServer((request, response) ->
-    console.log((new Date()) + ' Received request for ' + request.url)
-    response.writeHead(404)
-    response.end()
-)
-
-server.listen CONFIG.PORT, ->
-    console.log((new Date()) + ' Server is listening on port '+CONFIG.PORT)
-
-
-wss = new WebSocketServer({
-    httpServer: server
-    autoAcceptConnections: true
-})
 dump_mod = (mod)->
     r = {}
     for k , v of mod
@@ -47,8 +30,25 @@ split_n = (str, split, n)->
     r.push(str)
     r
 
+WebSocketServer = require('websocket').server
+http = require('http')
+
+server = http.createServer((request, response) ->
+    console.log((new Date()).toISOString() + ' Received request for ' + request.url)
+    response.writeHead(404)
+    response.end()
+)
+
+server.listen CONFIG.PORT, ->
+    console.log((new Date()).toISOString() + ' Server is listening on port '+CONFIG.PORT)
+
+
+wss = new WebSocketServer({
+    httpServer: server
+    autoAcceptConnections: true
+})
 _MOD = {}
-wss.on 'request', (request) ->
+wss.on 'connection', (request) ->
     console.log "request", request.origin
     ws = request.accept('echo-protocol', request.origin)
     ws.on 'message', (message) ->
