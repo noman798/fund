@@ -34,7 +34,6 @@ def make_config(filepath):
                 PREFIX=PREFIX,
             ))
 
-
         if "." not in name or name.endswith(".sh"):
             chmod(filepath, 0o755)
 
