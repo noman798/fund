@@ -3,8 +3,23 @@ co = require('co')
 
 get_parameter_names = require('get-parameter-names')
 
-wss = require('socket.io')()
-wss.listen(CONFIG.PORT,{"origins":"*:*"})
+WebSocketServer = require('websocket').server
+http = require('http')
+
+server = http.createServer((request, response) ->
+    console.log((new Date()) + ' Received request for ' + request.url)
+    response.writeHead(404)
+    response.end()
+)
+
+server.listen CONFIG.PORT, ->
+    console.log((new Date()) + ' Server is listening on port '+CONFIG.PORT)
+
+
+wss = new WebSocketServer({
+    httpServer: server
+    autoAcceptConnections: true
+})
 
 dump_mod = (mod)->
     r = {}
