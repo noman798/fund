@@ -22,10 +22,10 @@ def make_config(filepath):
                      output_encoding='',
                      )
 
-        dirpath = join(PREFIX, outdir)
+        filepath =join(PREFIX, outdir)
+        dirpath = dirname(filepath)
         if not exists(dirpath):
             mkdir(dirpath)
-        filepath = join(dirpath, name)
 
         print(filepath)
         with open(filepath, 'w') as f:
