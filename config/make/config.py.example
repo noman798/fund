@@ -1,5 +1,5 @@
 class CONFIG:
-    CDN = '//ocafm1ums.qnssl.com'
+    CDN = 'ocafm1ums.qnssl.com'
     BAIDU_TONGJI = "cad47bbd37ec9bef705c95fa1aff4edf"
 
     class WILDDOG:
